@@ -1,0 +1,150 @@
+'use client';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import api from './api';
+
+export const getIndustry = createAsyncThunk(
+    'getIndustry',
+    async (_, { rejectWithValue }) => {
+        try {
+            const response = await api.get('/api/industry/list');
+            if (response?.data?.status_code === 200) {
+                return response.data;
+            } else {
+                if (response?.data?.errors) {
+                    return rejectWithValue(response.data.errors);
+                } else {
+                    return rejectWithValue('Something went wrong.');
+                }
+            }
+        } catch (err) {
+            return rejectWithValue(err);
+        }
+    }
+);
+
+export const createService = createAsyncThunk(
+    'createService',
+    async (user_input, { rejectWithValue }) => {
+        try {
+            const response = await api.post('/api/business/create',user_input);
+            if (response?.data?.status_code === 201) {
+                return response.data;
+            } else {
+                if (response?.data?.errors) {
+                    return rejectWithValue(response.data.errors);
+                } else {
+                    return rejectWithValue('Something went wrong.');
+                }
+            }
+        } catch (err) {
+            return rejectWithValue(err);
+        }
+    }
+);
+
+export const createServiceSteptwo = createAsyncThunk(
+    'createServiceSteptwo',
+    async (user_input, { rejectWithValue }) => {
+        try {
+            const response = await api.post('/api/service/create-service',user_input);
+            if (response?.data?.status_code === 201) {
+                return response.data;
+            } else {
+                if (response?.data?.errors) {
+                    return rejectWithValue(response.data.errors);
+                } else {
+                    return rejectWithValue('Something went wrong.');
+                }
+            }
+        } catch (err) {
+            return rejectWithValue(err);
+        }
+    }
+);
+
+export const getExample = createAsyncThunk(
+    'getExample',
+    async ({id}, { rejectWithValue }) => {
+        try {
+            const response = await api.get(`/api/main/example-service-list?id=${id}`);
+            if (response?.data?.status_code === 200) {
+                return response.data;
+            } else {
+                if (response?.data?.errors) {
+                    return rejectWithValue(response.data.errors);
+                } else {
+                    return rejectWithValue('Something went wrong.');
+                }
+            }
+        } catch (err) {
+            return rejectWithValue(err);
+        }
+    }
+);
+
+const initialState={
+    loading:false,
+    error:false,
+    industryData:[],
+    createServiceData:"",
+    stepTwoData:"",
+    examples:[]
+}
+const CreateBotSlice=createSlice({
+    name:'bot',
+    initialState,
+    reducers:{},
+    extraReducers:(builder)=>{
+        builder.addCase(
+            getIndustry.pending,(state)=>{
+                state.loading=true
+            }
+        )
+        .addCase(getIndustry.fulfilled,(state,{payload})=>{
+            state.loading=false
+            state.industryData=payload
+            state.error=false
+        })
+        .addCase(getIndustry.rejected,(state,{payload})=>{
+            state.loading=false
+            state.error=payload
+        })
+        .addCase(createService.pending,(state)=>{
+            state.loading=true
+        })
+        .addCase(createService.fulfilled,(state,{payload})=>{
+            state.loading=false
+            state.createServiceData=payload
+            state.error=false
+        })
+        .addCase(createService.rejected,(state,{payload})=>{
+            state.loading=false
+            state.error=payload
+        })
+        .addCase(createServiceSteptwo.pending,(state)=>{
+            state.loading=true
+        })
+        .addCase(createServiceSteptwo.fulfilled,(state,{payload})=>{
+            state.loading=false
+            state.stepTwoData=payload
+            state.error=false
+        })
+        .addCase(createServiceSteptwo.rejected,(state,{payload})=>{
+            state.loading=false
+            state.error=payload
+        })
+        .addCase(getExample.pending,(state)=>{
+            state.loading=true
+        })
+        .addCase(getExample.fulfilled,(state,{payload})=>{
+            state.loading=false
+            state.examples=payload
+            state.error=false
+        })
+        .addCase(getExample.rejected,(state,{payload})=>{
+            state.loading=false
+            state.error=payload
+        })
+    }
+})
+export default CreateBotSlice.reducer

@@ -8,6 +8,7 @@ import PlanSlice from '../reducers/PlanSlice'
 import CoinSlice from '../reducers/CoinSlice'
 import ProfileSlice from '../reducers/ProfileSlice'
 import SearchHistroySlice from '../reducers/SearchHistroySlice'
+import CreateBotSlice from '../reducers/CreateBotSlice'
 
 const store = configureStore({
     reducer: {
@@ -17,7 +18,8 @@ const store = configureStore({
         planst: PlanSlice,
         coinData: CoinSlice,
         profile: ProfileSlice,
-        his: SearchHistroySlice
+        his: SearchHistroySlice,
+        bot:CreateBotSlice
     },
     devTools: process.env.NODE_ENV,
 });
