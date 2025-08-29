@@ -1,0 +1,150 @@
+'use client';
+
+import React from 'react'
+
+import { Roboto } from 'next/font/google';
+import { Plus_Jakarta_Sans } from 'next/font/google';
+import Link from 'next/link';
+
+import { IoLocationSharp } from "react-icons/io5";
+import { FaEnvelope } from "react-icons/fa6";
+import { MdPhone } from "react-icons/md";
+import { BiLogoFacebook } from "react-icons/bi";
+import { AiFillInstagram } from "react-icons/ai";
+import { BsYoutube } from "react-icons/bs";
+import { BsTwitterX } from "react-icons/bs";
+import { BiLogoLinkedin } from "react-icons/bi";
+
+import { FaFacebookF } from "react-icons/fa6";
+import { GrInstagram } from "react-icons/gr";
+import { FaYoutube } from "react-icons/fa";
+
+import { FaFacebook } from "react-icons/fa6";
+
+import footerLogo from "../assets/imagesource/footer_logo.png";
+import Image from 'next/image';
+
+import { ImLocation } from "react-icons/im";
+
+const roboto = Roboto({
+  subsets: ['latin'],
+  weight: ['700'], // optional: define font weights
+  variable: '--font-roboto', // optional: for CSS variables
+});
+
+const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'], // specify desired weights
+  display: 'swap',
+});
+
+const Footer = () => {
+  return (
+    <div className='footer_area'>
+
+      <div className='footer_top lg:py-14 py-10 px-6 lg:px-0'>
+        <div className='max-w-6xl mx-auto'>
+          <div className='footer_top_container pb-8'>
+            <div className='flex'>
+              <div className='w-5/12 pr-20'>
+                 <Image src={footerLogo} alt='footerLogo' className='inline-block mb-6' />
+                 <p className='text-sm leading-[24px] text-white font-medium'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis </p>
+              </div>
+              <div className='w-7/12'>
+                <div className='flex'>
+                  <div className='w-4/12'>
+                     <h3 className='text-[20px] leading-[24px] text-white font-semibold mb-6'>Need help?</h3>
+                     <ul>
+                        <li>
+                          <Link className='text-sm leading-[24px] text-white hover:text-[#00806A] font-medium mb-3 inline-block' href="/" passHref>
+                            Lorem Ipsum
+                          </Link>
+                        </li>
+                        <li>
+                          <Link className='text-sm leading-[24px] text-white hover:text-[#00806A] font-medium mb-3 inline-block' href="/" passHref>
+                            Lorem Ipsum
+                          </Link>
+                        </li>
+                        <li>
+                          <Link className='text-sm leading-[24px] text-white hover:text-[#00806A] font-medium mb-3 inline-block' href="/" passHref>
+                            Lorem Ipsum
+                          </Link>
+                        </li>
+                        <li>
+                          <Link className='text-sm leading-[24px] text-white hover:text-[#00806A] font-medium mb-3 inline-block' href="/" passHref>
+                            Lorem Ipsum
+                          </Link>
+                        </li>
+                     </ul>
+                  </div>
+                   <div className='w-4/12'>
+                     <h3 className='text-[20px] leading-[24px] text-white font-semibold mb-6'>About US</h3>
+                     <ul>
+                        <li>
+                          <Link className='text-sm leading-[24px] text-white hover:text-[#00806A] font-medium mb-3 inline-block' href="/" passHref>
+                            Lorem Ipsum
+                          </Link>
+                        </li>
+                        <li>
+                          <Link className='text-sm leading-[24px] text-white hover:text-[#00806A] font-medium mb-3 inline-block' href="/" passHref>
+                            Lorem Ipsum
+                          </Link>
+                        </li>
+                        <li>
+                          <Link className='text-sm leading-[24px] text-white hover:text-[#00806A] font-medium mb-3 inline-block' href="/" passHref>
+                            Lorem Ipsum
+                          </Link>
+                        </li>
+                        <li>
+                          <Link className='text-sm leading-[24px] text-white hover:text-[#00806A] font-medium mb-3 inline-block' href="/" passHref>
+                            Lorem Ipsum
+                          </Link>
+                        </li>
+                     </ul>
+                  </div>
+                   <div className='w-4/12'>
+                     <h3 className='text-[20px] leading-[24px] text-white font-semibold mb-6'>Contact Us</h3>
+                     <p className='text-sm leading-[24px] text-white font-medium mb-3 inline-block'>+91 6278765634</p>
+                     <p className='text-sm leading-[24px] text-white font-medium mb-3 inline-block'>Loremipsum”gmail.com</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className='footer_bottom_box border-t border-[#FFFFFF] pt-6 flex justify-between items-center'>
+            <div>
+              <p className='text-[12px] leading-[24px] text-white'>Copyright © 2024 SoumalyaFigma. All rights reserved.</p>
+            </div>
+            <div>
+               <ul className='flex gap-4'>
+                  <li>
+                    <Link href="/" passHref>
+                      <FaFacebookF className='text-[#ffffff] hover:text-[#0866ff] text-xl mr-1' />
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/" passHref>
+                      <BsTwitterX className='text-[#ffffff] hover:text-[#ffffff] text-xl mr-1' />
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/" passHref>
+                      <GrInstagram className='text-[#ffffff] hover:text-[#ff008b] text-xl mr-1' />
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/" passHref>
+                      <FaYoutube className='text-[#ffffff] hover:text-[#ff0033] text-xl mr-1' />
+                    </Link>
+                  </li>
+                </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  )
+}
+
+export default Footer
