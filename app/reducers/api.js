@@ -8,7 +8,7 @@ const formDataURL = ['user/user-profile/change-avatar'];
 api.interceptors.request.use((req) => {
     let userTokenData;
     try {
-        userTokenData = JSON.parse(sessionStorage.getItem('cryptoToken'));
+        userTokenData = JSON.parse(sessionStorage.getItem('goBookToken'));
     } catch (error) {
         userTokenData = null;
     }
@@ -22,14 +22,16 @@ api.interceptors.request.use((req) => {
     if (token) {
         req.headers.Authorization = `Bearer ${token}`;
     }
+     req.headers['x-api-key'] = 'dGhpc2lzZnJvbnRlbmQ=';
     return req;
+
 });
 
 api.interceptors.response.use(
     (response) => response,
     (error) => {
         if (error.response && [401, 403].includes(error.response.status)) {
-            sessionStorage.removeItem('cryptoToken');
+            sessionStorage.removeItem('goBookToken');
             // toast.error("You have been logout, Please login again");
         }
         return Promise.reject(error);
