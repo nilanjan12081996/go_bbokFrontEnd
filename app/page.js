@@ -222,7 +222,7 @@ export default function Home() {
                   <div className="rounded-[12px] px-6 py-10 border border-[#C9C9C9]">
                      <h3 className="text-[#191d23] text-[22px] leading-[22px] font-bold pb-4">Free</h3>
                      <p className="text-[16px] leading-[22px] text-[#95a0af] pb-3 font-normal">Perfect for individuals and small businesses to start using a WhatsApp chatbot at no cost.</p>
-                     <h4 className="text-[56px] text-[#191d23] pb-3 font-medium">$0<span className="text-[#4b5768] text-base font-light">/ Month</span></h4>
+                     <h4 className="text-[56px] text-[#191d23] pb-3 font-medium">€0<span className="text-[#4b5768] text-base font-light">/ Month</span></h4>
                      <button className="bg-white hover:bg-[#024E41] text-[#024E41] hover:text-white text-base leading-[44px] font-semibold border-2 w-full cursor-pointer border-[#024E41] rounded-[4px]">Get Started Now</button>
                      <div className="mt-8">
                         <ul>

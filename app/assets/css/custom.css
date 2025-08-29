@@ -391,8 +391,8 @@ body {
   margin-bottom: 10px;
 }
 .sidebar_menu nav ul li a:hover {
-  color: #ffffff;
-  background: #00806a;
+  color: #333333;
+  background: #f6f6f6;
 }
 
 /* .checkmate_section {
@@ -855,24 +855,24 @@ body {
 }
 
 .account_setting_section label {
-  font-size: 14px;
+  font-size: 15px;
   line-height: 26px;
-  color: #aaaaaa !important;
+  color: #333333 !important;
   font-weight: 400;
 }
 .account_setting_section input[type="text"] {
-  background: #404040;
+  background: #f6f6f6;
   color: #cdcdcd;
-  border: #404040 1px solid;
+  border: #cacaca 1px solid;
   height: 45px;
 }
 .account_setting_section input[type="text"]::placeholder {
-  color: #6a6a6a;
+  color: #000000;
 }
 .account_setting_section input[type="password"] {
-  background: #404040;
+  background: #f6f6f6;
   color: #cdcdcd;
-  border: #404040 1px solid;
+  border: #cacaca 1px solid;
   height: 45px;
 }
 .account_setting_section input[type="password"]::placeholder {
@@ -1142,6 +1142,24 @@ body {
 .select_bot_wrap .radio-button-label > input:checked + img {
   border: 2px solid #00806a;
   background: #e6f3f1;
+}
+
+/* Increase pagination panel height */
+.ag-theme-alpine .ag-paging-panel {
+  height: 60px; /* default is ~35px */
+  padding: 10px; /* optional, add spacing inside */
+  align-items: center; /* vertically center items */
+}
+
+/* Optional: Make pagination buttons/text larger */
+.ag-theme-alpine .ag-paging-button,
+.ag-theme-alpine .ag-paging-page-summary-panel {
+  font-size: 14px; /* default ~12px */
+  padding: 6px 12px;
+}
+
+.ag-cell {
+  line-height: 55px !important;
 }
 
 @media only screen and (max-width: 767px) {
