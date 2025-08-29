@@ -1023,11 +1023,11 @@ body {
 }
 .step_wraper ul li .number_box.active_step_three.active_step:before {
   position: absolute;
-  right: 38px;
+  right: 40px;
   top: 18px;
   content: "";
   background: #00806a;
-  width: 162px;
+  width: 148px;
   height: 6px;
   display: block;
 }
@@ -1041,7 +1041,7 @@ body {
   top: 18px;
   content: "";
   background: #00806a;
-  width: 170px;
+  width: 140px;
   height: 6px;
   display: block;
 }
@@ -1051,11 +1051,11 @@ body {
 }
 .step_wraper ul li .number_box.active_step_four.active_step:before {
   position: absolute;
-  right: 38px;
+  right: 40px;
   top: 18px;
   content: "";
   background: #00806a;
-  width: 170px;
+  width: 150px;
   height: 6px;
   display: block;
 }
@@ -1069,7 +1069,7 @@ body {
   top: 18px;
   content: "";
   background: #00806a;
-  width: 170px;
+  width: 150px;
   height: 6px;
   display: block;
 }
@@ -1083,7 +1083,7 @@ body {
   top: 18px;
   content: "";
   background: #00806a;
-  width: 170px;
+  width: 150px;
   height: 6px;
   display: block;
 }
