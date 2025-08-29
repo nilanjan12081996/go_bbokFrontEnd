@@ -84,9 +84,7 @@ const Sidebar = () => {
     setSidebarOpen(false);
   };
   // For mobile menu ends here
-  useEffect(() => {
-    dispatch(getSearchHistory({ week: 0 }));
-  }, [dispatch]);
+
 
   // const handleObserver = useCallback(
   //   (entries) => {
@@ -112,7 +110,7 @@ const Sidebar = () => {
 
 
 
-  { console.log("searchHistory", historyData) }
+
 
   return (
     <aside

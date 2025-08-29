@@ -14,7 +14,7 @@ export default function ClientLayoutWrapper({ children }) {
     const router = useRouter();
 
     // Define public routes that don't require authentication
-    const publicRoutes = ['/', '/about-us', '/contact', '/pricing', '/how-it-works', '/features', '/privacy', '/dashboard', '/faqs', '/resume-templates', '/resume-history'];
+    const publicRoutes = ['/', '/about-us', '/contact', '/pricing', '/how-it-works', '/features', '/privacy', '/faqs'];
     const isPublicRoute = publicRoutes.includes(pathname);
 
     // Function to check token validity
@@ -90,7 +90,7 @@ export default function ClientLayoutWrapper({ children }) {
     }
 
     // Authenticated layout
-    if (shasToken) {
+    if (hasToken) {
         return (
             <main>
                 <div className="dashboard_wrapper lg:flex bg-[#f3f4f6] p-0">

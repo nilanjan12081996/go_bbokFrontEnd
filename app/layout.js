@@ -38,13 +38,13 @@ export default function RootLayout({ children }) {
         className={`${inter.variable} antialiased`}
       >
 
-        {/* <Providers>
+        <Providers>
           <ClientLayoutWrapper>
             {children}
           </ClientLayoutWrapper>
-        </Providers> */}
+        </Providers>
 
-        <Providers>
+        {/* <Providers>
           <main>
             <div className="lg:flex gap-0 bg-[#f0fdf3] p-0">
               <div className="sidebar_area w-2/12">
@@ -58,7 +58,7 @@ export default function RootLayout({ children }) {
               </div>
             </div>
           </main>
-        </Providers>
+        </Providers> */}
 
       </body>
     </html>
