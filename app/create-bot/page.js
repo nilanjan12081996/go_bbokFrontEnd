@@ -100,6 +100,12 @@ const page = () => {
                                 <option>03</option>
                             </Select>
                         </div>
+                        <div className="w-6/12 step_field">
+                            <div className="mb-1 block">
+                                <Label htmlFor="countries">Business Name *</Label>
+                            </div>
+                            <TextInput id="base" type="text" sizing="md" placeholder='Habbibs' />
+                        </div>
                     </div>
                 </div>
                 <div className='step_btn_area border-t border-[#EBEEFA] pt-5'>
