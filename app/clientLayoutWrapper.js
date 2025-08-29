@@ -90,7 +90,7 @@ export default function ClientLayoutWrapper({ children }) {
     }
 
     // Authenticated layout
-    if (shasToken) {
+    if (hasToken) {
         return (
             <main>
                 <div className="dashboard_wrapper lg:flex bg-[#f3f4f6] p-0">
