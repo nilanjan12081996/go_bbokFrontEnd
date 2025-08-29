@@ -21,6 +21,8 @@ import { FaUser } from 'react-icons/fa';
 import { BiSolidDashboard } from 'react-icons/bi';
 import { Select } from 'flowbite-react';
 
+import { IoIosArrowDown } from "react-icons/io";
+
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -98,6 +100,24 @@ const Insideheader = () => {
                  <p className='text-[#404040] text-[14px] font-bold'>Moni Roy</p>
                  <p className='text-[#565656] text-[12px] font-semibold'>Admin</p>
              </div>
+          </div>
+          <div className="relative group">
+                {/* Profile Picture */}
+                <div className='user_face border border-[#5C5C5C] w-[18px] h-[18px] rounded-full flex items-center justify-center'>
+                   <IoIosArrowDown className='text-[#565656] text-sm' />
+                </div>
+                {/* Dropdown */}
+                <div
+                    className="absolute right-0 mt-0 w-40 bg-white text-black rounded-lg shadow-lg opacity-0 invisible group-hover:visible group-hover:opacity-100 transition-opacity duration-300">
+                    <button
+                        className="block w-full text-left px-4 py-2 hover:bg-gray-100"
+                        >
+                        My Profile
+                    </button>
+                    <button className="block w-full text-left px-4 py-2 text-red-500 hover:bg-red-100">
+                        Logout
+                    </button>
+                </div>
           </div>
         </div>
       </div>
