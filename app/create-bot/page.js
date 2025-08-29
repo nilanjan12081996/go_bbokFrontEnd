@@ -167,11 +167,11 @@ const page = () => {
             {/* step two ends here */}
 
             {/* step three start here */}
-            <div className='step_box_three hidden'>
+            <div className='step_box_three'>
                 <div className='step_content_wraper mb-6'>
                     <h3 className='text-[#435971] text-[20px] leading-[30px] mb-3 font-medium'>Availability</h3>
                     <div className='flex gap-4'>
-                        <div className='w-11/12 '>
+                        <div className='w-10/12 '>
                             <div className='flex gap-4 mb-4'>
                                 <div className="w-4/12 step_field">
                                     <div className="mb-1 block">
@@ -488,15 +488,15 @@ const page = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className='w-1/12 mt-7'>
-                            <button className='bg-[#00806A] rounded-[6px] text-white hover:text-[#464f60] text-[14px] leading-[40px] font-medium px-5 cursor-pointer hover:bg-white border border-[#00806A] hover:border-[#dddfe2] flex items-center'><BiCopy className='text-base mr-1' /> Copy</button>
+                        <div className='w-2/12 mt-7'>
+                            <button className='bg-[#00806A] rounded-[6px] text-white hover:text-[#464f60] text-[14px] leading-[40px] font-medium px-5 cursor-pointer hover:bg-white border border-[#00806A] hover:border-[#dddfe2] flex items-center'><BiCopy className='text-base mr-1' /> copy to all week</button>
                         </div>
                     </div>
                 </div>
                 <div className='step_content_wraper'>
                     <h3 className='text-[#435971] text-[20px] leading-[30px] mb-3 font-medium'>Break time</h3>
                     <div className='flex gap-4'>
-                        <div className='w-11/12 '>
+                        <div className='w-10/12 '>
                             <div className='flex gap-4 mb-4'>
                                 <div className="w-4/12 step_field">
                                     <div className="mb-1 block">
@@ -813,7 +813,7 @@ const page = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className='w-1/12 mt-7'>
+                        <div className='w-2/12 mt-7'>
                             <button className='bg-[#00806A] rounded-[6px] text-white hover:text-[#464f60] text-[14px] leading-[40px] font-medium px-5 cursor-pointer hover:bg-white border border-[#00806A] hover:border-[#dddfe2] flex items-center'><BiCopy className='text-base mr-1' /> Copy</button>
                         </div>
                     </div>

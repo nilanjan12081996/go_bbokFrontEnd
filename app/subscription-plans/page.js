@@ -59,6 +59,9 @@ const page = () => {
         </div>
         <div className="grid grid-cols-2 gap-6 w-7/12">
             <div className="rounded-[12px] px-6 py-10 border border-[#C9C9C9] bg-white">
+                <div className='mb-4 border border-[#00806A] bg-[#E8FFFB] text-[#00806A] inline-block rounded-[5px]'>
+                    <p className='text-[12px] leading-[26px] px-2 font-medium'>Current Plan</p>
+                </div>
                 <h3 className="text-[#191d23] text-[22px] leading-[22px] font-bold pb-4">Free</h3>
                 <p className="text-[16px] leading-[22px] text-[#95a0af] pb-3 font-normal">Perfect for individuals and small businesses to start using a WhatsApp chatbot at no cost.</p>
                 <h4 className="text-[56px] text-[#191d23] pb-3 font-medium">$0<span className="text-[#4b5768] text-base font-light">/ Month</span></h4>
