@@ -6,7 +6,7 @@ export const registerCustomer = createAsyncThunk(
     'registerCustomer',
     async (userInput, { rejectWithValue }) => {
         try {
-            const response = await api.post('/user/user-auth/sign-up', userInput);
+            const response = await api.post('/api/auth/signup', userInput);
             if (response?.data?.status_code === 201) {
                 return response.data;
             } else {
@@ -132,7 +132,7 @@ const authSlice = createSlice({
                 state.isLoggedIn = true;
                 state.message = payload;
                 sessionStorage.setItem(
-                    'cryptoToken',
+                    'goBookToken',
                     JSON.stringify({ token: access_token })
                 );
             })

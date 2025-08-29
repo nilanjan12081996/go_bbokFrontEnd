@@ -61,7 +61,7 @@ const Insideheader = () => {
 
 
   return (
-    <div className='bg-[#ffffff] rounded-[0px] py-4 px-6 mb-0 border-l border-[#f3f4f6]'>
+    <div className='bg-[#ffffff] rounded-[0px] py-4 px-6 mb-5 border-l border-[#f3f4f6]'>
       <div className='lg:flex justify-between items-center'>
         <div className='pl-[50px] lg:pl-0'>
           &nbsp;
@@ -108,7 +108,7 @@ const Insideheader = () => {
                         >
                         My Profile
                     </button>
-                    <button className="block w-full text-left px-4 py-2 text-red-500 hover:bg-red-100">
+                    <button onClick={handleLogout} className="block w-full text-left px-4 py-2 text-red-500 hover:bg-red-100">
                         Logout
                     </button>
                 </div>

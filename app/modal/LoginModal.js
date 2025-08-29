@@ -39,6 +39,10 @@ const LoginModal = ({ openLoginModal, setOpenLoginModal, setOpenRegisterModal })
             } else if (res?.payload?.response?.data?.status_code === 401) {
                 setError(res?.payload?.response?.data?.message)
             }
+            else if(res?.payload?.response?.data?.status_code===422)
+            {
+                setError(res?.payload?.response?.data?.message)
+            }
         })
     };
     const handleSignup = () => {
