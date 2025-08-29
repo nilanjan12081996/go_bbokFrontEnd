@@ -107,7 +107,7 @@ const page = () => {
                         <div className="absolute right-0 top-0">
                           <button
                             type="button"
-                            className="bg-white p-2 rounded-full shadow-md text-[#757575] hover:bg-[#ff1a03] hover:text-white"
+                            className="bg-white p-2 rounded-full shadow-md text-[#757575] hover:bg-[#00806A] hover:text-white"
                           >
                             <FileInput
                               className="absolute opacity-0 h-3 w-5 border border-black"
@@ -120,8 +120,8 @@ const page = () => {
                         </div>
                       </div>
                       <div>
-                        <p className="text-[#cdcdcd] text-xl pb-2"> {profileData?.data?.fullname}</p>
-                        <p className="text-[#777777] text-base pb-2">{profileData?.data?.email}</p>
+                        <p className="text-[#000000] text-xl pb-2"> {profileData?.data?.fullname} Moni Roy</p>
+                        <p className="text-[#777777] text-base pb-2">{profileData?.data?.email} moniroy@gmail.com</p>
                       </div>
                     </div>
                   </div>
@@ -229,21 +229,21 @@ const page = () => {
 
                         <div className="lg:flex justify-between mt-3">
                           <div className="py-10 w-full mt-5">
-                            <p className="text-[#CDCDCD] text-[18px] pb-4">My email Address</p>
+                            <p className="text-[#000000] text-[18px] pb-4">My email Address</p>
                             <div className="flex items-center gap-2">
                               <div>
-                                <div className="bg-[#1f2726] w-[56px] h-[56px] rounded-full flex justify-center items-center">
+                                <div className="bg-[#e6eeec] w-[56px] h-[56px] rounded-full flex justify-center items-center">
                                   <SlEnvolope className="text-2xl text-[#055346]" />
                                 </div>
                               </div>
                               <div>
-                                <p className="text-[#CDCDCD] text-[16px]">{profileData?.data?.email}</p>
-                                <p className="text-[#777777] text-[16px]">1 month ago</p>
+                                <p className="text-[#000000] text-[16px]">{profileData?.data?.email}moniroy@gmail.com</p>
+                                <p className="text-[#808080] text-[16px]">1 month ago</p>
                               </div>
                             </div>
                           </div>
                           <div className="w-full mt-10">
-                            <p className="text-[#CDCDCD] text-[18px] pb-4">Change Paasowrd</p>
+                            <p className="text-[#000000] text-[18px] pb-4">Change Paasowrd</p>
 
                             <div className="w-full lg:w-12/12">
                               <div className="mb-1 block">
@@ -300,97 +300,12 @@ const page = () => {
                               )}
                             </div>
                             <div>
-                              <button className="bg-[#0E5D4F] hover:bg-black text-white text-base leading-[46px] rounded-[8px] px-8 cursor-pointer mt-3">Update</button>
+                              <button className="bg-[#00806A] hover:bg-black text-white text-base leading-[46px] rounded-[8px] px-8 cursor-pointer mt-3">Update</button>
                             </div>
 
                           </div>
 
                         </div>
-
-                        <div className="lg:flex gap-6 mb-3">
-                          {
-                            profileData?.data?.Subscription?.length > 0 ? (
-                              <div className="mt-6 p-5 bg-gray-50 shadow-lg rounded-2xl">
-                                <h2 className="text-lg font-semibold mb-2 text-black">Plan Details</h2>
-                                <p><strong className="text-black">Plan Name:</strong> {profileData?.data?.Subscription?.[0]?.Plan?.plan_name}</p>
-                                <p><strong className="text-black">Price:</strong> ${profileData?.data?.Subscription?.[0]?.Plan?.price} / {profileData?.data?.Subscription?.[0]?.Plan?.billing_cycle}</p>
-                                <p><strong className="text-black">Description:</strong> {profileData?.data?.Subscription?.[0]?.Plan?.plan_description}</p>
-
-                                {/* <div className="mt-2">
-                                  <strong className="text-black">Features:</strong>
-                                  <ul className="list-disc list-inside text-black">
-                                    {plan.plan_features.map((feature, index) => (
-                                      <li key={index}>{feature}</li>
-                                    ))}
-                                  </ul>
-                                </div> */}
-                                <p className="text-red-400">
-                                  <strong>
-                                    * Your Subscription will be valid till {
-                                      new Date(profileData?.data?.Subscription?.[0]?.stripe_subscription_end_date)
-                                        .toISOString()
-                                        .split('T')[0]
-                                    }
-                                  </strong>
-                                </p>
-                                {
-                                  profileData?.data?.Subscription?.[0]?.subscription_status === "active" ? (
-                                    <>
-                                      <Button onClick={() => { handleCancelSubs(profileData?.data?.Subscription?.[0]?.stripe_subscription_type) }} className="!bg-red-600 mt-2 cursor-pointer">
-                                        Cancel Plan
-                                      </Button>
-                                    </>
-                                  ) : (
-                                    <>
-                                    </>
-                                  )
-                                }
-
-                              </div>
-                            ) : (
-                              <p className="text-red-600 mt-3">*No Active Plan</p>
-                            )
-                          }
-                          {/* <div className="w-full lg:w-6/12">
-                            <div className="mb-1 block">
-                              <Label>
-                                Youtube Access Key{" "}
-                                <span className="text-[#ff1a03]"></span>
-                              </Label>
-                            </div>
-                            <TextInput
-                              id="base"
-                              type="text"
-                              sizing="md"
-                              required
-                              {...register("access_key")}
-                            />
-                          </div> */}
-                          {/* <div className="w-full lg:w-6/12">
-                          <div className="mb-1 block">
-                            <Label>
-                              Youtube Secret Key{" "}
-                              <span className="text-[#ff1a03]"></span>
-                            </Label>
-                          </div>
-                          <TextInput
-                            id="base"
-                            type="text"
-                            sizing="md"
-                            required
-                            {...register("secret_key", {})}
-                          />
-                        </div> */}
-                        </div>
-
-                        {/* <div className="gap-4 my-6">
-                        <button
-                          type="submit"
-                          className="bg-[#626adf] text-white hover:bg-[#1a9bd9] px-7 py-2 rounded-md text-base font-medium"
-                        >
-                          Save
-                        </button>
-                      </div> */}
 
                       </div>
                     </div>

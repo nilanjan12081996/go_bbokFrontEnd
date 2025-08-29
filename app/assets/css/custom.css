@@ -855,24 +855,24 @@ body {
 }
 
 .account_setting_section label {
-  font-size: 14px;
+  font-size: 15px;
   line-height: 26px;
-  color: #aaaaaa !important;
+  color: #333333 !important;
   font-weight: 400;
 }
 .account_setting_section input[type="text"] {
-  background: #404040;
+  background: #f6f6f6;
   color: #cdcdcd;
-  border: #404040 1px solid;
+  border: #cacaca 1px solid;
   height: 45px;
 }
 .account_setting_section input[type="text"]::placeholder {
-  color: #6a6a6a;
+  color: #000000;
 }
 .account_setting_section input[type="password"] {
-  background: #404040;
+  background: #f6f6f6;
   color: #cdcdcd;
-  border: #404040 1px solid;
+  border: #cacaca 1px solid;
   height: 45px;
 }
 .account_setting_section input[type="password"]::placeholder {
