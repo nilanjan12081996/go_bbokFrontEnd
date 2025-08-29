@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { AiFillMinusCircle, AiFillPlusCircle } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
-import { getExample } from "../reducers/CreateBotSlice";
+import { createServiceSteptwo, getExample } from "../reducers/CreateBotSlice";
 const StepTwo=({setShow,industryId, businessId})=>{
     const{examples}=useSelector((state)=>state?.bot)
     const dispatch=useDispatch()
@@ -59,6 +59,32 @@ const StepTwo=({setShow,industryId, businessId})=>{
     updatedRows[index][field] = value;
     setRows(updatedRows);
   };
+
+  const onSubmit=()=>{
+    const isValid = rows.every(row => 
+            row.serviceName.trim() !== "" && 
+            row.duration.trim() !== ""
+        );
+            if (!isValid) {
+            alert("Please fill in all service names and durations");
+            return;
+        }
+        const service_arr = rows.map(row => ({
+            service_name: row.serviceName.trim(),
+            duration: `${row.duration.trim()}${row.timeType}`
+        }));
+         const payload = {
+            industry_id: industryId,
+            company_id: businessId,
+            service_arr: service_arr
+        };
+        dispatch(createServiceSteptwo(payload)).then((res)=>{
+            if(res?.payload?.status_code===201)
+            {
+                HandleNextPage()
+            }
+        })
+  }
 useEffect(()=>{
 dispatch(getExample({id:industryId}))
 },[])
@@ -68,7 +94,10 @@ console.log("examples",examples);
     return(
         <>
           <div className='step_box_two'>
-            <form>
+            <form onSubmit={(e)=>{
+                e.preventDefault()
+                onSubmit()
+            }}>
                         <div className='step_content_wraper'>
                             {
                                 rows?.map((rows,index)=>{
@@ -159,7 +188,7 @@ console.log("examples",examples);
                         <div className='step_btn_area border-t border-[#EBEEFA] pt-5'>
                             <div className='flex justify-end items-center gap-3'>
                                 <button onClick={()=>handleBack()} className='bg-[#ffffff] rounded-[6px] text-[#464f60] hover:text-[#ffffff] text-[14px] leading-[43px] font-medium  px-6 cursor-pointer hover:bg-[#00806A] border border-[#dddfe2] hover:border-[#00806A]'>Previous Step</button>
-                                <button onClick={()=>HandleNextPage()} className='bg-[#00806A] rounded-[6px] text-white hover:text-[#464f60] text-[14px] leading-[43px] font-medium px-10 cursor-pointer hover:bg-white border border-[#00806A] hover:border-[#dddfe2]'>Next Step</button>
+                                <button type="submit" className='bg-[#00806A] rounded-[6px] text-white hover:text-[#464f60] text-[14px] leading-[43px] font-medium px-10 cursor-pointer hover:bg-white border border-[#00806A] hover:border-[#dddfe2]'>Next Step</button>
                             </div>
                         </div>
                         </form>
