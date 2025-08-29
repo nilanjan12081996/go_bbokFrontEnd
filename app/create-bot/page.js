@@ -18,6 +18,7 @@ import { getSearchHistory } from '../reducers/SearchHistroySlice';
 import { toast, ToastContainer } from 'react-toastify';
 
 import { BiCopy } from "react-icons/bi";
+import { AiFillPlusCircle } from "react-icons/ai";
 
 import phone01 from "../assets/imagesource/phone01.png";
 import phone02 from "../assets/imagesource/phone02.png";
@@ -63,29 +64,29 @@ const page = () => {
                         <p className='step_laber_box text-[#8F8F8F] text-base font-medium'>Step 1</p>
                     </li>
                     <li className='text-center relative z-20'>
-                        <div className='number_box active_step_two active_step inline-flex bg-[#EBEBEB] w-[40px] h-[40px] rounded-[50px] text-[#585858] text-[16px] leading-[40px] font-medium items-center justify-center mb-2'>2</div>
+                        <div className='number_box active_step_two inline-flex bg-[#EBEBEB] w-[40px] h-[40px] rounded-[50px] text-[#585858] text-[16px] leading-[40px] font-medium items-center justify-center mb-2'>2</div>
                         <p className='step_laber_box text-[#8F8F8F] text-base font-medium'>Step 2</p>
                     </li>
                     <li className='text-center relative z-20'>
-                        <div className='number_box active_step_three active_step inline-flex bg-[#EBEBEB] w-[40px] h-[40px] rounded-[50px] text-[#585858] text-[16px] leading-[40px] font-medium items-center justify-center mb-2'>3</div>
+                        <div className='number_box active_step_three inline-flex bg-[#EBEBEB] w-[40px] h-[40px] rounded-[50px] text-[#585858] text-[16px] leading-[40px] font-medium items-center justify-center mb-2'>3</div>
                         <p className='step_laber_box text-[#8F8F8F] text-base font-medium'>Step 3</p>
                     </li>
                     <li className='text-center relative z-20'>
-                        <div className='number_box active_step_four active_step inline-flex bg-[#EBEBEB] w-[40px] h-[40px] rounded-[50px] text-[#585858] text-[16px] leading-[40px] font-medium items-center justify-center mb-2'>4</div>
+                        <div className='number_box active_step_four inline-flex bg-[#EBEBEB] w-[40px] h-[40px] rounded-[50px] text-[#585858] text-[16px] leading-[40px] font-medium items-center justify-center mb-2'>4</div>
                         <p className='step_laber_box text-[#8F8F8F] text-base font-medium'>Step 4</p>
                     </li>
                     <li className='text-center relative z-20'>
-                        <div className='number_box active_step_five active_step inline-flex bg-[#EBEBEB] w-[40px] h-[40px] rounded-[50px] text-[#585858] text-[16px] leading-[40px] font-medium items-center justify-center mb-2'>5</div>
+                        <div className='number_box active_step_five inline-flex bg-[#EBEBEB] w-[40px] h-[40px] rounded-[50px] text-[#585858] text-[16px] leading-[40px] font-medium items-center justify-center mb-2'>5</div>
                         <p className='step_laber_box text-[#8F8F8F] text-base font-medium'>Step 5</p>
                     </li>
                     <li className='text-center relative z-20'>
-                        <div className='number_box active_step_six active_step inline-flex bg-[#EBEBEB] w-[40px] h-[40px] rounded-[50px] text-[#585858] text-[16px] leading-[40px] font-medium items-center justify-center mb-2'>6</div>
+                        <div className='number_box active_step_six inline-flex bg-[#EBEBEB] w-[40px] h-[40px] rounded-[50px] text-[#585858] text-[16px] leading-[40px] font-medium items-center justify-center mb-2'>6</div>
                         <p className='step_laber_box text-[#8F8F8F] text-base font-medium'>Step 6</p>
                     </li>
                 </ul>
             </div>
             {/* step one start here */}
-            <div className='step_box_one hidden'>
+            <div className='step_box_one'>
                 <div className='step_content_wraper'>
                     <div className='flex gap-4 mb-8'>
                         <div className="w-6/12">
@@ -110,50 +111,57 @@ const page = () => {
             {/* step one ends here */}
 
             {/* step two start here */}
-            <div className='step_box_two'>
+            <div className='step_box_two hidden'>
                 <div className='step_content_wraper'>
-                    <div className='flex gap-4 mb-8'>
-                        <div className="w-6/12 step_field">
-                            <div className="mb-1 block">
-                                <Label htmlFor="countries">Service Name *</Label>
-                            </div>
-                            <TextInput id="base" type="text" sizing="md" placeholder='Heart checkup' />
-                        </div>
-                        <div className="w-6/12">
-                            <div className="mb-1 block">
-                                <Label htmlFor="countries">Duration *</Label>
-                            </div>
-                            <div className='flex gap-1 step_field'>
-                                <div className='w-10/12'>
-                                    <TextInput id="base" type="text" sizing="md" placeholder='Time' />
+                    <div className='flex gap-4'>
+                        <div className='w-11/12'>
+                            <div className='flex gap-4 mb-8'>
+                                <div className="w-6/12 step_field">
+                                    <div className="mb-1 block">
+                                        <Label htmlFor="countries">Service Name *</Label>
+                                    </div>
+                                    <TextInput id="base" type="text" sizing="md" placeholder='Heart checkup' />
+                                    <div className='mt-4'>
+                                        <p className='text-[#7C7C7C] text-[13px] leading-[20px] font-medium pb-1'>Service Name Eg.</p>
+                                        <div>
+                                            <ul className='flex gap-2'>
+                                                <li className='text-[12px] leading-[24px] text-black border border-[#D8D8D8] rounded-[6px] py-1 px-3 shadow'>Haircut </li>
+                                                <li className='text-[12px] leading-[24px] text-black border border-[#D8D8D8] rounded-[6px] py-1 px-3 shadow'>Haircut </li>
+                                                <li className='text-[12px] leading-[24px] text-black border border-[#D8D8D8] rounded-[6px] py-1 px-3 shadow'>Haircut </li>
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div className='w-2/12'>
-                                    <Select id="countries" required>
-                                        <option>AM</option>
-                                        <option>PM</option>
-                                    </Select>
+                                <div className="w-6/12">
+                                    <div className="mb-1 block">
+                                        <Label htmlFor="countries">Duration *</Label>
+                                    </div>
+                                    <div className='flex gap-1 step_field'>
+                                        <div className='w-10/12'>
+                                            <TextInput id="base" type="text" sizing="md" placeholder='Time' />
+                                        </div>
+                                        <div className='w-2/12'>
+                                            <Select id="countries" required>
+                                                <option>AM</option>
+                                                <option>PM</option>
+                                            </Select>
+                                        </div>
+                                    </div>
+                                    <div className='mt-4'>
+                                        <p className='text-[#7C7C7C] text-[13px] leading-[20px] font-medium pb-1'>Duration Eg.</p>
+                                        <div>
+                                            <ul className='flex gap-2'>
+                                                <li className='text-[12px] leading-[24px] text-black border border-[#D8D8D8] rounded-[6px] py-1 px-3 shadow'>30mins </li>
+                                                <li className='text-[12px] leading-[24px] text-black border border-[#D8D8D8] rounded-[6px] py-1 px-3 shadow'>1hr </li>
+                                                <li className='text-[12px] leading-[24px] text-black border border-[#D8D8D8] rounded-[6px] py-1 px-3 shadow'>15mins </li>
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div className='flex justify-center items-center gap-4'>
-                        <div>
-                            <Image src={phone01} alt="phone01" className='mb-5' />
-                        </div>
-                        <div>
-                            <Image src={phone02} alt="phone02" className='mb-5' />
-                        </div>
-                        <div>
-                            <Image src={phone03} alt="phone03" className='mb-5' />
-                        </div>
-                        <div>
-                            <Image src={phone04} alt="phone04" className='mb-5' />
-                        </div>
-                        <div>
-                            <Image src={phone05} alt="phone05" className='mb-5' />
-                        </div>
-                        <div>
-                            <Image src={phone06} alt="phone06" className='mb-5' />
+                        <div className='w-1/12'>
+                          <button className='text-[#00806A] text-3xl cursor-pointer hover:text-black mt-8'><AiFillPlusCircle /></button>
                         </div>
                     </div>
                 </div>
@@ -877,6 +885,12 @@ const page = () => {
                                 <Label htmlFor="countries">Enter Bot Name</Label>
                             </div>
                             <TextInput id="base" type="text" sizing="md" placeholder='Enter Bot Name' />
+                        </div>
+                        <div className="w-6/12 step_field">
+                            <div className="mb-1 block">
+                                <Label htmlFor="countries">Bot Welcome Message</Label>
+                            </div>
+                            <TextInput id="base" type="text" sizing="md" placeholder='"Hi [Name], thanks for contacting [BusinessName]."' />
                         </div>
                     </div>
                     <div className="mb-2 block">
