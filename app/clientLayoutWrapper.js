@@ -20,7 +20,7 @@ export default function ClientLayoutWrapper({ children }) {
     // Function to check token validity
     const checkTokenValidity = () => {
         try {
-            const storedToken = sessionStorage.getItem("cryptoToken");
+            const storedToken = sessionStorage.getItem("goBookToken");
             if (!storedToken) return false;
 
             const parsedToken = JSON.parse(storedToken);
@@ -32,7 +32,7 @@ export default function ClientLayoutWrapper({ children }) {
         } catch (error) {
             console.error("Error parsing token:", error);
             // Clear invalid token
-            sessionStorage.removeItem("cryptoToken");
+            sessionStorage.removeItem("goBookToken");
             return false;
         }
     };
@@ -53,7 +53,7 @@ export default function ClientLayoutWrapper({ children }) {
 
         // Listen for storage changes (for logout in other tabs)
         const handleStorageChange = (e) => {
-            if (e.key === "cryptoToken") {
+            if (e.key === "goBookToken") {
                 validateToken();
             }
         };

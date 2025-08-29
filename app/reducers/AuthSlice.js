@@ -63,7 +63,7 @@ export const loginCustomer = createAsyncThunk(
     'loginCustomer',
     async (userInput, { rejectWithValue }) => {
         try {
-            const response = await api.post('/user/user-auth/sign-in', userInput);
+            const response = await api.post('/api/auth/login', userInput);
             if (response?.data?.status_code === 200) {
                 return response.data;
             } else {
@@ -114,7 +114,7 @@ const authSlice = createSlice({
         },
         logout: (state) => {
             state.isLoggedIn = false;
-            sessionStorage.removeItem('cryptoToken');
+            sessionStorage.removeItem('goBookToken');
             sessionStorage.removeItem('user_id');
         },
     },
@@ -188,7 +188,7 @@ const authSlice = createSlice({
                     JSON.stringify({ user_id: data?.id })
                 );
                 sessionStorage.setItem(
-                    'cryptoToken',
+                    'goBookToken',
                     JSON.stringify({ token: access_token })
                 );
             })
