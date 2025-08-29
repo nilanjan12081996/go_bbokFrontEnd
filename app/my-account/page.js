@@ -84,15 +84,17 @@ const page = () => {
       <div>
         <div>
           <ToastContainer />
-          <div className="bg-[#222222] rounded-2xl">
-            <div className="prifile_bg">&nbsp;</div>
+          <div className='mb-8'>
+              <h3 className='text-[22px] leading-[22px] text-black font-medium pb-4'>My Account</h3>
+              <p className='text-[13px] leading-[2px] text-[#747577] font-normal pb-0'>Manage and update your account details in one place.</p>
+          </div>
+          <div className="bg-white rounded-2xl">
             <div className="w-full lg:w-full p-5 lg:p-10 mb-4">
               <div className="account_setting_section">
                 <div className="lg:flex justify-between items-center">
                   <div>
                     <div className="flex items-center gap-4 mb-3">
                       <div className="relative">
-                        {/* <Image src={profileUser} alt='profileUser' className='w-[120px] h-[120px] rounded-[50px] overflow-hidden' /> */}
                         {
                           profileData?.data?.avatar ? (
                             <Image src={profileData?.data?.avatar} width={120}

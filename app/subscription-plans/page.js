@@ -64,8 +64,7 @@ const page = () => {
                 </div>
                 <h3 className="text-[#191d23] text-[22px] leading-[22px] font-bold pb-4">Free</h3>
                 <p className="text-[16px] leading-[22px] text-[#95a0af] pb-3 font-normal">Perfect for individuals and small businesses to start using a WhatsApp chatbot at no cost.</p>
-                <h4 className="text-[56px] text-[#191d23] pb-3 font-medium">$0<span className="text-[#4b5768] text-base font-light">/ Month</span></h4>
-                <button className="bg-white hover:bg-[#024E41] text-[#024E41] hover:text-white text-base leading-[44px] font-semibold border-2 w-full cursor-pointer border-[#024E41] rounded-[4px]">Get Started Now</button>
+                <h4 className="text-[56px] text-[#191d23] pb-3 font-medium">€0<span className="text-[#4b5768] text-base font-light">/ Month</span></h4>
                 <div className="mt-8">
                 <ul>
                     <li className="flex items-center gap-3 mb-3">
@@ -82,7 +81,7 @@ const page = () => {
                 <h3 className="text-[#ffffff] text-[22px] leading-[22px] font-bold pb-4">Pro</h3>
                 <p className="text-[16px] leading-[22px] text-[#ffffff] pb-3 font-normal">Ideal for growing businesses that need advanced WhatsApp chatbot features to scale and engage more customers.</p>
                 <h4 className="text-[56px] text-[#ffffff] pb-3 font-medium">€20.99<span className="text-[#ffffff] text-base font-light">/ Month</span></h4>
-                <button className="bg-white hover:bg-[#000000] text-[#024E41] hover:text-white text-base leading-[44px] font-semibold border-2 w-full cursor-pointer border-[#024E41] rounded-[4px]">Get Started Now</button>
+                <button className="bg-white hover:bg-[#000000] text-[#024E41] hover:text-white text-base leading-[44px] font-semibold border-2 w-full cursor-pointer border-[#024E41] rounded-[4px]">Upgrade</button>
                 <div className="mt-8">
                 <ul>
                     <li className="flex items-center gap-3 mb-3">

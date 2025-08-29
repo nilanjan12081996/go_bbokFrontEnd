@@ -27,6 +27,12 @@ import { HiDocumentText } from "react-icons/hi2";
 import { HiHome } from "react-icons/hi";
 import { CiClock1 } from "react-icons/ci";
 
+import { LuBot } from "react-icons/lu";
+import { FaRegCircleUser } from "react-icons/fa6";
+import { LuLayoutDashboard } from "react-icons/lu";
+import { LuCalendar } from "react-icons/lu";
+import { MdOutlineSubscriptions } from "react-icons/md";
+
 const poppins = Poppins({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'], // specify desired weights
@@ -163,7 +169,7 @@ const Sidebar = () => {
                     'bg-[#00806a] text-white dark:bg-meta-4'
                     }`}
                   passHref>
-                  <HiHome className='text-2xl' />
+                  <LuLayoutDashboard className='text-2xl' />
                   Dashboard
                 </Link>
               </li>
@@ -174,7 +180,7 @@ const Sidebar = () => {
                     'bg-[#00806a] text-white dark:bg-meta-4'
                     }`}
                   passHref>
-                  <CiClock1 className='text-2xl' />
+                  <LuBot className='text-2xl' />
                   Create Bot
                 </Link>
               </li>
@@ -185,8 +191,30 @@ const Sidebar = () => {
                     'bg-[#00806a] text-white dark:bg-meta-4'
                     }`}
                   passHref>
-                  <CiClock1 className='text-2xl' />
+                  <MdOutlineSubscriptions className='text-2xl' />
                   Subscription plans
+                </Link>
+              </li>
+
+              <li onClick={closeNavbar}>
+                <Link href="/my-account"
+                  className={`group relative flex items-center gap-2 rounded-sm py-3 px-4 font-normal text-base text-[#606060] duration-300 ease-in-out hover:bg-graydark ${pathname.includes('my-account') &&
+                    'bg-[#00806a] text-white dark:bg-meta-4'
+                    }`}
+                  passHref>
+                  <FaRegCircleUser className='text-2xl' />
+                  My Account
+                </Link>
+              </li>
+
+              <li onClick={closeNavbar}>
+                <Link href="/manage-appointment"
+                  className={`group relative flex items-center gap-2 rounded-sm py-3 px-4 font-normal text-base text-[#606060] duration-300 ease-in-out hover:bg-graydark ${pathname.includes('manage-appointment') &&
+                    'bg-[#00806a] text-white dark:bg-meta-4'
+                    }`}
+                  passHref>
+                  <LuCalendar className='text-2xl' />
+                  Manage Appointment
                 </Link>
               </li>
 
