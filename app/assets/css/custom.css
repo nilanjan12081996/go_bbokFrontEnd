@@ -391,8 +391,8 @@ body {
   margin-bottom: 10px;
 }
 .sidebar_menu nav ul li a:hover {
-  color: #ffffff;
-  background: #00806a;
+  color: #333333;
+  background: #f6f6f6;
 }
 
 /* .checkmate_section {
