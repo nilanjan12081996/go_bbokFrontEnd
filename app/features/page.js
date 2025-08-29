@@ -1,13 +1,7 @@
-import Link from 'next/link'
-import React from 'react'
 
+import React from 'react'
 import aboutBanner from "../assets/imagesource/about_banner.png";
 import bannerImg from "../assets/imagesource/banner_img.png";
-
-import howItWorksImg from "../assets/imagesource/how_it_works_img.png";
-import hw01 from "../assets/imagesource/hw01.png";
-import hw02 from "../assets/imagesource/hw02.png";
-import hw03 from "../assets/imagesource/hw03.png";
 import Image from 'next/image';
 import { IoSearchOutline } from 'react-icons/io5';
 import { MdTipsAndUpdates } from 'react-icons/md';
