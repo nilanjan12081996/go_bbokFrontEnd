@@ -57,10 +57,7 @@ const Insideheader = () => {
     }
 
   };
-  useEffect(() => {
-    dispatch(getProfile())
-  }, [])
-  console.log("headrr", profileData);
+
 
 
   return (
@@ -88,13 +85,10 @@ const Insideheader = () => {
             {/* <button onClick={handleLogout} className='mr-4 text-black cursor-pointer'>Logout</button> */}
             {/* <p className='text-base text-[#CDCDCD] ${leagueSpartan.className}'>{profileData?.data?.fullname}</p> */}
             <div className='user_face'>
-              {profileData?.data?.avatar ? (
-                <Image src={profileData?.data?.avatar} alt="userFace" width={45} height={45} className='rounded-full w-[45px] h-[45px]' />
-
-              ) : (
+       
                 <Image src={userFace} alt="userFace" width={45}
                   height={50} className='rounded-full w-[45px] h-[45px]' />
-              )}
+             
             </div>
              <div>
                  <p className='text-[#404040] text-[14px] font-bold'>Moni Roy</p>
