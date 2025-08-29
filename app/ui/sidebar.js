@@ -186,6 +186,17 @@ const Sidebar = () => {
               </li>
 
               <li onClick={closeNavbar}>
+                <Link href="/manage-appointments"
+                  className={`group relative flex items-center gap-2 rounded-sm py-3 px-4 font-normal text-base text-[#606060] duration-300 ease-in-out hover:bg-graydark ${pathname.includes('manage-appointments') &&
+                    'bg-[#00806a] text-white dark:bg-meta-4'
+                    }`}
+                  passHref>
+                  <LuCalendar className='text-2xl' />
+                  Manage Appointment
+                </Link>
+              </li>
+
+              <li onClick={closeNavbar}>
                 <Link href="/subscription-plans"
                   className={`group relative flex items-center gap-2 rounded-sm py-3 px-4 font-normal text-base text-[#606060] duration-300 ease-in-out hover:bg-graydark ${pathname.includes('subscription-plans') &&
                     'bg-[#00806a] text-white dark:bg-meta-4'
@@ -207,16 +218,6 @@ const Sidebar = () => {
                 </Link>
               </li>
 
-              <li onClick={closeNavbar}>
-                <Link href="/manage-appointment"
-                  className={`group relative flex items-center gap-2 rounded-sm py-3 px-4 font-normal text-base text-[#606060] duration-300 ease-in-out hover:bg-graydark ${pathname.includes('manage-appointment') &&
-                    'bg-[#00806a] text-white dark:bg-meta-4'
-                    }`}
-                  passHref>
-                  <LuCalendar className='text-2xl' />
-                  Manage Appointment
-                </Link>
-              </li>
 
             </ul>
 

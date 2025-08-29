@@ -1144,6 +1144,24 @@ body {
   background: #e6f3f1;
 }
 
+/* Increase pagination panel height */
+.ag-theme-alpine .ag-paging-panel {
+  height: 60px; /* default is ~35px */
+  padding: 10px; /* optional, add spacing inside */
+  align-items: center; /* vertically center items */
+}
+
+/* Optional: Make pagination buttons/text larger */
+.ag-theme-alpine .ag-paging-button,
+.ag-theme-alpine .ag-paging-page-summary-panel {
+  font-size: 14px; /* default ~12px */
+  padding: 6px 12px;
+}
+
+.ag-cell {
+  line-height: 55px !important;
+}
+
 @media only screen and (max-width: 767px) {
   .menu_btn {
     display: inline-flex;
