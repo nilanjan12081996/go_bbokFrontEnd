@@ -43,23 +43,10 @@ const RegistrationModal = ({ openRegisterModal, setOpenRegisterModal, setOpenVer
                     progress: undefined,
                     theme: "light",
                 });
-                //setOpenRegisterModal(false);
-                //setOpenLoginModal(true);
-                // setOpenPriceModal(true)
-                dispatch(checkSubscription()).then((res) => {
-                    console.log("res", res);
-                    if (res?.payload?.data) {
-
                         setOpenRegisterModal(false);
                         router.push('/dashboard');
-                        dispatch(getSearchHistory({ week: 0 }));
-                    } else {
-
-                        setOpenRegisterModal(false);
-                        router.push('/plans');
-                        dispatch(getSearchHistory({ week: 0 }));
-                    }
-                })
+             
+                
             } else if (res?.payload?.response?.data?.status_code === 422) {
                 const validationErrors = res?.payload?.response?.data?.data || []
                 console.log("validationErrors", validationErrors);
@@ -106,7 +93,7 @@ const RegistrationModal = ({ openRegisterModal, setOpenRegisterModal, setOpenVer
                                                     <Label>First Name</Label>
                                                 </div>
                                                 <TextInput type="text" placeholder="Enter First Name"
-                                                    {...register("first_name", {
+                                                    {...register("f_name", {
                                                         required: "First name is required",
                                                     })}
                                                 />
@@ -121,7 +108,7 @@ const RegistrationModal = ({ openRegisterModal, setOpenRegisterModal, setOpenVer
                                                     <Label>Last Name</Label>
                                                 </div>
                                                 <TextInput type="text" placeholder="Enter Last Name"
-                                                    {...register("last_name", {
+                                                    {...register("l_name", {
                                                         required: "Last name is required",
                                                     })}
                                                 />
@@ -147,7 +134,7 @@ const RegistrationModal = ({ openRegisterModal, setOpenRegisterModal, setOpenVer
                                                 </span>
                                             )}
                                         </div>
-                                        <div className='mb-2'>
+                                        {/* <div className='mb-2'>
                                             <div className="mb-0 block">
                                                 <Label>Username</Label>
                                             </div>
@@ -161,7 +148,7 @@ const RegistrationModal = ({ openRegisterModal, setOpenRegisterModal, setOpenVer
                                                     {errors?.username?.message}
                                                 </span>
                                             )}
-                                        </div>
+                                        </div> */}
                                         <div className='mb-2'>
                                             <div className="mb-0 block">
                                                 <Label>Enter your Password</Label>
@@ -206,7 +193,7 @@ const RegistrationModal = ({ openRegisterModal, setOpenRegisterModal, setOpenVer
                                                 </span>
                                             )}
                                         </div>
-                                        <Button  type="button" onClick={handlePriceModal} className='mt-2'>{loading ? "Wait..." : "Sign Up"}</Button>
+                                        <Button  type="submit"  className='mt-2'>{loading ? "Wait..." : "Sign Up"}</Button>
                                         {
                                             error && (
                                                 <div className="text-center text-sm text-red-600 mt-3">{error}</div>

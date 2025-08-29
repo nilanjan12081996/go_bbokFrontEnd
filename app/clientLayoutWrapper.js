@@ -93,7 +93,7 @@ export default function ClientLayoutWrapper({ children }) {
     if (hasToken) {
         return (
             <main>
-                <div className="dashboard_wrapper lg:flex bg-[#f3f4f6] p-0">
+                <div className="dashboard_wrapper lg:flex bg-[#f0fdf3] p-0">
                     <div className="sidebar_area w-[300px] lg:w-[20%]">
                         <Sidebar />
                     </div>
