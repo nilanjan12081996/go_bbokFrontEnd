@@ -52,7 +52,6 @@ const page = () => {
     StepFour: false,
     StepFive: false,
     StepSix: false,
-   
   });
   const[industryId,setIndustryId]=useState()
   const[businessId,setBusinessId]=useState()
