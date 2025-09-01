@@ -1,14 +1,14 @@
-'use client';
+"use client";
 import { Label, Select, TextInput } from "flowbite-react";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { AiFillMinusCircle, AiFillPlusCircle } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { createServiceSteptwo, getExample } from "../reducers/CreateBotSlice";
-const StepTwo=({setShow,industryId, businessId})=>{
-    const{examples}=useSelector((state)=>state?.bot)
-    const dispatch=useDispatch()
-      const HandleNextPage = () => {
+const StepTwo = ({ setShow, industryId, businessId }) => {
+  const { examples } = useSelector((state) => state?.bot);
+  const dispatch = useDispatch();
+  const HandleNextPage = () => {
     setShow({
       StepOne: false, // AddProduct is the first step
       StepTwo: false,
@@ -19,7 +19,7 @@ const StepTwo=({setShow,industryId, businessId})=>{
       StepSeven: false,
     });
   };
-   const handleBack = () => {
+  const handleBack = () => {
     setShow({
       StepOne: true, // AddProduct is the first step
       StepTwo: false,
@@ -32,16 +32,14 @@ const StepTwo=({setShow,industryId, businessId})=>{
   };
 
   const {
-        register,
-        handleSubmit,
-        setValue,
-        watch,
-        formState: { errors },
-      } = useForm();
+    register,
+    handleSubmit,
+    setValue,
+    watch,
+    formState: { errors },
+  } = useForm();
 
-      
-
-        const [rows, setRows] = useState([
+  const [rows, setRows] = useState([
     { serviceName: "", duration: "", timeType: "mins" },
   ]);
 
@@ -50,12 +48,12 @@ const StepTwo=({setShow,industryId, businessId})=>{
     setRows([...rows, { serviceName: "", duration: "", timeType: "mins" }]);
   };
 
-    const handleRemoveRow = (index) => {
+  const handleRemoveRow = (index) => {
     const newRows = rows.filter((_, i) => i !== index);
     setRows(newRows);
   };
 
-    const handleChange = (index, field, value) => {
+  const handleChange = (index, field, value) => {
     const updatedRows = [...rows];
     updatedRows[index][field] = value;
     setRows(updatedRows);
@@ -90,6 +88,8 @@ useEffect(()=>{
 dispatch(getExample({id:industryId}))
 },[])
 console.log("examples",examples);
+
+
     return(
         <>
           <div className='step_box_two'>

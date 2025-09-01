@@ -92,37 +92,37 @@ const page = () => {
   return (
     <div className={`${poppins.className} antialiased`}>
         <ToastContainer/>
-        <div className='mb-8'>
+        <div className='pt-6 lg:pt-0 mb-6'>
          
             <h3 className='text-[22px] leading-[22px] text-black font-medium pb-4'>Create bot</h3>
-            <p className='text-[13px] leading-[2px] text-[#747577] font-normal pb-0'>Easily organize, update, and control all your services in one place.</p>
+            <p className='text-[13px] leading-[22px] text-[#747577] font-normal pb-0'>Easily organize, update, and control all your services in one place.</p>
         </div>
-        <div className='bg-white rounded-[10px] p-10'>
-            <div className='step_wraper w-10/12 mx-auto pb-16'>
+        <div className='bg-white rounded-[10px] p-4 lg:p-10'>
+            <div className='step_wraper lg:w-10/12 mx-auto pb-8 lg:pb-16'>
                 <ul className='flex items-center justify-between'>
                     <li className='text-center relative z-20'>
                         <div className='number_box active_step inline-flex bg-[#EBEBEB] w-[40px] h-[40px] rounded-[50px] text-[#585858] text-[16px] leading-[40px] font-medium items-center justify-center mb-2'>1</div>
-                        <p className='step_laber_box text-[#8F8F8F] text-base font-medium'>Step 1</p>
+                        <p className='step_laber_box text-[#8F8F8F] text-xs lg:text-base font-medium'>Step 1</p>
                     </li>
                     <li className='text-center relative z-20'>
                         <div className={`number_box active_step_two ${isStepActive(2)?"active_step":""} inline-flex bg-[#EBEBEB] w-[40px] h-[40px] rounded-[50px] text-[#585858] text-[16px] leading-[40px] font-medium items-center justify-center mb-2`}>2</div>
-                        <p className='step_laber_box text-[#8F8F8F] text-base font-medium'>Step 2</p>
+                        <p className='step_laber_box text-[#8F8F8F] text-xs lg:text-base font-medium'>Step 2</p>
                     </li>
                     <li className='text-center relative z-20'>
                         <div className={`number_box active_step_three ${isStepActive(3)?"active_step":""} inline-flex bg-[#EBEBEB] w-[40px] h-[40px] rounded-[50px] text-[#585858] text-[16px] leading-[40px] font-medium items-center justify-center mb-2`}>3</div>
-                        <p className='step_laber_box text-[#8F8F8F] text-base font-medium'>Step 3</p>
+                        <p className='step_laber_box text-[#8F8F8F] text-xs lg:text-base font-medium'>Step 3</p>
                     </li>
                     <li className='text-center relative z-20'>
                         <div className={`number_box active_step_four ${isStepActive(4)?"active_step":""} inline-flex bg-[#EBEBEB] w-[40px] h-[40px] rounded-[50px] text-[#585858] text-[16px] leading-[40px] font-medium items-center justify-center mb-2`}>4</div>
-                        <p className='step_laber_box text-[#8F8F8F] text-base font-medium'>Step 4</p>
+                        <p className='step_laber_box text-[#8F8F8F] text-xs lg:text-base font-medium'>Step 4</p>
                     </li>
                     <li className='text-center relative z-20'>
                         <div className={`number_box active_step_five ${isStepActive(5)?"active_step":""} inline-flex bg-[#EBEBEB] w-[40px] h-[40px] rounded-[50px] text-[#585858] text-[16px] leading-[40px] font-medium items-center justify-center mb-2`}>5</div>
-                        <p className='step_laber_box text-[#8F8F8F] text-base font-medium'>Step 5</p>
+                        <p className='step_laber_box text-[#8F8F8F] text-xs lg:text-base font-medium'>Step 5</p>
                     </li>
                     <li className='text-center relative z-20'>
                         <div className={`number_box active_step_six ${isStepActive(6)?"active_step":""} inline-flex bg-[#EBEBEB] w-[40px] h-[40px] rounded-[50px] text-[#585858] text-[16px] leading-[40px] font-medium items-center justify-center mb-2`}>6</div>
-                        <p className='step_laber_box text-[#8F8F8F] text-base font-medium'>Step 6</p>
+                        <p className='step_laber_box text-[#8F8F8F] text-xs lg:text-base font-medium'>Step 6</p>
                     </li>
                 </ul>
             </div>
