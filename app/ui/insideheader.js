@@ -73,12 +73,12 @@ dispatch(getLanguage())
           <Image src={logoAdmin} alt="logoAdmin" className='w-[50px]' />
         </div>
         <div className='flex justify-end items-center gap-3'>
-          <div className='relative mr-5 mt-1'>
+          {/* <div className='relative mr-5 mt-1'>
             <Image src={bell_icon} alt="bell_icon" className='w-[20px] h-[22px]' />
             <div className='bg-[#f93c65] hover:bg-black absolute top-[-9px] right-[-7px] w-[18px] h-[18px] rounded-[50px] flex items-center justify-center'>
               <Link className='text-xs text-white font-medium' href="/" passHref>6</Link>
             </div>
-          </div>
+          </div> */}
           <div className='flex items-center gap-0 lang_box'>
             <Image src={Flag} alt="Flag" className='w-[40px] h-[30px]' />
             <Select id="countries" required>
