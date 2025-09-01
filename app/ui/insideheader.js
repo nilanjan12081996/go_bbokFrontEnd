@@ -24,6 +24,7 @@ import { BiSolidDashboard } from 'react-icons/bi';
 import { Select } from 'flowbite-react';
 
 import { IoIosArrowDown } from "react-icons/io";
+import { getLanguage } from '../reducers/CreateBotSlice';
 
 
 const poppins = Poppins({
@@ -35,6 +36,7 @@ const poppins = Poppins({
 const Insideheader = () => {
   const pathname = usePathname();
   const dispatch = useDispatch();
+  const{language}=useSelector((state)=>state?.bot)
   const router = useRouter();
   const { profileData } = useSelector((state) => state?.profile)
   const handleLogout = () => {
@@ -59,7 +61,9 @@ const Insideheader = () => {
     }
 
   };
-
+useEffect(()=>{
+dispatch(getLanguage())
+},[])
 
 
   return (
@@ -78,9 +82,13 @@ const Insideheader = () => {
           <div className='flex items-center gap-0 lang_box'>
             <Image src={Flag} alt="Flag" className='w-[40px] h-[30px]' />
             <Select id="countries" required>
-              <option>English</option>
-              <option>French</option>
-              <option>Spanish</option>
+             {
+               language?.data?.map((lan)=>(
+                <option>
+                  {lan?.language}
+                </option>
+               ))
+             }
             </Select>
           </div>
           <div className='flex justify-end items-center gap-3'>

@@ -9,6 +9,7 @@ import CoinSlice from '../reducers/CoinSlice'
 import ProfileSlice from '../reducers/ProfileSlice'
 import SearchHistroySlice from '../reducers/SearchHistroySlice'
 import CreateBotSlice from '../reducers/CreateBotSlice'
+import DashBoardSlice from '../reducers/DashBoardSlice'
 
 const store = configureStore({
     reducer: {
@@ -19,7 +20,8 @@ const store = configureStore({
         coinData: CoinSlice,
         profile: ProfileSlice,
         his: SearchHistroySlice,
-        bot:CreateBotSlice
+        bot:CreateBotSlice,
+        dash:DashBoardSlice
     },
     devTools: process.env.NODE_ENV,
 });

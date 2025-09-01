@@ -28,6 +28,7 @@ import { CgFileDocument } from "react-icons/cg";
 import { MdMiscellaneousServices } from "react-icons/md";
 import { BiSolidCalendar } from "react-icons/bi";
 import { FaUsers } from "react-icons/fa";
+import { dashBoardData } from '../reducers/DashBoardSlice';
 
 
 
@@ -56,6 +57,13 @@ const nunitoSans = Nunito_Sans({
 });
 
 const Page = () => {
+  const {dashBoards}=useSelector((state)=>state?.dash)
+  const dispatch=useDispatch()
+  useEffect(()=>{
+dispatch(dashBoardData())
+console.log("dashBoards",dashBoards);
+
+  },[])
   return (
     <div className={`${poppins.className} antialiased`}>
       <ToastContainer />
@@ -70,7 +78,7 @@ const Page = () => {
                     <MdMiscellaneousServices className='text-[#6260FF] text-3xl lg:text-5xl' />
                   </div>
                 </div>
-                <h3 className='text-[32px] leading-[40px] lg:text-[48px] lg:leading-[48px] text-[#202224] font-bold'>7</h3>
+                <h3 className='text-[32px] leading-[40px] lg:text-[48px] lg:leading-[48px] text-[#202224] font-bold'>{dashBoards?.service_count}</h3>
               </div>
               <div className='bg-white rounded-[10px] px-5 py-5 lg:py-7'>
                 <div className='flex justify-between items-center mb-4'>
@@ -79,7 +87,7 @@ const Page = () => {
                     <BiSolidCalendar className='text-[#DAA644] text-3xl lg:text-5xl' />
                   </div>
                 </div>
-                <h3 className='text-[32px] leading-[40px] lg:text-[48px] lg:leading-[48px] text-[#202224] font-bold'>206</h3>
+                <h3 className='text-[32px] leading-[40px] lg:text-[48px] lg:leading-[48px] text-[#202224] font-bold'>0</h3>
               </div>
               <div className='bg-white rounded-[10px] px-5 py-5 lg:py-7'>
                 <div className='flex justify-between items-center mb-4'>
@@ -88,7 +96,7 @@ const Page = () => {
                     <FaUsers className='text-[#108F98] text-3xl lg:text-5xl' />
                   </div>
                 </div>
-                <h3 className='text-[32px] leading-[40px] lg:text-[48px] lg:leading-[48px] text-[#202224] font-bold'>500</h3>
+                <h3 className='text-[32px] leading-[40px] lg:text-[48px] lg:leading-[48px] text-[#202224] font-bold'>0</h3>
               </div>
             </div>
           </div>

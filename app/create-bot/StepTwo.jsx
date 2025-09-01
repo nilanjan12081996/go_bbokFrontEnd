@@ -90,8 +90,6 @@ useEffect(()=>{
 dispatch(getExample({id:industryId}))
 },[])
 console.log("examples",examples);
-
-
     return(
         <>
           <div className='step_box_two'>
