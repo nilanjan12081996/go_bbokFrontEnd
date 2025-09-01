@@ -1027,7 +1027,8 @@ body {
   top: 18px;
   content: "";
   background: #00806a;
-  width: 162px;
+  /* width: 162px; */
+  width: 270%;
   height: 6px;
   display: block;
 }
@@ -1041,7 +1042,8 @@ body {
   top: 18px;
   content: "";
   background: #00806a;
-  width: 148px;
+  /* width: 148px; */
+  width: 270%;
   height: 6px;
   display: block;
 }
@@ -1055,12 +1057,13 @@ body {
   top: 18px;
   content: "";
   background: #00806a;
-  width: 140px;
+  /* width: 140px; */
+  width: 270%;
   height: 6px;
   display: block;
 }
 
-.step_wraper ul li .number_box.active_step_four.active_step {
+/* .step_wraper ul li .number_box.active_step_four.active_step {
   position: relative;
 }
 .step_wraper ul li .number_box.active_step_four.active_step:before {
@@ -1072,18 +1075,19 @@ body {
   width: 150px;
   height: 6px;
   display: block;
-}
+} */
 
 .step_wraper ul li .number_box.active_step_five.active_step {
   position: relative;
 }
 .step_wraper ul li .number_box.active_step_five.active_step:before {
   position: absolute;
-  right: 38px;
+  right: 39px;
   top: 18px;
   content: "";
   background: #00806a;
-  width: 150px;
+  /* width: 150px; */
+  width: 270%;
   height: 6px;
   display: block;
 }
@@ -1093,11 +1097,12 @@ body {
 }
 .step_wraper ul li .number_box.active_step_six.active_step:before {
   position: absolute;
-  right: 38px;
+  right: 39px;
   top: 18px;
   content: "";
   background: #00806a;
-  width: 150px;
+  /* width: 150px; */
+  width: 270%;
   height: 6px;
   display: block;
 }
@@ -1184,6 +1189,25 @@ body {
 }
 
 @media only screen and (max-width: 767px) {
+  .step_wraper ul li .number_box.active_step_two.active_step:before {
+    display: none;
+  }
+  .step_wraper ul li .number_box.active_step_three.active_step:before {
+    display: none;
+  }
+  .step_wraper ul li .number_box.active_step_four.active_step:before {
+    display: none;
+  }
+  .step_wraper ul li .number_box.active_step_five.active_step:before {
+    display: none;
+  }
+  .step_wraper ul li .number_box.active_step_six.active_step:before {
+    display: none;
+  }
+  .step_wraper ul:before {
+    width: 94%;
+  }
+
   .menu_btn {
     display: inline-flex;
   }
@@ -1394,6 +1418,24 @@ body {
 @media screen and (min-width: 768px) and (max-width: 1024px) {
 }
 
+@media screen and (min-width: 1400px) and (max-width: 1599px) {
+  .step_wraper ul li .number_box.active_step_two.active_step:before {
+    width: 295%;
+  }
+  .step_wraper ul li .number_box.active_step_three.active_step:before {
+    width: 295%;
+  }
+  .step_wraper ul li .number_box.active_step_four.active_step:before {
+    width: 300%;
+  }
+  .step_wraper ul li .number_box.active_step_five.active_step:before {
+    width: 305%;
+  }
+  .step_wraper ul li .number_box.active_step_six.active_step:before {
+    width: 305%;
+  }
+}
+
 @media screen and (min-width: 1600px) and (max-width: 1999px) {
   .dashboard_wrapper {
     gap: 0;
@@ -1407,5 +1449,20 @@ body {
     width: 99%;
     height: 6px;
     z-index: 1;
+  }
+  .step_wraper ul li .number_box.active_step_two.active_step:before {
+    width: 375%;
+  }
+  .step_wraper ul li .number_box.active_step_three.active_step:before {
+    width: 375%;
+  }
+  .step_wraper ul li .number_box.active_step_four.active_step:before {
+    width: 375%;
+  }
+  .step_wraper ul li .number_box.active_step_five.active_step:before {
+    width: 375%;
+  }
+  .step_wraper ul li .number_box.active_step_six.active_step:before {
+    width: 375%;
   }
 }

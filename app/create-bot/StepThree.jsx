@@ -102,7 +102,7 @@
 //                             <h3 className='text-[#435971] text-[20px] leading-[30px] mb-3 font-medium'>Break time</h3>
 //                             <div className='flex gap-4'>
 //                                 <div className='w-10/12 '>
-                                    
+
 //                                              <div className='flex gap-4 mb-4'>
 //                                         <div className="w-4/12 step_field">
 //                                             <div className="mb-1 block">
@@ -128,9 +128,9 @@
 //                                             </div>
 //                                             <div className='flex gap-1'>
 //                                                 <div className='w-10/12'>
-//                                                     <TextInput  type="text" sizing="md" placeholder='Enter Start Time' 
+//                                                     <TextInput  type="text" sizing="md" placeholder='Enter Start Time'
 //                                                      id="base"
-                                                   
+
 //                                                     />
 //                                                 </div>
 //                                                 <div className='w-2/12'>
@@ -158,14 +158,12 @@
 //                                             </div>
 //                                         </div>
 //                                     </div>
-                                  
-                                  
-                             
+
 //                                 </div>
 //                                 <div className='w-2/12 mt-7'>
 //                                     <button
 //                                     type="button"
-                                 
+
 //                                     className='bg-[#00806A] rounded-[6px] text-white hover:text-[#464f60] text-[14px] leading-[40px] font-medium px-5 cursor-pointer hover:bg-white border border-[#00806A] hover:border-[#dddfe2] flex items-center'><BiCopy className='text-base mr-1' /> copy to all week</button>
 //                                 </div>
 //                             </div>
@@ -182,8 +180,6 @@
 // }
 // export default StepThree
 
-
-
 // 'use client';
 // import { Label, Select, TextInput } from "flowbite-react"
 // import { useEffect, useState } from "react";
@@ -194,12 +190,12 @@
 // const StepThree = ({ setShow ,industryId}) => {
 //     const { days } = useSelector((state) => state?.bot)
 //     const dispatch = useDispatch()
-    
+
 //     // State for availability schedules
 //     const [availabilitySchedules, setAvailabilitySchedules] = useState([
 //         { day: '', startTime: '', startPeriod: 'AM', endTime: '', endPeriod: 'AM' }
 //     ]);
-    
+
 //     // State for break schedules
 //     const [breakSchedules, setBreakSchedules] = useState([
 //         { day: '', startTime: '', startPeriod: 'AM', endTime: '', endPeriod: 'AM' }
@@ -236,7 +232,7 @@
 //     // Copy availability to all days of the week
 //     const copyAvailabilityToAllWeek = () => {
 //         const currentSchedule = availabilitySchedules[0];
-        
+
 //         if (!currentSchedule.startTime || !currentSchedule.endTime) {
 //             alert('Please fill in start and end times before copying to all week');
 //             return;
@@ -256,7 +252,7 @@
 //     // Copy break time to all days of the week
 //     const copyBreakToAllWeek = () => {
 //         const currentSchedule = breakSchedules[0];
-        
+
 //         if (!currentSchedule.startTime || !currentSchedule.endTime) {
 //             alert('Please fill in start and end times before copying to all week');
 //             return;
@@ -293,7 +289,7 @@
 //                 {/* Availability Section */}
 //                 <div className='step_content_wraper mb-6'>
 //                     <h3 className='text-[#435971] text-[20px] leading-[30px] mb-3 font-medium'>Availability</h3>
-                    
+
 //                     {availabilitySchedules.map((schedule, index) => (
 //                         <div key={index} className='flex gap-4 mb-4'>
 //                             <div className='w-10/12'>
@@ -302,7 +298,7 @@
 //                                         <div className="mb-1 block">
 //                                             <Label htmlFor={`availability-day-${index}`}>Choose Day*</Label>
 //                                         </div>
-//                                         <Select 
+//                                         <Select
 //                                             id={`availability-day-${index}`}
 //                                             value={schedule.day}
 //                                             onChange={(e) => updateAvailabilitySchedule(index, 'day', e.target.value)}
@@ -322,17 +318,17 @@
 //                                         </div>
 //                                         <div className='flex gap-1'>
 //                                             <div className='w-10/12'>
-//                                                 <TextInput 
+//                                                 <TextInput
 //                                                     id={`availability-start-${index}`}
-//                                                     type="text" 
-//                                                     sizing="md" 
+//                                                     type="text"
+//                                                     sizing="md"
 //                                                     placeholder='Enter Start Time'
 //                                                     value={schedule.startTime}
 //                                                     onChange={(e) => updateAvailabilitySchedule(index, 'startTime', e.target.value)}
 //                                                 />
 //                                             </div>
 //                                             <div className='w-2/12'>
-//                                                 <Select 
+//                                                 <Select
 //                                                     value={schedule.startPeriod}
 //                                                     onChange={(e) => updateAvailabilitySchedule(index, 'startPeriod', e.target.value)}
 //                                                     required
@@ -349,17 +345,17 @@
 //                                         </div>
 //                                         <div className='flex gap-1'>
 //                                             <div className='w-10/12'>
-//                                                 <TextInput 
+//                                                 <TextInput
 //                                                     id={`availability-end-${index}`}
-//                                                     type="text" 
-//                                                     sizing="md" 
+//                                                     type="text"
+//                                                     sizing="md"
 //                                                     placeholder='Enter End Time'
 //                                                     value={schedule.endTime}
 //                                                     onChange={(e) => updateAvailabilitySchedule(index, 'endTime', e.target.value)}
 //                                                 />
 //                                             </div>
 //                                             <div className='w-2/12'>
-//                                                 <Select 
+//                                                 <Select
 //                                                     value={schedule.endPeriod}
 //                                                     onChange={(e) => updateAvailabilitySchedule(index, 'endPeriod', e.target.value)}
 //                                                     required
@@ -374,7 +370,7 @@
 //                             </div>
 //                             {index === 0 && (
 //                                 <div className='w-2/12 mt-7'>
-//                                     <button 
+//                                     <button
 //                                         type="button"
 //                                         onClick={copyAvailabilityToAllWeek}
 //                                         className='bg-[#00806A] rounded-[6px] text-white hover:text-[#464f60] text-[14px] leading-[40px] font-medium px-5 cursor-pointer hover:bg-white border border-[#00806A] hover:border-[#dddfe2] flex items-center'
@@ -390,7 +386,7 @@
 //                 {/* Break Time Section */}
 //                 <div className='step_content_wraper'>
 //                     <h3 className='text-[#435971] text-[20px] leading-[30px] mb-3 font-medium'>Break time</h3>
-                    
+
 //                     {breakSchedules.map((schedule, index) => (
 //                         <div key={index} className='flex gap-4 mb-4'>
 //                             <div className='w-10/12'>
@@ -399,7 +395,7 @@
 //                                         <div className="mb-1 block">
 //                                             <Label htmlFor={`break-day-${index}`}>Choose Day*</Label>
 //                                         </div>
-//                                         <Select 
+//                                         <Select
 //                                             id={`break-day-${index}`}
 //                                             value={schedule.day}
 //                                             onChange={(e) => updateBreakSchedule(index, 'day', e.target.value)}
@@ -419,17 +415,17 @@
 //                                         </div>
 //                                         <div className='flex gap-1'>
 //                                             <div className='w-10/12'>
-//                                                 <TextInput 
+//                                                 <TextInput
 //                                                     id={`break-start-${index}`}
-//                                                     type="text" 
-//                                                     sizing="md" 
+//                                                     type="text"
+//                                                     sizing="md"
 //                                                     placeholder='Enter Start Time'
 //                                                     value={schedule.startTime}
 //                                                     onChange={(e) => updateBreakSchedule(index, 'startTime', e.target.value)}
 //                                                 />
 //                                             </div>
 //                                             <div className='w-2/12'>
-//                                                 <Select 
+//                                                 <Select
 //                                                     value={schedule.startPeriod}
 //                                                     onChange={(e) => updateBreakSchedule(index, 'startPeriod', e.target.value)}
 //                                                     required
@@ -446,17 +442,17 @@
 //                                         </div>
 //                                         <div className='flex gap-1'>
 //                                             <div className='w-10/12'>
-//                                                 <TextInput 
+//                                                 <TextInput
 //                                                     id={`break-end-${index}`}
-//                                                     type="text" 
-//                                                     sizing="md" 
+//                                                     type="text"
+//                                                     sizing="md"
 //                                                     placeholder='Enter End Time'
 //                                                     value={schedule.endTime}
 //                                                     onChange={(e) => updateBreakSchedule(index, 'endTime', e.target.value)}
 //                                                 />
 //                                             </div>
 //                                             <div className='w-2/12'>
-//                                                 <Select 
+//                                                 <Select
 //                                                     value={schedule.endPeriod}
 //                                                     onChange={(e) => updateBreakSchedule(index, 'endPeriod', e.target.value)}
 //                                                     required
@@ -487,14 +483,14 @@
 //                 {/* Navigation Buttons */}
 //                 <div className='step_btn_area border-t border-[#EBEEFA] pt-5'>
 //                     <div className='flex justify-end items-center gap-3'>
-//                         <button 
-//                             onClick={() => handleBack()} 
+//                         <button
+//                             onClick={() => handleBack()}
 //                             className='bg-[#ffffff] rounded-[6px] text-[#464f60] hover:text-[#ffffff] text-[14px] leading-[43px] font-medium px-6 cursor-pointer hover:bg-[#00806A] border border-[#dddfe2] hover:border-[#00806A]'
 //                         >
 //                             Previous Step
 //                         </button>
-//                         <button 
-//                             onClick={() => HandleNextPage()} 
+//                         <button
+//                             onClick={() => HandleNextPage()}
 //                             className='bg-[#00806A] rounded-[6px] text-white hover:text-[#464f60] text-[14px] leading-[43px] font-medium px-10 cursor-pointer hover:bg-white border border-[#00806A] hover:border-[#dddfe2]'
 //                         >
 //                             Next Step
@@ -508,233 +504,261 @@
 
 // export default StepThree
 
-
-'use client';
-import { Label, Select, TextInput } from "flowbite-react"
+"use client";
+import { Label, Select, TextInput } from "flowbite-react";
 import { useEffect, useState } from "react";
 import { BiCopy } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
 import { getDays, stepThree } from "../reducers/CreateBotSlice"; // Import stepThree
 
-const StepThree = ({ setShow,industryId }) => {
-    const { days } = useSelector((state) => state?.bot)
-    const dispatch = useDispatch()
-    
-    // State for availability schedules
-    const [availabilitySchedules, setAvailabilitySchedules] = useState([
-        { day: '', startTime: '', startPeriod: 'AM', endTime: '', endPeriod: 'AM' }
-    ]);
-    
-    // State for break schedules
-    const [breakSchedules, setBreakSchedules] = useState([
-        { day: '', startTime: '', startPeriod: 'AM', endTime: '', endPeriod: 'AM' }
-    ]);
+const StepThree = ({ setShow, industryId }) => {
+  const { days } = useSelector((state) => state?.bot);
+  const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(getDays())
-    }, [])
+  // State for availability schedules
+  const [availabilitySchedules, setAvailabilitySchedules] = useState([
+    { day: "", startTime: "", startPeriod: "AM", endTime: "", endPeriod: "AM" },
+  ]);
 
-    // Helper function to format time
-    const formatTime = (time, period) => {
-        if (!time) return '';
-        return `${time} ${period.toLowerCase()}`;
-    };
+  // State for break schedules
+  const [breakSchedules, setBreakSchedules] = useState([
+    { day: "", startTime: "", startPeriod: "AM", endTime: "", endPeriod: "AM" },
+  ]);
 
-    // Helper function to get day_id from day name
-    const getDayId = (dayName) => {
-        const dayObj = days?.res?.find(d => d.day === dayName);
-        return dayObj?.id || dayObj?.day_id || null;
-    };
+  useEffect(() => {
+    dispatch(getDays());
+  }, []);
 
-    // Function to prepare payload and dispatch API
-    const HandleNextPage = async () => {
-        try {
-            // Validate that we have at least one complete availability schedule
-            const validAvailabilitySchedules = availabilitySchedules.filter(schedule => 
-                schedule.day && schedule.startTime && schedule.endTime
+  // Helper function to format time
+  const formatTime = (time, period) => {
+    if (!time) return "";
+    return `${time} ${period.toLowerCase()}`;
+  };
+
+  // Helper function to get day_id from day name
+  const getDayId = (dayName) => {
+    const dayObj = days?.res?.find((d) => d.day === dayName);
+    return dayObj?.id || dayObj?.day_id || null;
+  };
+
+  // Function to prepare payload and dispatch API
+  const HandleNextPage = async () => {
+    try {
+      // Validate that we have at least one complete availability schedule
+      const validAvailabilitySchedules = availabilitySchedules.filter(
+        (schedule) => schedule.day && schedule.startTime && schedule.endTime
+      );
+
+      if (validAvailabilitySchedules.length === 0) {
+        alert("Please add at least one availability schedule");
+        return;
+      }
+
+      // Create availability array for API payload
+      const availability_arr = validAvailabilitySchedules.map(
+        (availSchedule) => {
+          // Find corresponding break schedule for the same day
+          const breakSchedule = breakSchedules.find(
+            (breakSched) =>
+              breakSched.day === availSchedule.day &&
+              breakSched.startTime &&
+              breakSched.endTime
+          );
+
+          const dayId = getDayId(availSchedule.day);
+
+          const scheduleData = {
+            day_id: dayId,
+            start_time: formatTime(
+              availSchedule.startTime,
+              availSchedule.startPeriod
+            ),
+            end_time: formatTime(
+              availSchedule.endTime,
+              availSchedule.endPeriod
+            ),
+          };
+
+          // Add break times if they exist for this day
+          if (breakSchedule) {
+            scheduleData.start_break_time = formatTime(
+              breakSchedule.startTime,
+              breakSchedule.startPeriod
             );
+            scheduleData.end_break_time = formatTime(
+              breakSchedule.endTime,
+              breakSchedule.endPeriod
+            );
+          }
 
-            if (validAvailabilitySchedules.length === 0) {
-                alert('Please add at least one availability schedule');
-                return;
-            }
-
-            // Create availability array for API payload
-            const availability_arr = validAvailabilitySchedules.map(availSchedule => {
-                // Find corresponding break schedule for the same day
-                const breakSchedule = breakSchedules.find(breakSched => 
-                    breakSched.day === availSchedule.day && 
-                    breakSched.startTime && 
-                    breakSched.endTime
-                );
-
-                const dayId = getDayId(availSchedule.day);
-                
-                const scheduleData = {
-                    day_id: dayId,
-                    start_time: formatTime(availSchedule.startTime, availSchedule.startPeriod),
-                    end_time: formatTime(availSchedule.endTime, availSchedule.endPeriod),
-                };
-
-                // Add break times if they exist for this day
-                if (breakSchedule) {
-                    scheduleData.start_break_time = formatTime(breakSchedule.startTime, breakSchedule.startPeriod);
-                    scheduleData.end_break_time = formatTime(breakSchedule.endTime, breakSchedule.endPeriod);
-                }
-
-                return scheduleData;
-            });
-
-            // Prepare the payload
-            const payload = {
-                company_id: industryId, // You might want to get this from your state or props
-                availability_arr: availability_arr
-            };
-
-            console.log('Dispatching payload:', payload);
-
-            // Dispatch the API call
-            const result = dispatch(stepThree(payload)).then((res)=>{
-                console.log("res",res);
-                if(res?.payload?.status_code===201){
-                     setShow({
-                    StepOne: false,
-                    StepTwo: false,
-                    StepThree: false,
-                    StepFour: true,
-                    StepFive: false,
-                    StepSix: false,
-                    StepSeven: false,
-                });
-
-                }
-                
-            });
-            
-            // if (stepThree.fulfilled.match(result)) {
-            //     // API call successful, proceed to next step
-            //     setShow({
-            //         StepOne: false,
-            //         StepTwo: false,
-            //         StepThree: false,
-            //         StepFour: true,
-            //         StepFive: false,
-            //         StepSix: false,
-            //         StepSeven: false,
-            //     });
-            // }
-        } catch (error) {
-            console.error('Error in HandleNextPage:', error);
-            alert('An error occurred. Please try again.');
+          return scheduleData;
         }
-    };
+      );
 
-    const handleBack = () => {
-        setShow({
+      // Prepare the payload
+      const payload = {
+        company_id: industryId, // You might want to get this from your state or props
+        availability_arr: availability_arr,
+      };
+
+      console.log("Dispatching payload:", payload);
+
+      // Dispatch the API call
+      const result = dispatch(stepThree(payload)).then((res) => {
+        console.log("res", res);
+        if (res?.payload?.status_code === 201) {
+          setShow({
             StepOne: false,
-            StepTwo: true,
+            StepTwo: false,
             StepThree: false,
-            StepFour: false,
+            StepFour: true,
             StepFive: false,
             StepSix: false,
             StepSeven: false,
-        });
-    };
-
-    // Copy availability to all days of the week
-    const copyAvailabilityToAllWeek = () => {
-        const currentSchedule = availabilitySchedules[0];
-        
-        if (!currentSchedule.startTime || !currentSchedule.endTime) {
-            alert('Please fill in start and end times before copying to all week');
-            return;
+          });
         }
+      });
 
-        const newSchedules = days?.res?.map((dayObj) => ({
-            day: dayObj.day,
-            startTime: currentSchedule.startTime,
-            startPeriod: currentSchedule.startPeriod,
-            endTime: currentSchedule.endTime,
-            endPeriod: currentSchedule.endPeriod
-        })) || [];
+      // if (stepThree.fulfilled.match(result)) {
+      //     // API call successful, proceed to next step
+      //     setShow({
+      //         StepOne: false,
+      //         StepTwo: false,
+      //         StepThree: false,
+      //         StepFour: true,
+      //         StepFive: false,
+      //         StepSix: false,
+      //         StepSeven: false,
+      //     });
+      // }
+    } catch (error) {
+      console.error("Error in HandleNextPage:", error);
+      alert("An error occurred. Please try again.");
+    }
+  };
 
-        setAvailabilitySchedules(newSchedules);
-    };
+  const handleBack = () => {
+    setShow({
+      StepOne: false,
+      StepTwo: true,
+      StepThree: false,
+      StepFour: false,
+      StepFive: false,
+      StepSix: false,
+      StepSeven: false,
+    });
+  };
 
-    // Copy break time to all days of the week
-    const copyBreakToAllWeek = () => {
-        const currentSchedule = breakSchedules[0];
-        
-        if (!currentSchedule.startTime || !currentSchedule.endTime) {
-            alert('Please fill in start and end times before copying to all week');
-            return;
-        }
+  // Copy availability to all days of the week
+  const copyAvailabilityToAllWeek = () => {
+    const currentSchedule = availabilitySchedules[0];
 
-        const newSchedules = days?.res?.map((dayObj) => ({
-            day: dayObj.day,
-            startTime: currentSchedule.startTime,
-            startPeriod: currentSchedule.startPeriod,
-            endTime: currentSchedule.endTime,
-            endPeriod: currentSchedule.endPeriod
-        })) || [];
+    if (!currentSchedule.startTime || !currentSchedule.endTime) {
+      alert("Please fill in start and end times before copying to all week");
+      return;
+    }
 
-        setBreakSchedules(newSchedules);
-    };
+    const newSchedules =
+      days?.res?.map((dayObj) => ({
+        day: dayObj.day,
+        startTime: currentSchedule.startTime,
+        startPeriod: currentSchedule.startPeriod,
+        endTime: currentSchedule.endTime,
+        endPeriod: currentSchedule.endPeriod,
+      })) || [];
 
-    // Add new availability schedule
-    const addAvailabilitySchedule = () => {
-        setAvailabilitySchedules([
-            ...availabilitySchedules,
-            { day: '', startTime: '', startPeriod: 'AM', endTime: '', endPeriod: 'AM' }
-        ]);
-    };
+    setAvailabilitySchedules(newSchedules);
+  };
 
-    // Add new break schedule
-    const addBreakSchedule = () => {
-        setBreakSchedules([
-            ...breakSchedules,
-            { day: '', startTime: '', startPeriod: 'AM', endTime: '', endPeriod: 'AM' }
-        ]);
-    };
+  // Copy break time to all days of the week
+  const copyBreakToAllWeek = () => {
+    const currentSchedule = breakSchedules[0];
 
-    // Remove availability schedule
-    const removeAvailabilitySchedule = (index) => {
-        if (availabilitySchedules.length > 1) {
-            const newSchedules = availabilitySchedules.filter((_, i) => i !== index);
-            setAvailabilitySchedules(newSchedules);
-        }
-    };
+    if (!currentSchedule.startTime || !currentSchedule.endTime) {
+      alert("Please fill in start and end times before copying to all week");
+      return;
+    }
 
-    // Remove break schedule
-    const removeBreakSchedule = (index) => {
-        if (breakSchedules.length > 1) {
-            const newSchedules = breakSchedules.filter((_, i) => i !== index);
-            setBreakSchedules(newSchedules);
-        }
-    };
+    const newSchedules =
+      days?.res?.map((dayObj) => ({
+        day: dayObj.day,
+        startTime: currentSchedule.startTime,
+        startPeriod: currentSchedule.startPeriod,
+        endTime: currentSchedule.endTime,
+        endPeriod: currentSchedule.endPeriod,
+      })) || [];
 
-    // Update availability schedule
-    const updateAvailabilitySchedule = (index, field, value) => {
-        const newSchedules = [...availabilitySchedules];
-        newSchedules[index] = { ...newSchedules[index], [field]: value };
-        setAvailabilitySchedules(newSchedules);
-    };
+    setBreakSchedules(newSchedules);
+  };
 
-    // Update break schedule
-    const updateBreakSchedule = (index, field, value) => {
-        const newSchedules = [...breakSchedules];
-        newSchedules[index] = { ...newSchedules[index], [field]: value };
-        setBreakSchedules(newSchedules);
-    };
+  // Add new availability schedule
+  const addAvailabilitySchedule = () => {
+    setAvailabilitySchedules([
+      ...availabilitySchedules,
+      {
+        day: "",
+        startTime: "",
+        startPeriod: "AM",
+        endTime: "",
+        endPeriod: "AM",
+      },
+    ]);
+  };
 
-    return (
-        <>
-            <div className='step_box_three'>
-                {/* Availability Section */}
-                <div className='step_content_wraper mb-6'>
-                    <div className='flex justify-between items-center mb-3'>
-                        <h3 className='text-[#435971] text-[20px] leading-[30px] font-medium'>Availability</h3>
-                        {/* {availabilitySchedules.length > 1 && (
+  // Add new break schedule
+  const addBreakSchedule = () => {
+    setBreakSchedules([
+      ...breakSchedules,
+      {
+        day: "",
+        startTime: "",
+        startPeriod: "AM",
+        endTime: "",
+        endPeriod: "AM",
+      },
+    ]);
+  };
+
+  // Remove availability schedule
+  const removeAvailabilitySchedule = (index) => {
+    if (availabilitySchedules.length > 1) {
+      const newSchedules = availabilitySchedules.filter((_, i) => i !== index);
+      setAvailabilitySchedules(newSchedules);
+    }
+  };
+
+  // Remove break schedule
+  const removeBreakSchedule = (index) => {
+    if (breakSchedules.length > 1) {
+      const newSchedules = breakSchedules.filter((_, i) => i !== index);
+      setBreakSchedules(newSchedules);
+    }
+  };
+
+  // Update availability schedule
+  const updateAvailabilitySchedule = (index, field, value) => {
+    const newSchedules = [...availabilitySchedules];
+    newSchedules[index] = { ...newSchedules[index], [field]: value };
+    setAvailabilitySchedules(newSchedules);
+  };
+
+  // Update break schedule
+  const updateBreakSchedule = (index, field, value) => {
+    const newSchedules = [...breakSchedules];
+    newSchedules[index] = { ...newSchedules[index], [field]: value };
+    setBreakSchedules(newSchedules);
+  };
+
+  return (
+    <>
+      <div className="step_box_three">
+        {/* Availability Section */}
+        <div className="step_content_wraper mb-6">
+          <div className="flex justify-between items-center mb-3">
+            <h3 className="text-[#435971] text-[18px] lg:text-[20px] lg:leading-[30px] font-medium">
+              Availability
+            </h3>
+            {/* {availabilitySchedules.length > 1 && (
                             <button 
                                 type="button"
                                 onClick={addAvailabilitySchedule}
@@ -743,110 +767,142 @@ const StepThree = ({ setShow,industryId }) => {
                                 + Add More
                             </button>
                         )} */}
+          </div>
+
+          {availabilitySchedules.map((schedule, index) => (
+            <div key={index} className="lg:flex gap-4 mb-4">
+              <div className="lg:w-10/12">
+                <div className="lg:flex gap-4">
+                  <div className="lg:w-4/12 step_field mb-2 lg:mb-0">
+                    <div className="mb-1 block">
+                      <Label htmlFor={`availability-day-${index}`}>
+                        Choose Day*
+                      </Label>
                     </div>
-                    
-                    {availabilitySchedules.map((schedule, index) => (
-                        <div key={index} className='flex gap-4 mb-4'>
-                            <div className='w-10/12'>
-                                <div className='flex gap-4'>
-                                    <div className="w-4/12 step_field">
-                                        <div className="mb-1 block">
-                                            <Label htmlFor={`availability-day-${index}`}>Choose Day*</Label>
-                                        </div>
-                                        <Select 
-                                            id={`availability-day-${index}`}
-                                            value={schedule.day}
-                                            onChange={(e) => updateAvailabilitySchedule(index, 'day', e.target.value)}
-                                            required
-                                        >
-                                            <option value="">Choose Day</option>
-                                            {days?.res?.map((d, dayIndex) => (
-                                                <option key={dayIndex} value={d?.day}>
-                                                    {d?.day}
-                                                </option>
-                                            ))}
-                                        </Select>
-                                    </div>
-                                    <div className="w-4/12 step_field">
-                                        <div className="mb-1 block">
-                                            <Label htmlFor={`availability-start-${index}`}>Start Time*</Label>
-                                        </div>
-                                        <div className='flex gap-1'>
-                                            <div className='w-10/12'>
-                                                <TextInput 
-                                                    id={`availability-start-${index}`}
-                                                    type="text" 
-                                                    sizing="md" 
-                                                    placeholder='Enter Start Time'
-                                                    value={schedule.startTime}
-                                                    onChange={(e) => updateAvailabilitySchedule(index, 'startTime', e.target.value)}
-                                                />
-                                            </div>
-                                            <div className='w-2/12'>
-                                                <Select 
-                                                    value={schedule.startPeriod}
-                                                    onChange={(e) => updateAvailabilitySchedule(index, 'startPeriod', e.target.value)}
-                                                    required
-                                                >
-                                                    <option value="AM">AM</option>
-                                                    <option value="PM">PM</option>
-                                                </Select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="w-4/12 step_field">
-                                        <div className="mb-1 block">
-                                            <Label htmlFor={`availability-end-${index}`}>End Time*</Label>
-                                        </div>
-                                        <div className='flex gap-1'>
-                                            <div className='w-10/12'>
-                                                <TextInput 
-                                                    id={`availability-end-${index}`}
-                                                    type="text" 
-                                                    sizing="md" 
-                                                    placeholder='Enter End Time'
-                                                    value={schedule.endTime}
-                                                    onChange={(e) => updateAvailabilitySchedule(index, 'endTime', e.target.value)}
-                                                />
-                                            </div>
-                                            <div className='w-2/12'>
-                                                <Select 
-                                                    value={schedule.endPeriod}
-                                                    onChange={(e) => updateAvailabilitySchedule(index, 'endPeriod', e.target.value)}
-                                                    required
-                                                >
-                                                    <option value="AM">AM</option>
-                                                    <option value="PM">PM</option>
-                                                </Select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className='w-2/12 mt-7 flex gap-2'>
-                                {index === 0 && (
-                                    <button 
-                                        type="button"
-                                        onClick={copyAvailabilityToAllWeek}
-                                        className='bg-[#00806A] rounded-[6px] text-white hover:text-[#464f60] text-[14px] leading-[40px] font-medium px-5 cursor-pointer hover:bg-white border border-[#00806A] hover:border-[#dddfe2] flex items-center'
-                                    >
-                                        <BiCopy className='text-base mr-1' /> copy to all week
-                                    </button>
-                                )}
-                                {index > 0 && (
-                                    <button 
-                                        type="button"
-                                        onClick={() => removeAvailabilitySchedule(index)}
-                                        className='bg-red-500 rounded-[6px] text-white text-[12px] leading-[30px] font-medium px-3 cursor-pointer hover:bg-red-600'
-                                    >
-                                        Remove
-                                    </button>
-                                )}
-                            </div>
-                        </div>
-                    ))}
-                    
-                    {/* {availabilitySchedules.length === 1 && (
+                    <Select
+                      id={`availability-day-${index}`}
+                      value={schedule.day}
+                      onChange={(e) =>
+                        updateAvailabilitySchedule(index, "day", e.target.value)
+                      }
+                      required
+                    >
+                      <option value="">Choose Day</option>
+                      {days?.res?.map((d, dayIndex) => (
+                        <option key={dayIndex} value={d?.day}>
+                          {d?.day}
+                        </option>
+                      ))}
+                    </Select>
+                  </div>
+                  <div className="lg:w-4/12 step_field mb-2 lg:mb-0">
+                    <div className="mb-1 block">
+                      <Label htmlFor={`availability-start-${index}`}>
+                        Start Time*
+                      </Label>
+                    </div>
+                    <div className="flex gap-1">
+                      <div className="w-10/12">
+                        <TextInput
+                          id={`availability-start-${index}`}
+                          type="text"
+                          sizing="md"
+                          placeholder="Enter Start Time"
+                          value={schedule.startTime}
+                          onChange={(e) =>
+                            updateAvailabilitySchedule(
+                              index,
+                              "startTime",
+                              e.target.value
+                            )
+                          }
+                        />
+                      </div>
+                      <div className="w-2/12">
+                        <Select
+                          value={schedule.startPeriod}
+                          onChange={(e) =>
+                            updateAvailabilitySchedule(
+                              index,
+                              "startPeriod",
+                              e.target.value
+                            )
+                          }
+                          required
+                        >
+                          <option value="AM">AM</option>
+                          <option value="PM">PM</option>
+                        </Select>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="lg:w-4/12 step_field">
+                    <div className="mb-1 block">
+                      <Label htmlFor={`availability-end-${index}`}>
+                        End Time*
+                      </Label>
+                    </div>
+                    <div className="flex gap-1">
+                      <div className="w-10/12">
+                        <TextInput
+                          id={`availability-end-${index}`}
+                          type="text"
+                          sizing="md"
+                          placeholder="Enter End Time"
+                          value={schedule.endTime}
+                          onChange={(e) =>
+                            updateAvailabilitySchedule(
+                              index,
+                              "endTime",
+                              e.target.value
+                            )
+                          }
+                        />
+                      </div>
+                      <div className="w-2/12">
+                        <Select
+                          value={schedule.endPeriod}
+                          onChange={(e) =>
+                            updateAvailabilitySchedule(
+                              index,
+                              "endPeriod",
+                              e.target.value
+                            )
+                          }
+                          required
+                        >
+                          <option value="AM">AM</option>
+                          <option value="PM">PM</option>
+                        </Select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="lg:w-2/12 mt-7 flex gap-2">
+                {index === 0 && (
+                  <button
+                    type="button"
+                    onClick={copyAvailabilityToAllWeek}
+                    className="bg-[#00806A] rounded-[6px] text-white hover:text-[#464f60] text-[14px] leading-[40px] font-medium px-5 cursor-pointer hover:bg-white border border-[#00806A] hover:border-[#dddfe2] flex items-center"
+                  >
+                    <BiCopy className="text-base mr-1" /> copy to all week
+                  </button>
+                )}
+                {index > 0 && (
+                  <button
+                    type="button"
+                    onClick={() => removeAvailabilitySchedule(index)}
+                    className="bg-red-500 rounded-[6px] text-white text-[12px] leading-[30px] font-medium px-3 cursor-pointer hover:bg-red-600"
+                  >
+                    Remove
+                  </button>
+                )}
+              </div>
+            </div>
+          ))}
+
+          {/* {availabilitySchedules.length === 1 && (
                         <button 
                             type="button"
                             onClick={addAvailabilitySchedule}
@@ -855,13 +911,15 @@ const StepThree = ({ setShow,industryId }) => {
                             + Add Another Day
                         </button>
                     )} */}
-                </div>
+        </div>
 
-                {/* Break Time Section */}
-                <div className='step_content_wraper'>
-                    <div className='flex justify-between items-center mb-3'>
-                        <h3 className='text-[#435971] text-[20px] leading-[30px] font-medium'>Break time</h3>
-                        {/* {breakSchedules.length > 1 && (
+        {/* Break Time Section */}
+        <div className="step_content_wraper">
+          <div className="flex justify-between items-center mb-3">
+            <h3 className="text-[#435971] text-[18px] lg:text-[20px] lg:leading-[30px] font-medium">
+              Break time
+            </h3>
+            {/* {breakSchedules.length > 1 && (
                             <button 
                                 type="button"
                                 onClick={addBreakSchedule}
@@ -870,110 +928,138 @@ const StepThree = ({ setShow,industryId }) => {
                                 + Add More
                             </button>
                         )} */}
+          </div>
+
+          {breakSchedules.map((schedule, index) => (
+            <div key={index} className="lg:flex gap-4 mb-4">
+              <div className="lg:w-10/12">
+                <div className="lg:flex gap-4">
+                  <div className="lg:w-4/12 step_field mb-2 lg:mb-0">
+                    <div className="mb-1 block">
+                      <Label htmlFor={`break-day-${index}`}>Choose Day*</Label>
                     </div>
-                    
-                    {breakSchedules.map((schedule, index) => (
-                        <div key={index} className='flex gap-4 mb-4'>
-                            <div className='w-10/12'>
-                                <div className='flex gap-4'>
-                                    <div className="w-4/12 step_field">
-                                        <div className="mb-1 block">
-                                            <Label htmlFor={`break-day-${index}`}>Choose Day*</Label>
-                                        </div>
-                                        <Select 
-                                            id={`break-day-${index}`}
-                                            value={schedule.day}
-                                            onChange={(e) => updateBreakSchedule(index, 'day', e.target.value)}
-                                            required
-                                        >
-                                            <option value="">Choose Day</option>
-                                            {days?.res?.map((d, dayIndex) => (
-                                                <option key={dayIndex} value={d?.day}>
-                                                    {d?.day}
-                                                </option>
-                                            ))}
-                                        </Select>
-                                    </div>
-                                    <div className="w-4/12 step_field">
-                                        <div className="mb-1 block">
-                                            <Label htmlFor={`break-start-${index}`}>Start Time*</Label>
-                                        </div>
-                                        <div className='flex gap-1'>
-                                            <div className='w-10/12'>
-                                                <TextInput 
-                                                    id={`break-start-${index}`}
-                                                    type="text" 
-                                                    sizing="md" 
-                                                    placeholder='Enter Start Time'
-                                                    value={schedule.startTime}
-                                                    onChange={(e) => updateBreakSchedule(index, 'startTime', e.target.value)}
-                                                />
-                                            </div>
-                                            <div className='w-2/12'>
-                                                <Select 
-                                                    value={schedule.startPeriod}
-                                                    onChange={(e) => updateBreakSchedule(index, 'startPeriod', e.target.value)}
-                                                    required
-                                                >
-                                                    <option value="AM">AM</option>
-                                                    <option value="PM">PM</option>
-                                                </Select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="w-4/12 step_field">
-                                        <div className="mb-1 block">
-                                            <Label htmlFor={`break-end-${index}`}>End Time*</Label>
-                                        </div>
-                                        <div className='flex gap-1'>
-                                            <div className='w-10/12'>
-                                                <TextInput 
-                                                    id={`break-end-${index}`}
-                                                    type="text" 
-                                                    sizing="md" 
-                                                    placeholder='Enter End Time'
-                                                    value={schedule.endTime}
-                                                    onChange={(e) => updateBreakSchedule(index, 'endTime', e.target.value)}
-                                                />
-                                            </div>
-                                            <div className='w-2/12'>
-                                                <Select 
-                                                    value={schedule.endPeriod}
-                                                    onChange={(e) => updateBreakSchedule(index, 'endPeriod', e.target.value)}
-                                                    required
-                                                >
-                                                    <option value="AM">AM</option>
-                                                    <option value="PM">PM</option>
-                                                </Select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className='w-2/12 mt-7 flex gap-2'>
-                                {index === 0 && (
-                                    <button
-                                        type="button"
-                                        onClick={copyBreakToAllWeek}
-                                        className='bg-[#00806A] rounded-[6px] text-white hover:text-[#464f60] text-[14px] leading-[40px] font-medium px-5 cursor-pointer hover:bg-white border border-[#00806A] hover:border-[#dddfe2] flex items-center'
-                                    >
-                                        <BiCopy className='text-base mr-1' /> copy to all week
-                                    </button>
-                                )}
-                                {index > 0 && (
-                                    <button 
-                                        type="button"
-                                        onClick={() => removeBreakSchedule(index)}
-                                        className='bg-red-500 rounded-[6px] text-white text-[12px] leading-[30px] font-medium px-3 cursor-pointer hover:bg-red-600'
-                                    >
-                                        Remove
-                                    </button>
-                                )}
-                            </div>
-                        </div>
-                    ))}
-                    
-                    {/* {breakSchedules.length === 1 && (
+                    <Select
+                      id={`break-day-${index}`}
+                      value={schedule.day}
+                      onChange={(e) =>
+                        updateBreakSchedule(index, "day", e.target.value)
+                      }
+                      required
+                    >
+                      <option value="">Choose Day</option>
+                      {days?.res?.map((d, dayIndex) => (
+                        <option key={dayIndex} value={d?.day}>
+                          {d?.day}
+                        </option>
+                      ))}
+                    </Select>
+                  </div>
+                  <div className="lg:w-4/12 step_field mb-2 lg:mb-0">
+                    <div className="mb-1 block">
+                      <Label htmlFor={`break-start-${index}`}>
+                        Start Time*
+                      </Label>
+                    </div>
+                    <div className="flex gap-1">
+                      <div className="w-10/12">
+                        <TextInput
+                          id={`break-start-${index}`}
+                          type="text"
+                          sizing="md"
+                          placeholder="Enter Start Time"
+                          value={schedule.startTime}
+                          onChange={(e) =>
+                            updateBreakSchedule(
+                              index,
+                              "startTime",
+                              e.target.value
+                            )
+                          }
+                        />
+                      </div>
+                      <div className="w-2/12">
+                        <Select
+                          value={schedule.startPeriod}
+                          onChange={(e) =>
+                            updateBreakSchedule(
+                              index,
+                              "startPeriod",
+                              e.target.value
+                            )
+                          }
+                          required
+                        >
+                          <option value="AM">AM</option>
+                          <option value="PM">PM</option>
+                        </Select>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="lg:w-4/12 step_field">
+                    <div className="mb-1 block">
+                      <Label htmlFor={`break-end-${index}`}>End Time*</Label>
+                    </div>
+                    <div className="flex gap-1">
+                      <div className="w-10/12">
+                        <TextInput
+                          id={`break-end-${index}`}
+                          type="text"
+                          sizing="md"
+                          placeholder="Enter End Time"
+                          value={schedule.endTime}
+                          onChange={(e) =>
+                            updateBreakSchedule(
+                              index,
+                              "endTime",
+                              e.target.value
+                            )
+                          }
+                        />
+                      </div>
+                      <div className="lg:w-2/12">
+                        <Select
+                          value={schedule.endPeriod}
+                          onChange={(e) =>
+                            updateBreakSchedule(
+                              index,
+                              "endPeriod",
+                              e.target.value
+                            )
+                          }
+                          required
+                        >
+                          <option value="AM">AM</option>
+                          <option value="PM">PM</option>
+                        </Select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="lg:w-2/12 mt-7 flex gap-2">
+                {index === 0 && (
+                  <button
+                    type="button"
+                    onClick={copyBreakToAllWeek}
+                    className="bg-[#00806A] rounded-[6px] text-white hover:text-[#464f60] text-[14px] leading-[40px] font-medium px-5 cursor-pointer hover:bg-white border border-[#00806A] hover:border-[#dddfe2] flex items-center"
+                  >
+                    <BiCopy className="text-base mr-1" /> copy to all week
+                  </button>
+                )}
+                {index > 0 && (
+                  <button
+                    type="button"
+                    onClick={() => removeBreakSchedule(index)}
+                    className="bg-red-500 rounded-[6px] text-white text-[12px] leading-[30px] font-medium px-3 cursor-pointer hover:bg-red-600"
+                  >
+                    Remove
+                  </button>
+                )}
+              </div>
+            </div>
+          ))}
+
+          {/* {breakSchedules.length === 1 && (
                         <button 
                             type="button"
                             onClick={addBreakSchedule}
@@ -982,28 +1068,28 @@ const StepThree = ({ setShow,industryId }) => {
                             + Add Another Day
                         </button>
                     )} */}
-                </div>
+        </div>
 
-                {/* Navigation Buttons */}
-                <div className='step_btn_area border-t border-[#EBEEFA] pt-5'>
-                    <div className='flex justify-end items-center gap-3'>
-                        <button 
-                            onClick={() => handleBack()} 
-                            className='bg-[#ffffff] rounded-[6px] text-[#464f60] hover:text-[#ffffff] text-[14px] leading-[43px] font-medium px-6 cursor-pointer hover:bg-[#00806A] border border-[#dddfe2] hover:border-[#00806A]'
-                        >
-                            Previous Step
-                        </button>
-                        <button 
-                            onClick={() => HandleNextPage()} 
-                            className='bg-[#00806A] rounded-[6px] text-white hover:text-[#464f60] text-[14px] leading-[43px] font-medium px-10 cursor-pointer hover:bg-white border border-[#00806A] hover:border-[#dddfe2]'
-                        >
-                            Next Step
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </>
-    )
-}
+        {/* Navigation Buttons */}
+        <div className="step_btn_area border-t border-[#EBEEFA] pt-5">
+          <div className="flex justify-end items-center gap-3">
+            <button
+              onClick={() => handleBack()}
+              className="bg-[#ffffff] rounded-[6px] text-[#464f60] hover:text-[#ffffff] text-[13px] leading-[36px] lg:text-[14px] lg:leading-[43px] font-medium px-4 lg:px-6 cursor-pointer hover:bg-[#00806A] border border-[#dddfe2] hover:border-[#00806A]"
+            >
+              Previous Step
+            </button>
+            <button
+              onClick={() => HandleNextPage()}
+              className="bg-[#00806A] rounded-[6px] text-white hover:text-[#464f60] text-[13px] leading-[36px] lg:text-[14px] lg:leading-[43px] font-medium px-5 lg:px-10 cursor-pointer hover:bg-white border border-[#00806A] hover:border-[#dddfe2]"
+            >
+              Next Step
+            </button>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
 
-export default StepThree
+export default StepThree;
