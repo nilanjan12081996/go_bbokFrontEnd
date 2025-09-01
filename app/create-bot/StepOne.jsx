@@ -6,7 +6,7 @@ import { createService, getIndustry } from "../reducers/CreateBotSlice";
 import { useForm } from "react-hook-form";
 import { toast, ToastContainer } from "react-toastify";
 
-const StepOne=({setShow,setIndustryId,setBusinessId})=>{
+const StepOne=({setShow,industryId,setIndustryId,setBusinessId})=>{
   const{industryData}=useSelector((state)=>state?.bot)
   const dispatch=useDispatch()
   useEffect(()=>{
@@ -39,7 +39,7 @@ const handleSelect=(e)=>{
     setIndustryId(selectedIndustry)
 }
 const onSubmit=(data)=>{
-    dispatch(createService(data)).then((res)=>{
+    dispatch(createService({...data,industry_id:industryId})).then((res)=>{
         console.log("res",res);
         if(res?.payload?.status_code===201){
             setBusinessId(res?.payload?.business_id)

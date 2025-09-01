@@ -128,7 +128,7 @@ const page = () => {
             </div>
             {/* step one start here */}
           
-            {show.StepOne && <StepOne setShow={setShow} setIndustryId={setIndustryId} setBusinessId={setBusinessId}/>}
+            {show.StepOne && <StepOne setShow={setShow} industryId={industryId} setIndustryId={setIndustryId} setBusinessId={setBusinessId}/>}
             {/* step one ends here */}
 
             {/* step two start here */}
