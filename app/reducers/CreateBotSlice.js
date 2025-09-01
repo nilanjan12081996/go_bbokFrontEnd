@@ -182,6 +182,27 @@ export const stepThree = createAsyncThunk(
 );
 
 
+export const getAllBots = createAsyncThunk(
+    'getAllBots',
+    async ({page,limit}, { rejectWithValue }) => {
+        try {
+            const response = await api.get(`/api/bot/list?limit=${limit}&page=${page}`);
+            if (response?.data?.status_code === 200) {
+                return response.data;
+            } else {
+                if (response?.data?.errors) {
+                    return rejectWithValue(response.data.errors);
+                } else {
+                    return rejectWithValue('Something went wrong.');
+                }
+            }
+        } catch (err) {
+            return rejectWithValue(err);
+        }
+    }
+);
+
+
 
 const initialState={
     loading:false,
@@ -194,7 +215,8 @@ const initialState={
     language:[],
     bots:[],
     four_five_data:"",
-    threeData:""
+    threeData:"",
+    botList:[]
 }
 const CreateBotSlice=createSlice({
     name:'bot',
@@ -310,6 +332,18 @@ const CreateBotSlice=createSlice({
             state.error=false
         })
         .addCase(stepThree.rejected,(state,{payload})=>{
+            state.loading=false
+            state.error=payload
+        })
+        .addCase(getAllBots.pending,(state)=>{
+            state.loading=true
+        })
+        .addCase(getAllBots.fulfilled,(state,{payload})=>{
+            state.loading=false
+            state.botList=payload
+            state.error=false
+        })
+        .addCase(getAllBots.rejected,(state,{payload})=>{
             state.loading=false
             state.error=payload
         })

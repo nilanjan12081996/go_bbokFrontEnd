@@ -11,31 +11,10 @@ import Link from 'next/link';
 import { IoSearchOutline } from 'react-icons/io5';
 import { Select, Table, TextInput, TableBody, TableCell, TableHead, TableHeadCell, TableRow, Pagination, Label, Checkbox } from 'flowbite-react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useRouter } from 'next/navigation';
-import { checkAvilableSearch, getCoins, setIsClick } from '../reducers/CoinSlice';
-import { FaArrowRightLong } from 'react-icons/fa6';
-import { getSearchHistory } from '../reducers/SearchHistroySlice';
+;
 import { toast, ToastContainer } from 'react-toastify';
 
-import { BiCopy } from "react-icons/bi";
-import { AiFillPlusCircle } from "react-icons/ai";
 
-import phone01 from "../assets/imagesource/phone01.png";
-import phone02 from "../assets/imagesource/phone02.png";
-import phone03 from "../assets/imagesource/phone03.png";
-import phone04 from "../assets/imagesource/phone04.png";
-import phone05 from "../assets/imagesource/phone05.png";
-import phone06 from "../assets/imagesource/phone06.png";
-
-import french_flag from "../assets/imagesource/french_flag.png";
-import english_flag from "../assets/imagesource/english_flag.png";
-import spanish_flag from "../assets/imagesource/spanish_flag.png";
-
-import bot01 from "../assets/imagesource/bot01.png";
-import bot02 from "../assets/imagesource/bot02.png";
-import bot03 from "../assets/imagesource/bot03.png";
-
-import code_img from "../assets/imagesource/code_img.png";
 import { useForm } from 'react-hook-form';
 import StepOne from './StepOne';
 import StepTwo from './StepTwo';
