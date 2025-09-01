@@ -68,22 +68,22 @@ const RegistrationModal = ({ openRegisterModal, setOpenRegisterModal, setOpenVer
 
     return (
         <>
-            <Modal size="6xl" show={openRegisterModal} onClose={() => setOpenRegisterModal(false)}>
+            <Modal size="4xl" show={openRegisterModal} onClose={() => setOpenRegisterModal(false)}>
                 <ModalHeader className='border-none pb-0 absolute right-3 top-3 bg-transparent'>&nbsp;</ModalHeader>
                 <ModalBody className='bg-white p-0'>
                     <div className="lg:flex">
                         <div className='w-6/12 hidden lg:block register_image'>
                             &nbsp;
                         </div>
-                        <div className='lg:w-6/12 flex justify-center items-center'>
-                            <div className='py-16 px-5 lg:py-10 lg:px-20'>
+                        <div className='lg:w-6/12 flex justify-center items-center registration_form_wrap'>
+                            <div className='py-0 px-0'>
                                 <h2 className='text-[#000000] text-2xl lg:text-[30px] leading-[35px] font-semibold pb-5'>Sign Up</h2>
                                 <div className='form_area'>
                                     
-                                    <div className="mb-8 flex justify-center items-center">
+                                    <div className="mb-3 flex justify-center items-center">
                                         <button className="google_btn"><FcGoogle className="text-[24px] mr-2" /> Continue with Google</button>
                                     </div>
-                                    <div className="mb-4 text-center continue_width">
+                                    <div className="mb-1 text-center continue_width">
                                         <p className="text-[#525252] text-[14px] leading-[20px]">Or</p>
                                     </div>
                                     <form onSubmit={handleSubmit(onSubmit)} className="flex max-w-md flex-col gap-0">

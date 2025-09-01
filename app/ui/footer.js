@@ -45,14 +45,14 @@ const Footer = () => {
       <div className='footer_top lg:py-14 py-10 px-6 lg:px-0'>
         <div className='max-w-6xl mx-auto'>
           <div className='footer_top_container pb-8'>
-            <div className='flex'>
-              <div className='w-5/12 pr-20'>
+            <div className='lg:flex'>
+              <div className='lg:w-5/12 lg:pr-20 mb-4 lg:mb-0 text-center lg:text-left'>
                  <Image src={footerLogo} alt='footerLogo' className='inline-block mb-6' />
                  <p className='text-sm leading-[24px] text-white font-medium'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis </p>
               </div>
-              <div className='w-7/12'>
-                <div className='flex'>
-                  <div className='w-4/12'>
+              <div className='lg:w-7/12'>
+                <div className='lg:flex'>
+                  <div className='lg:w-4/12 text-center'>
                      <h3 className='text-[20px] leading-[24px] text-white font-semibold mb-6'>Need help?</h3>
                      <ul>
                         <li>
@@ -77,7 +77,7 @@ const Footer = () => {
                         </li>
                      </ul>
                   </div>
-                   <div className='w-4/12'>
+                   <div className='lg:w-4/12 text-center'>
                      <h3 className='text-[20px] leading-[24px] text-white font-semibold mb-6'>About US</h3>
                      <ul>
                         <li>
@@ -102,7 +102,7 @@ const Footer = () => {
                         </li>
                      </ul>
                   </div>
-                   <div className='w-4/12'>
+                   <div className='lg:w-4/12 text-center lg:text-left'>
                      <h3 className='text-[20px] leading-[24px] text-white font-semibold mb-6'>Contact Us</h3>
                      <p className='text-sm leading-[24px] text-white font-medium mb-3 inline-block'>+91 6278765634</p>
                      <p className='text-sm leading-[24px] text-white font-medium mb-3 inline-block'>Loremipsum”gmail.com</p>
@@ -111,12 +111,12 @@ const Footer = () => {
               </div>
             </div>
           </div>
-          <div className='footer_bottom_box border-t border-[#FFFFFF] pt-6 flex justify-between items-center'>
-            <div>
+          <div className='footer_bottom_box border-t border-[#FFFFFF] pt-6 lg:flex justify-between items-center'>
+            <div className='mb-4 lg:mb-0 text-center lg:text-left'>
               <p className='text-[12px] leading-[24px] text-white'>Copyright © 2024 SoumalyaFigma. All rights reserved.</p>
             </div>
             <div>
-               <ul className='flex gap-4'>
+               <ul className='flex justify-center items-center gap-4'>
                   <li>
                     <Link href="/" passHref>
                       <FaFacebookF className='text-[#ffffff] hover:text-[#0866ff] text-xl mr-1' />

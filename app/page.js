@@ -104,11 +104,11 @@ export default function Home() {
 
          {/* home banner section start here */}
          <div className="home_banner_area relative">
-            <div className="banner_content_area w-full h-full pt-40 pb-20">
+            <div className="banner_content_area w-full h-full lg:pt-40 lg:pb-20">
                <div className='max-w-6xl mx-auto lg:flex justify-center items-center h-full'>
                   <div className="lg:w-6/12 px-4 pt-24">
                      <h1 className="text-2xl leading-[30px] lg:text-[55px] lg:leading-[60px] text-black font-medium mb-2 lg:mb-4">Elevate Booking Experiences With <span>WhatsApp AI Agents</span></h1>
-                     <p className="text-[#686666] text-sm lg:text-[18px] leading-[28px] mb-5 lg:mb-6">
+                     <p className="text-[#686666] text-sm lg:text-[18px] lg:leading-[28px] mb-5 lg:mb-6">
                         Empower your business with smart, responsive AI agents that elevate every customer conversation.
                      </p>
                      <button onClick={() => setOpenRegisterModal(true)} className="text-white bg-[#00806A] flex items-center cursor-pointer font-medium text-xs lg:text-[16px] rounded-[5px] px-2 py-1 lg:px-6 lg:py-3 border-1 border-[#00806A] hover:bg-white hover:text-[#00806A]">
@@ -116,8 +116,8 @@ export default function Home() {
                         Build Your Agent Free
                      </button>
                   </div>
-                  <div className="lg:w-6/12 relative">
-                     <Image src={banner01} alt='banner01' className='w-full lg:mb-[0] absolute right-0 bottom-[-289px]' />
+                  <div className="lg:w-6/12 relative px-5 lg:px-0">
+                     <Image src={banner01} alt='banner01' className='w-full lg:mb-[0] lg:absolute right-0 lg:bottom-[-292px] mt-4 lg:mt-0' />
                   </div>
                </div>
             </div>
@@ -125,26 +125,26 @@ export default function Home() {
          {/* home banner section ends here */}
 
          {/* Smart Bots section start here */}
-         <div className="smart_bots_sec py-20">
+         <div className="smart_bots_sec py-10 px-5 lg:px-0 lg:py-20">
             <div className='max-w-6xl mx-auto'>
-                <div className="w-10/12 mx-auto mb-10 text-center">
-                  <h2 className="text-[#000000] text-[50px] leading-[64px] pb-4 font-medium">Smart Bots Handling Customer Journeys for <span>Your Business Efficiency</span></h2>
-                  <p className="text-[#686666] text-[18px] leading-[29px] px-28">Your bots do the manual work, so you don&apos;t have to Save time for your teams and cut operating costs automating conversations across the entire customer journey.</p>
+                <div className="lg:w-10/12 mx-auto mb-10 text-center">
+                  <h2 className="text-[#000000] text-[27px] leading-[37px] lg:text-[50px] lg:leading-[64px] pb-4 font-medium">Smart Bots Handling Customer Journeys for <span>Your Business Efficiency</span></h2>
+                  <p className="text-[#686666] text-[15px] lg:text-[18px] lg:leading-[29px] lg:px-28">Your bots do the manual work, so you don&apos;t have to Save time for your teams and cut operating costs automating conversations across the entire customer journey.</p>
                 </div>
-                <div className="grid grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
                    <div className="text-center">
                      <Image src={marketing_img} alt='marketing_img' className='inline-block' />
-                     <h3 className="text-[24px] leading-[54px] text-black mb-0 font-medium">Generate 3x more leads</h3>
+                     <h3 className="text-[20px] leading-[40px] lg:text-[24px] lg:leading-[54px] text-black mb-0 font-medium">Generate 3x more leads</h3>
                      <p className="text-[#686666] text-[14px] leading-[24px]">Make lead generation a two-way street with engaging, human-like conversations.</p>
                    </div>
                    <div className="text-center">
                      <Image src={sales_img} alt='sales_img' className='inline-block' />
-                     <h3 className="text-[24px] leading-[54px] text-black mb-0 font-medium">10x Booking appointments</h3>
+                     <h3 className="text-[20px] leading-[40px] lg:text-[24px] lg:leading-[54px] text-black mb-0 font-medium">10x Booking appointments</h3>
                      <p className="text-[#686666] text-[14px] leading-[24px]">Increase meetings and show rates with leads who have high interest and buying intent.</p>
                    </div>
                    <div className="text-center">
                      <Image src={customer_support_img} alt='customer_support_img' className='inline-block' />
-                     <h3 className="text-[24px] leading-[54px] text-black mb-0 font-medium">Provide 24/7 assistance</h3>
+                     <h3 className="text-[20px] leading-[40px] lg:text-[24px] lg:leading-[54px] text-black mb-0 font-medium">Provide 24/7 assistance</h3>
                      <p className="text-[#686666] text-[14px] leading-[24px]">Delight customers, combining bots and human agents for fast, friendly response times.</p>
                    </div>
                 </div>
@@ -154,11 +154,11 @@ export default function Home() {
 
 
          {/* Key Features section start here */}
-         <div className="key_features_sec py-20">
+         <div className="key_features_sec py-10 px-5 lg:px-0 lg:py-20">
             <div className='max-w-6xl mx-auto'>
-               <h2 className="text-[#000000] text-[50px] leading-[64px] font-medium text-center pb-12">Key Features</h2>
-               <div className="flex gap-8 mb-8">
-                  <div className="bg-white rounded-[20px] shadow-xl overflow-hidden w-8/12">
+               <h2 className="text-[#000000] text-[27px] leading-[37px] lg:text-[50px] lg:leading-[64px] font-medium text-center pb-6 lg:pb-12">Key Features</h2>
+               <div className="lg:flex gap-8 mb-8">
+                  <div className="bg-white rounded-[20px] shadow-xl overflow-hidden lg:w-8/12 mb-6 lg:mb-0">
                     <Image src={doctor_img} alt='doctor_img' className='inline-block w-full' />
                     <div className="px-8 py-10">
                        <h3 className="text-[#001C41] text-[18px] leading-[24px] font-semibold pb-4">Real-Time Doctor Appointment Booking Made Easy</h3>
@@ -166,7 +166,7 @@ export default function Home() {
                         Simplify scheduling and reduce your clinic’s administrative workload with seamless AI-powered conversations.</p>
                     </div>
                   </div>
-                  <div className="bg-white rounded-[20px] shadow-xl overflow-hidden w-4/12">
+                  <div className="bg-white rounded-[20px] shadow-xl overflow-hidden lg:w-4/12">
                     <Image src={multilingual_support_img} alt='multilingual_support_img' className='inline-block w-full' />
                     <div className="px-8 py-10">
                        <h3 className="text-[#001C41] text-[18px] leading-[24px] font-semibold pb-4">Multilingual support</h3>
@@ -175,8 +175,8 @@ export default function Home() {
                     </div>
                   </div>
                </div>
-               <div className="flex gap-8 mb-6">
-                  <div className="bg-white rounded-[20px] shadow-xl overflow-hidden w-4/12">
+               <div className="lg:flex gap-8 mb-6">
+                  <div className="bg-white rounded-[20px] shadow-xl overflow-hidden lg:w-4/12 mb-6 lg:mb-0">
                     <Image src={coaching_classes_img} alt='coaching_classes_img' className='inline-block w-full' />
                     <div className="px-8 py-10">
                        <h3 className="text-[#001C41] text-[18px] leading-[24px] font-semibold pb-4">Tutors & Coaching Classes</h3>
@@ -184,7 +184,7 @@ export default function Home() {
                         hassle-free. Instead of calling or visiting in person, students (and parents) can directly book sessions through WhatsApp</p>
                     </div>
                   </div>
-                  <div className="bg-white rounded-[20px] shadow-xl overflow-hidden w-8/12">
+                  <div className="bg-white rounded-[20px] shadow-xl overflow-hidden lg:w-8/12">
                     <Image src={made_easy_img} alt='made_easy_img' className='inline-block w-full' />
                     <div className="px-8 py-10">
                        <h3 className="text-[#001C41] text-[18px] leading-[24px] font-semibold pb-4">Real-Time Restaurant Reservation Made Easy</h3>
@@ -199,11 +199,11 @@ export default function Home() {
 
 
          {/* client Say section ends here */}
-         <div className="client_say_sec bg-[#024E41] py-20">
+         <div className="client_say_sec bg-[#024E41] py-10 px-5 lg:px-0 lg:py-20">
             <div className='max-w-6xl mx-auto'>
-               <div className="w-5/12 relative mb-10">
-                  <h2 className="text-[#ffffff] text-[50px] leading-[57px] font-medium pb-0">What our client’s Say!</h2>
-                  <Image src={Isolation_Mode} alt='Isolation_Mode' className='absolute right-[25px] bottom-[-15px]' />
+               <div className="lg:w-5/12 relative mb-10">
+                  <h2 className="text-[#ffffff] text-[27px] leading-[37px] lg:text-[50px] lg:leading-[57px] font-medium pb-0 pr-32 lg:pr-0">What our client’s Say!</h2>
+                  <Image src={Isolation_Mode} alt='Isolation_Mode' className='absolute right-[25px] lg:bottom-[-15px] bottom-[10px] w-[110px] lg:w-[140px]' />
                </div>
                <Testimonial/>
             </div>
@@ -212,13 +212,13 @@ export default function Home() {
 
 
          {/* Plan section ends here */}
-         <div className="plan_sec py-20">
+         <div className="plan_sec py-10 px-5 lg:px-0 lg:py-20">
             <div className='max-w-6xl mx-auto'>
                <div className="relative text-center mb-12">
-                  <h2 className="text-[#000000] text-[50px] leading-[57px] font-medium pb-6">Flexible plans for <span>every need</span></h2>
-                  <p className="text-[#000000] text-[20px] leading-[20px] font-normal">Choose a plan that’s right for you</p>
+                  <h2 className="text-[#000000] text-[27px] leading-[37px] lg:text-[50px] lg:leading-[57px] font-medium pb-2 lg:pb-6">Flexible plans for <span>every need</span></h2>
+                  <p className="text-[#000000] text-base lg:text-[20px] lg:leading-[20px] font-normal">Choose a plan that’s right for you</p>
                </div>
-               <div className="grid grid-cols-2 gap-6 w-8/12 mx-auto">
+               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:w-8/12 mx-auto">
                   <div className="rounded-[12px] px-6 py-10 border border-[#C9C9C9]">
                      <h3 className="text-[#191d23] text-[22px] leading-[22px] font-bold pb-4">Free</h3>
                      <p className="text-[16px] leading-[22px] text-[#95a0af] pb-3 font-normal">Perfect for individuals and small businesses to start using a WhatsApp chatbot at no cost.</p>

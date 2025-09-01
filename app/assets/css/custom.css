@@ -3,10 +3,24 @@
   src: url("../fonts/calibri-bold.ttf") format("truetype");
 }
 
+@font-face {
+  font-family: "kepler_stdMdSCnIt";
+  src: url("../fonts/fonnts.com-kepler-std-scn-medium.woff2") format("woff2"),
+    url("../fonts/fonnts.com-kepler-std-scn-medium.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
 h1,
 h2,
 h3 {
   font-family: "Bricolage Grotesque", sans-serif;
+}
+h1 span {
+  font-family: "kepler_stdMdSCnIt";
+}
+h2 span {
+  font-family: "kepler_stdMdSCnIt";
 }
 
 body {
@@ -403,11 +417,11 @@ body {
 } */
 
 .register_image {
-  background: url(../imagesource/login_bg.png) no-repeat 0 0;
+  background: #249883 url(../imagesource/login_bg.png) no-repeat center center;
   background-size: cover;
 }
 .login_image {
-  background: url(../imagesource/login_bg.png) no-repeat 0 0;
+  background: #249883 url(../imagesource/login_bg.png) no-repeat center center;
   background-size: cover;
 }
 
@@ -458,7 +472,7 @@ body {
 }
 
 .banner_content_area h1 span {
-  font-style: italic;
+  font-size: 60px;
 }
 
 .getmobile_area {
@@ -1162,9 +1176,27 @@ body {
   line-height: 55px !important;
 }
 
+.login_form_wrap {
+  padding: 63px 60px;
+}
+.registration_form_wrap {
+  padding: 40px 50px;
+}
+
 @media only screen and (max-width: 767px) {
   .menu_btn {
     display: inline-flex;
+  }
+
+  .login_form_wrap {
+    padding: 63px 35px;
+  }
+  .registration_form_wrap {
+    padding: 40px 25px;
+  }
+
+  .banner_content_area h1 span {
+    font-size: 26px;
   }
 
   .main_menu nav div > div {
@@ -1174,7 +1206,7 @@ body {
     background: none;
     position: absolute;
     right: 0;
-    top: -12px;
+    top: -2px;
   }
 
   .main_menu {

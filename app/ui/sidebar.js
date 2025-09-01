@@ -124,7 +124,7 @@ const Sidebar = () => {
       className={`absolute left-0 top-0 lg:top-[50px] z-9999 flex h-screen w-[240px] lg:w-auto flex-col lg:rounded-[0px] bg-[#ffffff] duration-300 ease-linear lg:static lg:translate-x-0 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
     >
-      <button onClick={openMobileMenu} className={`menu_btn ${sidebarOpen ? 'right-[-24px]' : 'right-[-84px]'}`}>
+      <button onClick={openMobileMenu} className={`menu_btn ${sidebarOpen ? 'right-[-24px]' : 'right-[-75px]'}`}>
         <FiMenu className='text-white text-xl' />
       </button>
       {/* <!-- SIDEBAR HEADER --> */}
@@ -162,47 +162,47 @@ const Sidebar = () => {
           {/* <!-- Menu Group --> */}
           <div>
 
-            <ul className="mb-6 flex flex-col gap-1.5 mx-4">
+            <ul className="mb-6 flex flex-col gap-1.5 lg:mx-4">
               <li onClick={closeNavbar}>
                 <Link href="/dashboard"
-                  className={`group relative flex items-center gap-2 rounded-sm py-3 px-4 font-normal text-base text-[#606060] duration-300 ease-in-out hover:bg-graydark ${pathname.includes('dashboard') &&
+                  className={`group relative flex items-center gap-2 rounded-sm py-3 px-4 font-normal text-sm lg:text-base text-[#606060] duration-300 ease-in-out hover:bg-graydark ${pathname.includes('dashboard') &&
                     'bg-[#00806a] text-white dark:bg-meta-4'
                     }`}
                   passHref>
-                  <LuLayoutDashboard className='text-2xl' />
+                  <LuLayoutDashboard className='text-xl lg:text-2xl' />
                   Dashboard
                 </Link>
               </li>
 
               <li onClick={closeNavbar}>
                 <Link href="/create-bot"
-                  className={`group relative flex items-center gap-2 rounded-sm py-3 px-4 font-normal text-base text-[#606060] duration-300 ease-in-out hover:bg-graydark ${pathname.includes('create-bot') &&
+                  className={`group relative flex items-center gap-2 rounded-sm py-3 px-4 font-normal text-sm lg:text-base text-[#606060] duration-300 ease-in-out hover:bg-graydark ${pathname.includes('create-bot') &&
                     'bg-[#00806a] text-white dark:bg-meta-4'
                     }`}
                   passHref>
-                  <LuBot className='text-2xl' />
+                  <LuBot className='text-xl lg:text-2xl' />
                   Create Bot
                 </Link>
               </li>
 
               <li onClick={closeNavbar}>
                 <Link href="/manage-appointments"
-                  className={`group relative flex items-center gap-2 rounded-sm py-3 px-4 font-normal text-base text-[#606060] duration-300 ease-in-out hover:bg-graydark ${pathname.includes('manage-appointments') &&
+                  className={`group relative flex items-center gap-2 rounded-sm py-3 px-4 font-normal text-sm lg:text-base text-[#606060] duration-300 ease-in-out hover:bg-graydark ${pathname.includes('manage-appointments') &&
                     'bg-[#00806a] text-white dark:bg-meta-4'
                     }`}
                   passHref>
-                  <LuCalendar className='text-2xl' />
-                  Manage Appointment
+                  <LuCalendar className='text-xl lg:text-2xl' />
+                  Appointment
                 </Link>
               </li>
 
               <li onClick={closeNavbar}>
                 <Link href="/subscription-plans"
-                  className={`group relative flex items-center gap-2 rounded-sm py-3 px-4 font-normal text-base text-[#606060] duration-300 ease-in-out hover:bg-graydark ${pathname.includes('subscription-plans') &&
+                  className={`group relative flex items-center gap-2 rounded-sm py-3 px-4 font-normal text-sm lg:text-base text-[#606060] duration-300 ease-in-out hover:bg-graydark ${pathname.includes('subscription-plans') &&
                     'bg-[#00806a] text-white dark:bg-meta-4'
                     }`}
                   passHref>
-                  <MdOutlineSubscriptions className='text-2xl' />
+                  <MdOutlineSubscriptions className='text-xl lg:text-2xl' />
                   Subscription plans
                 </Link>
               </li>
@@ -213,7 +213,7 @@ const Sidebar = () => {
                     'bg-[#00806a] text-white dark:bg-meta-4'
                     }`}
                   passHref>
-                  <FaRegCircleUser className='text-2xl' />
+                  <FaRegCircleUser className='text-xl lg:text-2xl' />
                   My Account
                 </Link>
               </li>

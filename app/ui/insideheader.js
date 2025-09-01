@@ -7,6 +7,8 @@ import userFace from "../assets/imagesource/user_face.png";
 import Flag from "../assets/imagesource/Flag.png";
 import bell_icon from "../assets/imagesource/bell_icon.png";
 
+import logoAdmin from "../assets/imagesource/logo_admin.png";
+
 import { Poppins } from 'next/font/google';
 
 import { useState } from "react";
@@ -62,9 +64,9 @@ const Insideheader = () => {
 
   return (
     <div className='bg-[#ffffff] rounded-[0px] py-4 px-6 mb-5 border-l border-[#f3f4f6]'>
-      <div className='lg:flex justify-between items-center'>
-        <div className='pl-[50px] lg:pl-0'>
-          &nbsp;
+      <div className='flex lg:justify-end justify-between items-center'>
+        <div className='pl-[0] lg:pl-0 block lg:hidden'>
+          <Image src={logoAdmin} alt="logoAdmin" className='w-[50px]' />
         </div>
         <div className='flex justify-end items-center gap-3'>
           <div className='relative mr-5 mt-1'>
@@ -90,7 +92,7 @@ const Insideheader = () => {
                   height={50} className='rounded-full w-[45px] h-[45px]' />
              
             </div>
-             <div>
+             <div className='hidden lg:block'>
                  <p className='text-[#404040] text-[14px] font-bold'>Moni Roy</p>
                  <p className='text-[#565656] text-[12px] font-semibold'>Admin</p>
              </div>

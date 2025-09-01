@@ -52,14 +52,14 @@ const LoginModal = ({ openLoginModal, setOpenLoginModal, setOpenRegisterModal })
 
     return (
         <>
-            <Modal size="6xl" show={openLoginModal} onClose={() => setOpenLoginModal(false)}>
+            <Modal size="4xl" show={openLoginModal} onClose={() => setOpenLoginModal(false)}>
                 <ModalHeader className='border-none pb-0 absolute right-3 top-3 bg-transparent'>&nbsp;</ModalHeader>
                 <ModalBody className='bg-white p-0'>
                     <div className="lg:flex">
                         <div className='w-6/12 hidden lg:block login_image'>
                             &nbsp;
                         </div>
-                        <div className='lg:w-6/12 py-20 px-10 lg:py-32 lg:px-20'>
+                        <div className='lg:w-6/12 login_form_wrap'>
                             <div className='py-0 px-0'>
                                 <h2 className='text-[#000000] text-[30px] leading-[35px] font-semibold pb-4'>Sign in</h2>
                                 <div className='form_area'>

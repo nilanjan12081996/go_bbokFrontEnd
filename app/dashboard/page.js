@@ -62,33 +62,33 @@ const Page = () => {
       <div className='mb-0'>
         <div className='mb-5'>
           <div className='flex gap-4'>
-            <div className='w-full grid grid-cols-3 gap-5'>
-              <div className='bg-white rounded-[10px] px-5 py-7'>
+            <div className='w-full grid grid-cols-1 lg:grid-cols-3 gap-5'>
+              <div className='bg-white rounded-[10px] px-5 py-5 lg:py-7'>
                 <div className='flex justify-between items-center mb-4'>
-                  <p className='text-[18px] leading-[18px] text-[#6d6e70] font-medium'>Services</p>
-                  <div className='w-[75px] h-[75px] bg-[#E1E1FF] rounded-[8px] flex items-center justify-center'>
-                    <MdMiscellaneousServices className='text-[#6260FF] text-5xl' />
+                  <p className='text-base lg:text-[18px] lg:leading-[18px] text-[#6d6e70] font-medium'>Services</p>
+                  <div className='w-[50px] h-[50px] lg:w-[75px] lg:h-[75px] bg-[#E1E1FF] rounded-[8px] flex items-center justify-center'>
+                    <MdMiscellaneousServices className='text-[#6260FF] text-3xl lg:text-5xl' />
                   </div>
                 </div>
-                <h3 className='text-[48px] leading-[48px] text-[#202224] font-bold'>7</h3>
+                <h3 className='text-[32px] leading-[40px] lg:text-[48px] lg:leading-[48px] text-[#202224] font-bold'>7</h3>
               </div>
-              <div className='bg-white rounded-[10px] px-5 py-7'>
+              <div className='bg-white rounded-[10px] px-5 py-5 lg:py-7'>
                 <div className='flex justify-between items-center mb-4'>
-                  <p className='text-[18px] leading-[18px] text-[#6d6e70] font-medium'>Bookings</p>
-                  <div className='w-[75px] h-[75px] bg-[#FFFCE1] rounded-[8px] flex items-center justify-center'>
-                    <BiSolidCalendar className='text-[#DAA644] text-5xl' />
+                  <p className='text-base lg:text-[18px] lg:leading-[18px] text-[#6d6e70] font-medium'>Bookings</p>
+                  <div className='w-[50px] h-[50px] lg:w-[75px] lg:h-[75px] bg-[#FFFCE1] rounded-[8px] flex items-center justify-center'>
+                    <BiSolidCalendar className='text-[#DAA644] text-3xl lg:text-5xl' />
                   </div>
                 </div>
-                <h3 className='text-[48px] leading-[48px] text-[#202224] font-bold'>206</h3>
+                <h3 className='text-[32px] leading-[40px] lg:text-[48px] lg:leading-[48px] text-[#202224] font-bold'>206</h3>
               </div>
-              <div className='bg-white rounded-[10px] px-5 py-7'>
+              <div className='bg-white rounded-[10px] px-5 py-5 lg:py-7'>
                 <div className='flex justify-between items-center mb-4'>
-                  <p className='text-[18px] leading-[18px] text-[#6d6e70] font-medium'>Customers</p>
-                  <div className='w-[75px] h-[75px] bg-[#E1FDFF] rounded-[8px] flex items-center justify-center'>
-                    <FaUsers className='text-[#108F98] text-5xl' />
+                  <p className='text-base lg:text-[18px] lg:leading-[18px] text-[#6d6e70] font-medium'>Customers</p>
+                  <div className='w-[50px] h-[50px] lg:w-[75px] lg:h-[75px] bg-[#E1FDFF] rounded-[8px] flex items-center justify-center'>
+                    <FaUsers className='text-[#108F98] text-3xl lg:text-5xl' />
                   </div>
                 </div>
-                <h3 className='text-[48px] leading-[48px] text-[#202224] font-bold'>500</h3>
+                <h3 className='text-[32px] leading-[40px] lg:text-[48px] lg:leading-[48px] text-[#202224] font-bold'>500</h3>
               </div>
             </div>
           </div>
