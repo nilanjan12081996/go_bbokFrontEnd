@@ -1,5 +1,6 @@
 import Image from "next/image";
 import code_img from "../../app/assets/imagesource/code_img.png";
+import { Button, Tooltip } from "flowbite-react";
 const StepSix = ({ setShow }) => {
   const handleBack = () => {
     setShow({
@@ -27,9 +28,14 @@ const StepSix = ({ setShow }) => {
             >
               Previous Step
             </button>
-            <button className="bg-[#00806A] rounded-[6px] text-white hover:text-[#464f60] text-[13px] leading-[36px] lg:text-[14px] lg:leading-[43px] font-medium px-5 lg:px-8 cursor-pointer hover:bg-white border border-[#00806A] hover:border-[#dddfe2]">
-              Copy Code
-            </button>
+            <Tooltip
+              className="max-w-[250px] text-[12px] text-center font-normal leading-relaxed"
+              content="This code snippet adds the feature. Paste it into your site builder, WordPress, or custom HTML editor where you want the function to appear."
+            >
+              <button className="bg-[#00806A] rounded-[6px] text-white hover:text-[#464f60] text-[13px] leading-[36px] lg:text-[14px] lg:leading-[43px] font-medium px-5 lg:px-8 cursor-pointer hover:bg-white border border-[#00806A] hover:border-[#dddfe2]">
+                Copy Code
+              </button>
+            </Tooltip>
           </div>
         </div>
       </div>
