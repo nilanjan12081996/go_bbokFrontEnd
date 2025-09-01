@@ -80,15 +80,18 @@ dispatch(getLanguage())
             </div>
           </div> */}
           <div className='flex items-center gap-0 lang_box'>
-            <Image src={Flag} alt="Flag" className='w-[40px] h-[30px]' />
+            Currency
             <Select id="countries" required>
-             {
+             {/* {
                language?.data?.map((lan)=>(
                 <option>
                   {lan?.language}
                 </option>
                ))
-             }
+             } */}
+             <option>Select</option>
+             <option>EURO</option>
+             <option>USD</option>
             </Select>
           </div>
           <div className='flex justify-end items-center gap-3'>

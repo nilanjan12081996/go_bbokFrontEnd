@@ -16,6 +16,9 @@ const StepSix = ({ setShow }) => {
     <>
       <div className="step_box_one">
         <div className="step_content_wraper">
+          <div className="mb-4">
+            <p className="text-sm text-[#8F8F8F]">This code snippet adds the feature. Paste it into your site builder, WordPress, or custom HTML editor where you want the function to appear.</p>
+          </div>
           <div className="mb-8 bg-white p-5 border border-[#929292] rounded-[10px] h-[480px] overflow-scroll overflow-x-hidden">
             <Image src={code_img} alt="code_img" className="" />
           </div>
@@ -28,14 +31,19 @@ const StepSix = ({ setShow }) => {
             >
               Previous Step
             </button>
-            <Tooltip
+            {/* <Tooltip
               className="max-w-[250px] text-[12px] text-center font-normal leading-relaxed"
               content="This code snippet adds the feature. Paste it into your site builder, WordPress, or custom HTML editor where you want the function to appear."
             >
               <button className="bg-[#00806A] rounded-[6px] text-white hover:text-[#464f60] text-[13px] leading-[36px] lg:text-[14px] lg:leading-[43px] font-medium px-5 lg:px-8 cursor-pointer hover:bg-white border border-[#00806A] hover:border-[#dddfe2]">
                 Copy Code
               </button>
-            </Tooltip>
+            </Tooltip> */}
+
+            <button className="bg-[#00806A] rounded-[6px] text-white hover:text-[#464f60] text-[13px] leading-[36px] lg:text-[14px] lg:leading-[43px] font-medium px-5 lg:px-8 cursor-pointer hover:bg-white border border-[#00806A] hover:border-[#dddfe2]">
+                Copy Code
+              </button>
+            
           </div>
         </div>
       </div>

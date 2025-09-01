@@ -100,7 +100,7 @@ const StepTwo = ({ setShow, industryId, businessId }) => {
             {rows?.map((rows, index) => {
               return (
                 <>
-                  <div className="flex gap-4 mb-6 items-start" key={index}>
+                  <div className="flex gap-4 mb-0 items-start" key={index}>
                     <div className="w-11/12">
                       <div className="lg:flex gap-4 mb-8">
                         <div className="lg:w-6/12 step_field mb-2 lg:mb-0">
@@ -119,7 +119,7 @@ const StepTwo = ({ setShow, industryId, businessId }) => {
                               handleChange(index, "serviceName", e.target.value)
                             }
                           />
-                          <div className="mt-4">
+                          {/* <div className="mt-4">
                             <p className="text-[#7C7C7C] text-[13px] leading-[20px] font-medium pb-1">
                               Service Name Eg.
                             </p>
@@ -136,7 +136,7 @@ const StepTwo = ({ setShow, industryId, businessId }) => {
                                 })}
                               </ul>
                             </div>
-                          </div>
+                          </div> */}
                         </div>
                         <div className="lg:w-6/12">
                           <div className="mb-1 block">
@@ -179,7 +179,7 @@ const StepTwo = ({ setShow, industryId, businessId }) => {
                               </Select>
                             </div>
                           </div>
-                          <div className="mt-4">
+                          {/* <div className="mt-4">
                             <p className="text-[#7C7C7C] text-[13px] leading-[20px] font-medium pb-1">
                               Duration Eg.
                             </p>
@@ -196,9 +196,10 @@ const StepTwo = ({ setShow, industryId, businessId }) => {
                                 </li>
                               </ul>
                             </div>
-                          </div>
+                          </div> */}
                         </div>
                       </div>
+                      
                     </div>
                     <div className="w-1/12 flex flex-col items-center justify-center gap-2">
                       <button
@@ -222,6 +223,53 @@ const StepTwo = ({ setShow, industryId, businessId }) => {
                 </>
               );
             })}
+
+            <div className="flex">
+              <div className="lg:flex gap-4 mb-8 w-11/12">
+                <div className="lg:w-6/12 step_field mb-2 lg:mb-0">
+                <div className="mt-4">
+                    <p className="text-[#7C7C7C] text-[13px] leading-[20px] font-medium pb-1">
+                      Service Name Eg.
+                    </p>
+                    <div>
+                      <ul className="grid grid-cols-2 lg:grid-cols-3 gap-2">
+                        {examples?.data?.map((ex) => {
+                          return (
+                            <>
+                              <li className="text-[12px] leading-[24px] text-black border border-[#D8D8D8] rounded-[6px] py-1 px-3 shadow">
+                                {ex?.service_name}
+                              </li>
+                            </>
+                          );
+                        })}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div className="lg:w-6/12">
+                <div className="mt-4">
+                    <p className="text-[#7C7C7C] text-[13px] leading-[20px] font-medium pb-1">
+                      Duration Eg.
+                    </p>
+                    <div>
+                      <ul className="flex gap-2">
+                        <li className="text-[12px] leading-[24px] text-black border border-[#D8D8D8] rounded-[6px] py-1 px-3 shadow">
+                          30mins{" "}
+                        </li>
+                        <li className="text-[12px] leading-[24px] text-black border border-[#D8D8D8] rounded-[6px] py-1 px-3 shadow">
+                          1hr{" "}
+                        </li>
+                        <li className="text-[12px] leading-[24px] text-black border border-[#D8D8D8] rounded-[6px] py-1 px-3 shadow">
+                          15mins{" "}
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="w-1/12">&nbsp;</div>
+            </div>
+            
           </div>
           <div className="step_btn_area border-t border-[#EBEEFA] pt-5">
             <div className="flex justify-end items-center gap-3">
@@ -241,6 +289,8 @@ const StepTwo = ({ setShow, industryId, businessId }) => {
           </div>
         </form>
       </div>
+
+      
     </>
   );
 };
