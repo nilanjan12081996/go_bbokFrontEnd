@@ -77,6 +77,7 @@ const page = () => {
   });
   const[industryId,setIndustryId]=useState()
   const[businessId,setBusinessId]=useState()
+  const[languageId,setLanguageId]=useState()
   const isStepActive = (stepNumber) => {
     if (show.StepOne && stepNumber <= 1) return true;
     if (show.StepTwo && stepNumber <= 2) return true;
@@ -86,7 +87,7 @@ const page = () => {
     if (show.StepSix && stepNumber <= 6) return true;
     return false;
   };
-  console.log("");
+ 
   
   return (
     <div className={`${poppins.className} antialiased`}>
@@ -138,12 +139,13 @@ const page = () => {
             {/* step three start here */}
           
               {show.StepThree && (
-            <StepThree setShow={setShow} />
+            <StepThree setShow={setShow} industryId={industryId}/>
                 )}
             {/* step three ends here */}
             {/* step four start here */}
               {show.StepFour && (
           <StepFour setShow={setShow}
+          setLanguageId={setLanguageId}
           />
         )}
             {/* step four ends here */}
@@ -153,6 +155,8 @@ const page = () => {
                {show.StepFive && (
           <StepFive
             setShow={setShow}
+            languageId={languageId}
+            industryId={industryId}
             
           />
         )}

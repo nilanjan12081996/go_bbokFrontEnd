@@ -1,3 +1,4 @@
+'use client';
 import { Label, Select, TextInput } from "flowbite-react";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";

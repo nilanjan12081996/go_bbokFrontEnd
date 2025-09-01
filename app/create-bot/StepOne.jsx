@@ -1,3 +1,4 @@
+'use client';
 import { Label, Select, TextInput } from "flowbite-react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -66,7 +67,7 @@ const onSubmit=(data)=>{
             
         <div className='step_box_one'>
            
-            <form onSubmit={handleSubmit(onSubmit)}>
+                   <form onSubmit={handleSubmit(onSubmit)}>
                         <div className='step_content_wraper'>
                             <div className='flex gap-4 mb-8'>
                                 <div className="w-6/12">
@@ -76,13 +77,14 @@ const onSubmit=(data)=>{
                                     <Select id="countries" required onChange={handleSelect}>
                                         <option>Select</option>
                                         {
-                                            industryData?.res?.map((indus)=>{
-                                                return(
-                                                    <>
-                                                    <option value={indus?.id}>{indus?.industry_name}</option>
-                                                    </>
-                                                )
-                                            })
+                                           
+                                            industryData?.res?.map((indus) => (
+                                            <option key={indus?.id} value={indus?.id}>
+                                                    {indus?.industry_name}
+                                            </option>
+                                            ))
+
+
                                         }
                                      
                                     </Select>

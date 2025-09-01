@@ -1,10 +1,20 @@
-import { Checkbox, Label } from "flowbite-react"
+'use client';
+import { Checkbox, Label, Radio } from "flowbite-react"
 import Image from "next/image";
-import french_flag from '../../app/assets/imagesource/french_flag.png'
-import english_flag from '../../app/assets/imagesource/english_flag.png'
-import spanish_flag from '../../app/assets/imagesource/spanish_flag.png'
-const StepFour=({setShow})=>{
+
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { getLanguage } from "../reducers/CreateBotSlice";
+const StepFour=({setShow, setLanguageId})=>{
+    const{language}=useSelector((state)=>state?.bot)
+    const dispatch=useDispatch()
+     const [selectedLang, setSelectedLang] = useState(null);
       const HandleNextPage = () => {
+         if (!selectedLang) {
+      alert("Please select a language first!");
+      return;
+    }
+    setLanguageId(selectedLang);
     setShow({
       StepOne: false, // AddProduct is the first step
       StepTwo: false,
@@ -12,7 +22,6 @@ const StepFour=({setShow})=>{
       StepFour: false,
       StepFive: true,
       StepSix: false,
-      
     });
   };
 
@@ -27,6 +36,9 @@ const StepFour=({setShow})=>{
     
     });
   };
+  useEffect(()=>{
+dispatch(getLanguage())
+  },[])
     return(
         <>
         <div className='step_box_one'>
@@ -35,28 +47,34 @@ const StepFour=({setShow})=>{
                         <Label htmlFor="countries">Languages</Label>
                     </div>
                     <div className='flex gap-6 mb-8'>
-                        
-                        <div class="flex items-center justify-between px-4 py-2 border-2 border-[#E2E2E2] rounded-lg w-4/12">
+                        {
+                            language?.data?.map((lan,index)=>(
+                              
+                                      <div key={index} class="flex items-center justify-between px-4 py-2 border-2 border-[#E2E2E2] rounded-lg w-4/12">
                             <div className='flex items-center'>
-                                <Image src={french_flag} alt="french_flag" className='mb-0' />
-                                <label for="bordered-checkbox-1" class="w-full py-4 ms-2 text-base font-medium text-[#000000] dark:text-gray-300">French(FR)</label>
+                                <Image  src={lan?.avatar} alt="french_flag" className='mb-0' height={60} width={60}/>
+                                      <label
+                      htmlFor={`lang-${lan.id}`}
+                      className="w-full py-4 ms-2 text-base font-medium text-[#000000] dark:text-gray-300"
+                    >
+                      {lan?.language}
+                    </label>
                             </div>
-                            <Checkbox id="bordered-checkbox-1" type="checkbox" value="" name="bordered-checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+                               <Radio
+                    id={`lang-${lan.id}`}
+                    name="language"
+                    value={lan.id}
+                    checked={selectedLang === lan.id}
+                    onChange={() => setSelectedLang(lan.id)}
+                    className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500"
+                  />
                         </div>
-                        <div class="flex items-center justify-between px-4 py-2 border-2 border-[#E2E2E2] rounded-lg w-4/12">
-                            <div className='flex items-center'>
-                                <Image src={english_flag} alt="english_flag" className='mb-0' />
-                                <label for="bordered-checkbox-2" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">English(EN)</label>
-                            </div>
-                            <Checkbox id="bordered-checkbox-2" type="checkbox" value="" name="bordered-checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
-                        </div>
-                        <div class="flex items-center justify-between px-4 py-2 border-2 border-[#E2E2E2] rounded-lg w-4/12">
-                            <div className='flex items-center'>
-                                <Image src={spanish_flag} alt="spanish_flag" className='mb-0' />
-                                <label for="bordered-checkbox-3" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Spanish(ES)</label>
-                            </div>
-                            <Checkbox id="bordered-checkbox-3" type="checkbox" value="" name="bordered-checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
-                        </div>
+                                    
+                             ) )
+                            
+                        }
+                      
+                   
 
                     </div>
                 </div>

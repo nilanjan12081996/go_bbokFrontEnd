@@ -1,9 +1,15 @@
 import { Label, TextInput } from "flowbite-react";
 import Image from "next/image";
-import bot01 from "../../app/assets/imagesource/bot01.png";
-import bot02 from "../../app/assets/imagesource/bot02.png";
-import bot03 from "../../app/assets/imagesource/bot03.png";
-const StepFive=({setShow})=>{
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getBots, stepFourAndFive } from "../reducers/CreateBotSlice";
+import { useForm } from "react-hook-form";
+const StepFive=({setShow,languageId,industryId})=>{
+    const{bots}=useSelector((state)=>state?.bot)
+    const dispatch=useDispatch()
+    useEffect(()=>{
+dispatch(getBots())
+    },[])
       const HandleNextPage = () => {
     setShow({
       StepOne: false, // AddProduct is the first step
@@ -27,53 +33,70 @@ const StepFive=({setShow})=>{
     });
   };
 
+    const {
+          register,
+          handleSubmit,
+          setValue,
+          watch,
+          formState: { errors },
+        } = useForm();
+
+const onSubmit=(data)=>{
+const payload={
+    language_id:languageId,
+    bot_id:data?.bot_id,
+    company_id:industryId,
+    bot_name:data?.bot_name,
+    bot_message:data?.bot_message
+}
+dispatch(stepFourAndFive(payload)).then((res)=>{
+    if(res?.payload?.status_code===201){
+        HandleNextPage()
+}
+})
+
+}
     return(
         <>
            <div className='step_box_one'>
+            <form onSubmit={handleSubmit(onSubmit)}>
                 <div className='step_content_wraper'>
                     <div className='flex gap-4 mb-8'>
                         <div className="w-6/12 step_field">
                             <div className="mb-1 block">
                                 <Label htmlFor="countries">Enter Bot Name</Label>
                             </div>
-                            <TextInput id="base" type="text" sizing="md" placeholder='Enter Bot Name' />
+                            <TextInput {...register("bot_name")} id="base" type="text" sizing="md" placeholder='Enter Bot Name' />
                         </div>
                         <div className="w-6/12 step_field">
                             <div className="mb-1 block">
                                 <Label htmlFor="countries">Bot Welcome Message</Label>
                             </div>
-                            <TextInput id="base" type="text" sizing="md" placeholder='"Hi [Name], thanks for contacting [BusinessName]."' />
+                            <TextInput {...register("bot_message")} id="base" type="text" sizing="md" placeholder='"Hi [Name], thanks for contacting [BusinessName]."' />
                         </div>
                     </div>
                     <div className="mb-2 block">
                         <Label htmlFor="countries">Bot Icons</Label>
                     </div>
                     <div className='flex gap-6 mb-8 select_bot_wrap'>
-
-                        <label class="radio-button-label">
-                            <input type="radio" name="radio-control" value="lsb" />
-                            <Image src={bot01} alt="bot01" className='' />
+                        {
+                            bots?.data?.map((b)=>(
+                             <label key={b.id} class="radio-button-label">
+                            <input type="radio" name="radio-control" value={b.id}   // send bot id here
+                            {...register("bot_id")}/>
+                            <Image src={b?.avatar} alt="bot01" className='' height={60} width={60}/>
                         </label>
-
-                        <label class="radio-button-label">
-                            <input type="radio" name="radio-control" value="nosb"/>
-                            <Image src={bot02} alt="bot02" className='' />
-                        </label>
-
-                        <label class="radio-button-label">
-                            <input type="radio" name="radio-control" value="rsb" />
-                            <Image src={bot03} alt="bot03" className='' />
-                        </label>
-
-
+                            ))
+                        }
                     </div>
                 </div>
                 <div className='step_btn_area border-t border-[#EBEEFA] pt-5'>
                     <div className='flex justify-end items-center gap-3'>
                         <button onClick={()=>handleBack()} className='bg-[#ffffff] rounded-[6px] text-[#464f60] hover:text-[#ffffff] text-[14px] leading-[43px] font-medium  px-6 cursor-pointer hover:bg-[#00806A] border border-[#dddfe2] hover:border-[#00806A]'>Previous Step</button>
-                        <button onClick={()=>HandleNextPage()} className='bg-[#00806A] rounded-[6px] text-white hover:text-[#464f60] text-[14px] leading-[43px] font-medium px-10 cursor-pointer hover:bg-white border border-[#00806A] hover:border-[#dddfe2]'>Next Step</button>
+                        <button  className='bg-[#00806A] rounded-[6px] text-white hover:text-[#464f60] text-[14px] leading-[43px] font-medium px-10 cursor-pointer hover:bg-white border border-[#00806A] hover:border-[#dddfe2]'>Next Step</button>
                     </div>
                 </div>
+                </form>
             </div>
         </>
     )
