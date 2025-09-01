@@ -1005,11 +1005,11 @@ body {
 }
 .step_wraper ul:before {
   position: absolute;
-  left: 5px;
+  left: 7px;
   top: 25%;
   content: "";
   background: #ebebeb;
-  width: 99%;
+  width: 98%;
   height: 6px;
   z-index: 1;
 }
@@ -1397,5 +1397,15 @@ body {
 @media screen and (min-width: 1600px) and (max-width: 1999px) {
   .dashboard_wrapper {
     gap: 0;
+  }
+  .step_wraper ul:before {
+    position: absolute;
+    left: 5px;
+    top: 25%;
+    content: "";
+    background: #ebebeb;
+    width: 99%;
+    height: 6px;
+    z-index: 1;
   }
 }
