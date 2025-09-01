@@ -417,11 +417,11 @@ body {
 } */
 
 .register_image {
-  background: url(../imagesource/login_bg.png) no-repeat 0 0;
+  background: #249883 url(../imagesource/login_bg.png) no-repeat center center;
   background-size: cover;
 }
 .login_image {
-  background: url(../imagesource/login_bg.png) no-repeat 0 0;
+  background: #249883 url(../imagesource/login_bg.png) no-repeat center center;
   background-size: cover;
 }
 
@@ -1174,6 +1174,13 @@ body {
 
 .ag-cell {
   line-height: 55px !important;
+}
+
+.login_form_wrap {
+  padding: 63px 60px;
+}
+.registration_form_wrap {
+  padding: 40px 50px;
 }
 
 @media only screen and (max-width: 767px) {
