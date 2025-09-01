@@ -29,6 +29,7 @@ import { MdMiscellaneousServices } from "react-icons/md";
 import { BiSolidCalendar } from "react-icons/bi";
 import { FaUsers } from "react-icons/fa";
 import { dashBoardData } from '../reducers/DashBoardSlice';
+import CalendarComponent from './CalenderComponent';
 
 
 
@@ -104,7 +105,8 @@ console.log("dashBoards",dashBoards);
         <div className='bg-white rounded-[10px] p-7 mb-14'>
           <h2 className='text-[22px] leading-[22px] text-black font-medium mb-6'>Schedule</h2>
           <div className='calendar_box'>
-            <Image src={calendar_img} alt="calendar_img" className='mb-5' />
+            {/* <Image src={calendar_img} alt="calendar_img" className='mb-5' /> */}
+            <CalendarComponent/>
           </div>
         </div>
       </div>
