@@ -42,12 +42,12 @@ const StepTwo=({setShow,industryId, businessId})=>{
       
 
         const [rows, setRows] = useState([
-    { serviceName: "", duration: "", timeType: "hrs" },
+    { serviceName: "", duration: "", timeType: "mins" },
   ]);
 
   // Add new row
   const handleAddRow = () => {
-    setRows([...rows, { serviceName: "", duration: "", timeType: "hrs" }]);
+    setRows([...rows, { serviceName: "", duration: "", timeType: "mins" }]);
   };
 
     const handleRemoveRow = (index) => {
@@ -149,8 +149,9 @@ console.log("examples",examples);
                       onChange={(e) =>
                         handleChange(index, "timeType", e.target.value)
                       } required>
-                                                        <option>hrs</option>
                                                         <option>mins</option>
+                                                        <option>hrs</option>
+                                                        
                                                     </Select>
                                                 </div>
                                             </div>
