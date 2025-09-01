@@ -150,7 +150,7 @@ const StepTwo = ({ setShow, industryId, businessId }) => {
                                 id="base"
                                 type="text"
                                 sizing="md"
-                                placeholder="00:00"
+                                
                                 value={rows.duration}
                                 onChange={(e) =>
                                   handleChange(
