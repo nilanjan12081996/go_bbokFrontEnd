@@ -76,14 +76,14 @@ const Page = () => {
 
   return (
     <div className={`${poppins.className} antialiased`}>
-      <div className="mb-6">
+      <div className="pt-6 lg:pt-0 mb-6">
         <h3 className="text-[22px] text-black font-medium pb-1">Manage Appointments</h3>
         <p className="text-[13px] text-[#747577]">
           Easily manage, schedule, and track all your appointments in one place.
         </p>
       </div>
 
-      <div className="ag-theme-alpine custom-aggrid" style={{ height: 500, width: "100%" }}>
+      <div className="ag-theme-alpine custom-aggrid relative z-[0]" style={{ height: 500, width: "100%" }}>
         <AgGridReact
           rowData={rowData}
           columnDefs={columnDefs}

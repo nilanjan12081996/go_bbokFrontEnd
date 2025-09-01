@@ -1188,6 +1188,13 @@ body {
     display: inline-flex;
   }
 
+  .login_form_wrap {
+    padding: 63px 35px;
+  }
+  .registration_form_wrap {
+    padding: 40px 25px;
+  }
+
   .banner_content_area h1 span {
     font-size: 26px;
   }

@@ -73,7 +73,7 @@ const Header = () => {
                     <NavbarCollapse className={isNavbarOpen ? 'block' : 'hidden md:block'}>
                       <li onClick={closeNavbar}>
                         <Link href="/" passHref>
-                          Features
+                          Home
                         </Link>
                       </li>
                       <li onClick={closeNavbar}>
@@ -82,17 +82,17 @@ const Header = () => {
                         </Link>
                       </li>
                       <li onClick={closeNavbar}>
-                        <Link href="/" passHref>
+                        <Link href="/pricing" passHref>
                           Pricing
                         </Link>
                       </li>
-                      <li onClick={closeNavbar}>
+                      {/* <li onClick={closeNavbar}>
                         <Link href="/" passHref>
                           Testimonials
                         </Link>
-                      </li>
+                      </li> */}
                       <li onClick={closeNavbar}>
-                        <Link href="/" passHref>
+                        <Link href="/faqs" passHref>
                           FAQ
                         </Link>
                       </li>

@@ -46,7 +46,7 @@ const Footer = () => {
         <div className='max-w-6xl mx-auto'>
           <div className='footer_top_container pb-8'>
             <div className='lg:flex'>
-              <div className='lg:w-5/12 lg:pr-20 mb-4 lg:mb-0 text-center'>
+              <div className='lg:w-5/12 lg:pr-20 mb-4 lg:mb-0 text-center lg:text-left'>
                  <Image src={footerLogo} alt='footerLogo' className='inline-block mb-6' />
                  <p className='text-sm leading-[24px] text-white font-medium'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis </p>
               </div>
@@ -102,7 +102,7 @@ const Footer = () => {
                         </li>
                      </ul>
                   </div>
-                   <div className='lg:w-4/12 text-center'>
+                   <div className='lg:w-4/12 text-center lg:text-left'>
                      <h3 className='text-[20px] leading-[24px] text-white font-semibold mb-6'>Contact Us</h3>
                      <p className='text-sm leading-[24px] text-white font-medium mb-3 inline-block'>+91 6278765634</p>
                      <p className='text-sm leading-[24px] text-white font-medium mb-3 inline-block'>Loremipsum”gmail.com</p>

@@ -84,9 +84,9 @@ const page = () => {
       <div>
         <div>
           <ToastContainer />
-          <div className='mb-8'>
+          <div className='pt-6 lg:pt-0 mb-6'>
               <h3 className='text-[22px] leading-[22px] text-black font-medium pb-4'>My Account</h3>
-              <p className='text-[13px] leading-[2px] text-[#747577] font-normal pb-0'>Manage and update your account details in one place.</p>
+              <p className='text-[13px] leading-[22px] text-[#747577] font-normal pb-0'>Manage and update your account details in one place.</p>
           </div>
           <div className="bg-white rounded-2xl">
             <div className="w-full lg:w-full p-5 lg:p-10 mb-4">

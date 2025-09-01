@@ -53,11 +53,11 @@ const nunitoSans = Nunito_Sans({
 const page = () => {
   return (
     <div className={`${poppins.className} antialiased`}>
-        <div className='mb-8'>
+        <div className='pt-6 lg:pt-0 mb-6'>
             <h3 className='text-[22px] leading-[22px] text-black font-medium pb-4'>Subscription Plans</h3>
-            <p className='text-[13px] leading-[2px] text-[#747577] font-normal pb-0'>Easily manage, upgrade, and control all your subscription plans in one place.</p>
+            <p className='text-[13px] leading-[22px] text-[#747577] font-normal pb-0'>Easily manage, upgrade, and control all your subscription plans in one place.</p>
         </div>
-        <div className="grid grid-cols-2 gap-6 w-7/12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:w-7/12 pb-10 lg:pb-0">
             <div className="rounded-[12px] px-6 py-10 border border-[#C9C9C9] bg-white">
                 <div className='mb-4 border border-[#00806A] bg-[#E8FFFB] text-[#00806A] inline-block rounded-[5px]'>
                     <p className='text-[12px] leading-[26px] px-2 font-medium'>Current Plan</p>
