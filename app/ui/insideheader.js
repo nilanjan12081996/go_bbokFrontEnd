@@ -63,6 +63,7 @@ const Insideheader = () => {
   };
 useEffect(()=>{
 dispatch(getLanguage())
+  dispatch(getProfile());
 },[])
 
 
@@ -98,14 +99,21 @@ dispatch(getLanguage())
             {/* <button onClick={handleLogout} className='mr-4 text-black cursor-pointer'>Logout</button> */}
             {/* <p className='text-base text-[#CDCDCD] ${leagueSpartan.className}'>{profileData?.data?.fullname}</p> */}
             <div className='user_face'>
-       
-                <Image src={userFace} alt="userFace" width={45}
+                  {
+                          profileData?.res?.avatar ? (
+                            <Image src={profileData?.res?.avatar} width={45}
+                              height={50} alt='profileUser' className='rounded-full w-[45px] h-[45px]' />
+                          ) : (
+                             <Image src={userFace} alt="userFace" width={45}
                   height={50} className='rounded-full w-[45px] h-[45px]' />
+                          )
+                        }
+               
              
             </div>
              <div className='hidden lg:block'>
-                 <p className='text-[#404040] text-[14px] font-bold'>Moni Roy</p>
-                 <p className='text-[#565656] text-[12px] font-semibold'>Admin</p>
+                 <p className='text-[#404040] text-[14px] font-bold'>{profileData?.res?.fname}{" "}{profileData?.res?.lname}</p>
+               {/* <p className='text-[#565656] text-[12px] font-semibold'>Admin</p> */}
              </div>
           </div>
           <div className="relative group">
