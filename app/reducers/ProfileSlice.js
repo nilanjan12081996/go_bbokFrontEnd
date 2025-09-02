@@ -6,7 +6,7 @@ export const getProfile = createAsyncThunk(
     'getProfile',
     async (_, { rejectWithValue }) => {
         try {
-            const response = await api.get('/user/user-profile/info');
+            const response = await api.get('/api/profile');
             if (response?.data?.status_code === 200) {
                 return response.data;
             } else {
@@ -66,7 +66,7 @@ export const uploadPhoto = createAsyncThunk(
     'uploadPhoto',
     async (user_input, { rejectWithValue }) => {
         try {
-            const response = await api.post('user/user-profile/change-avatar', user_input);
+            const response = await api.post('/api/change-avatar', user_input);
             if (response?.data?.status_code === 200) {
                 return response.data;
             } else {
@@ -88,7 +88,7 @@ export const changePassword = createAsyncThunk(
 
     async (user_input, { rejectWithValue }) => {
         try {
-            const response = await api.post('user/user-profile/change-password', user_input);
+            const response = await api.post('/api/change-password', user_input);
             if (response?.data?.status_code === 200) {
                 return response.data;
             } else {

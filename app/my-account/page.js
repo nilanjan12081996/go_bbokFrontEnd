@@ -32,11 +32,11 @@ const page = () => {
   console.log("profileData", profileData)
 
   useEffect(() => {
-    setValue("first_name", profileData?.data?.first_name)
-    setValue("last_name", profileData?.data?.last_name)
-    setValue("email", profileData?.data?.email)
-    setValue("username", profileData?.data?.username)
-  }, [profileData?.data])
+    setValue("first_name", profileData?.res?.fname)
+    setValue("last_name", profileData?.res?.lname)
+    setValue("email", profileData?.res?.email)
+  
+  }, [profileData?.res])
   const handleCancelSubs = (id) => {
     // dispatch(cancelSubscription({ subscription_id: id })).then((res) => {
     //   console.log("res", res);
@@ -66,10 +66,10 @@ const page = () => {
   const onSubmit = (data) => {
     console.log("data:", data);
     const payload = {
-      user_id: profileData?.data?.id,
-      oldPassword: data?.oldPassword,
-      newPassword: data?.newPassword,
-      confirmPassword: data?.confirmPassword
+      user_id: profileData?.res?.id,
+      old_password: data?.oldPassword,
+      new_password: data?.newPassword,
+      confirm_password: data?.confirmPassword
     }
 
     dispatch(changePassword(payload)).then((res) => {
@@ -96,8 +96,8 @@ const page = () => {
                     <div className="flex items-center gap-4 mb-3">
                       <div className="relative">
                         {
-                          profileData?.data?.avatar ? (
-                            <Image src={profileData?.data?.avatar} width={120}
+                          profileData?.res?.avatar ? (
+                            <Image src={profileData?.res?.avatar} width={120}
                               height={120} alt='profileUser' className='w-[80px] h-[80px] lg:w-[120px] lg:h-[120px] rounded-[50px] overflow-hidden' />
                           ) : (
                             <Image src={profileUser} alt='profileUser' className='w-[120px] h-[120px] rounded-[50px] overflow-hidden' />
@@ -120,8 +120,8 @@ const page = () => {
                         </div>
                       </div>
                       <div>
-                        <p className="text-[#000000] text-xl pb-2"> {profileData?.data?.fullname} Moni Roy</p>
-                        <p className="text-[#777777] text-base pb-2">{profileData?.data?.email} moniroy@gmail.com</p>
+                        <p className="text-[#000000] text-xl pb-2"> {profileData?.res?.fname}</p>
+                        <p className="text-[#777777] text-base pb-2">{profileData?.res?.email} </p>
                       </div>
                     </div>
                   </div>
@@ -213,7 +213,7 @@ const page = () => {
                               readOnly
                             />
                           </div>
-                          <div className="w-full lg:w-6/12">
+                          {/* <div className="w-full lg:w-6/12">
                             <div className="mb-1 block">
                               <Label className="">User Name </Label>
                             </div>
@@ -224,7 +224,7 @@ const page = () => {
                               {...register("username")}
                               readOnly
                             />
-                          </div>
+                          </div> */}
                         </div>
 
                         <div className="lg:flex justify-between mt-3">
@@ -237,7 +237,7 @@ const page = () => {
                                 </div>
                               </div>
                               <div>
-                                <p className="text-[#000000] text-[16px]">{profileData?.data?.email}moniroy@gmail.com</p>
+                                <p className="text-[#000000] text-[16px]">{profileData?.res?.email}</p>
                                 <p className="text-[#808080] text-[16px]">1 month ago</p>
                               </div>
                             </div>
