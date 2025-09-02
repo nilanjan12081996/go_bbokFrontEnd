@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getBots, stepFourAndFive } from "../reducers/CreateBotSlice";
 import { useForm } from "react-hook-form";
-const StepFive = ({ setShow, languageId, industryId }) => {
+const StepFive = ({ setShow, languageId, industryId,setCode }) => {
   const { bots } = useSelector((state) => state?.bot);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -49,6 +49,7 @@ const StepFive = ({ setShow, languageId, industryId }) => {
     };
     dispatch(stepFourAndFive(payload)).then((res) => {
       if (res?.payload?.status_code === 201) {
+        setCode(res?.payload?.embedCode)
         HandleNextPage();
       }
     });

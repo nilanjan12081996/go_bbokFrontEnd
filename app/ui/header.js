@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button, Navbar, NavbarBrand, NavbarCollapse, NavbarLink, NavbarToggle, Modal, ModalBody, ModalFooter, ModalHeader, Checkbox, Label, TextInput, Select } from "flowbite-react";
 import Link from 'next/link';
 import logo from '../assets/imagesource/logo.png';
@@ -16,6 +16,8 @@ import PriceListModal from '../modal/PriceListModal';
 
 import { FaArrowRight } from "react-icons/fa6";
 import { HiLightningBolt } from "react-icons/hi";
+import { getCurrency, getCurrencyOut } from '../reducers/CreateBotSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 const Header = () => {
@@ -23,10 +25,11 @@ const Header = () => {
   const [openRegisterModal, setOpenRegisterModal] = useState(false);
   const [openVerifyOtpModal, setOpenVerifyOtpModal] = useState(false);
   const [openPricModal, setOpenPriceModal] = useState(false)
-
+  const dispatch=useDispatch()
   // For mobile menu start here
   // Add state to manage navbar collapse
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
+   const{currencyOut}=useSelector((state)=>state?.bot)
 
   // Function to toggle navbar
   const toggleNavbar = () => {
@@ -38,7 +41,9 @@ const Header = () => {
     setIsNavbarOpen(false);
   };
   // For mobile menu ends here
-
+useEffect(()=>{
+  dispatch(getCurrencyOut())
+},[])
 
 
   return (
@@ -127,8 +132,13 @@ const Header = () => {
                             </option>
                           ))
                         } */}
-                        <option>EURO</option>
-                        <option>USD</option>
+                        
+                        {
+                          currencyOut?.res?.map((cur,curIndex)=>(
+                             <option key={curIndex} value={cur?.id}>{cur?.currency_symbol} {cur?.currency_name}</option>
+                          ))
+                        }
+                       
                     </Select>
                   </div>
                 </div>

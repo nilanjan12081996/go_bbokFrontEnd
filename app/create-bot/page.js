@@ -56,6 +56,7 @@ const page = () => {
   const[industryId,setIndustryId]=useState()
   const[businessId,setBusinessId]=useState()
   const[languageId,setLanguageId]=useState()
+  const [code,setCode]=useState()
   const isStepActive = (stepNumber) => {
     if (show.StepOne && stepNumber <= 1) return true;
     if (show.StepTwo && stepNumber <= 2) return true;
@@ -135,6 +136,7 @@ const page = () => {
             setShow={setShow}
             languageId={languageId}
             industryId={industryId}
+            setCode={setCode}
             
           />
         )}
@@ -142,7 +144,7 @@ const page = () => {
 
             {/* step six start here */}
         
-            {show.StepSix && <StepSix setShow={setShow} />}
+            {show.StepSix && <StepSix setShow={setShow} code={code}/>}
             {/* step six ends here */}
         </div>
     </div>

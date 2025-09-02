@@ -1,7 +1,7 @@
 import Image from "next/image";
 import code_img from "../../app/assets/imagesource/code_img.png";
 import { Button, Tooltip } from "flowbite-react";
-const StepSix = ({ setShow }) => {
+const StepSix = ({ setShow ,code}) => {
   const handleBack = () => {
     setShow({
       StepOne: false, // AddProduct is the first step
@@ -20,7 +20,10 @@ const StepSix = ({ setShow }) => {
             <p className="text-sm text-[#8F8F8F]">This code snippet adds the feature. Paste it into your site builder, WordPress, or custom HTML editor where you want the function to appear.</p>
           </div>
           <div className="mb-8 bg-white p-5 border border-[#929292] rounded-[10px] h-[480px] overflow-scroll overflow-x-hidden">
-            <Image src={code_img} alt="code_img" className="" />
+            {/* <Image src={code_img} alt="code_img" className="" /> */}
+            {
+              code
+            }
           </div>
         </div>
         <div className="step_btn_area border-t border-[#EBEEFA] pt-5">
