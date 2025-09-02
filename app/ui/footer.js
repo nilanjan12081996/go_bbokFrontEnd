@@ -25,6 +25,7 @@ import footerLogo from "../assets/imagesource/footer_logo.png";
 import Image from 'next/image';
 
 import { ImLocation } from "react-icons/im";
+import Script from 'next/script';
 
 const roboto = Roboto({
   subsets: ['latin'],
@@ -41,7 +42,12 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 const Footer = () => {
   return (
     <div className='footer_area'>
+                              {/* <Script
 
+    src="https://gobookapinew.bestworks.cloud/bot-widget.js" 
+
+    data-company="MQ=="/> */}
+{/* </Script>  */}
       <div className='footer_top lg:py-14 py-10 px-6 lg:px-0'>
         <div className='max-w-6xl mx-auto'>
           <div className='footer_top_container pb-8'>
@@ -144,6 +150,7 @@ const Footer = () => {
       </div>
 
     </div>
+    
   )
 }
 

@@ -115,6 +115,7 @@ export default function ClientLayoutWrapper({ children }) {
             <Header />
             {children}
             <Footer />
+   
         </main>
     );
 }
