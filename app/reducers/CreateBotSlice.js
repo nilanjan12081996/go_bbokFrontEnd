@@ -202,6 +202,25 @@ export const getAllBots = createAsyncThunk(
     }
 );
 
+export const getCurrency = createAsyncThunk(
+    'getCurrency',
+    async (_, { rejectWithValue }) => {
+        try {
+            const response = await api.get(`/api/currency/currency-list`);
+            if (response?.data?.status_code === 200) {
+                return response.data;
+            } else {
+                if (response?.data?.errors) {
+                    return rejectWithValue(response.data.errors);
+                } else {
+                    return rejectWithValue('Something went wrong.');
+                }
+            }
+        } catch (err) {
+            return rejectWithValue(err);
+        }
+    }
+);
 
 
 const initialState={
@@ -216,7 +235,8 @@ const initialState={
     bots:[],
     four_five_data:"",
     threeData:"",
-    botList:[]
+    botList:[],
+    currencyData:[]
 }
 const CreateBotSlice=createSlice({
     name:'bot',
@@ -344,6 +364,18 @@ const CreateBotSlice=createSlice({
             state.error=false
         })
         .addCase(getAllBots.rejected,(state,{payload})=>{
+            state.loading=false
+            state.error=payload
+        })
+            .addCase(getCurrency.pending,(state)=>{
+            state.loading=true
+        })
+        .addCase(getCurrency.fulfilled,(state,{payload})=>{
+            state.loading=false
+            state.currencyData=payload
+            state.error=false
+        })
+        .addCase(getCurrency.rejected,(state,{payload})=>{
             state.loading=false
             state.error=payload
         })

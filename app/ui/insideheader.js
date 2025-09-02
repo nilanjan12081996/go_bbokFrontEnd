@@ -24,7 +24,7 @@ import { BiSolidDashboard } from 'react-icons/bi';
 import { Select } from 'flowbite-react';
 
 import { IoIosArrowDown } from "react-icons/io";
-import { getLanguage } from '../reducers/CreateBotSlice';
+import { getCurrency, getLanguage } from '../reducers/CreateBotSlice';
 
 
 const poppins = Poppins({
@@ -36,7 +36,7 @@ const poppins = Poppins({
 const Insideheader = () => {
   const pathname = usePathname();
   const dispatch = useDispatch();
-  const{language}=useSelector((state)=>state?.bot)
+  const{language,currencyData}=useSelector((state)=>state?.bot)
   const router = useRouter();
   const { profileData } = useSelector((state) => state?.profile)
   const handleLogout = () => {
@@ -64,6 +64,7 @@ const Insideheader = () => {
 useEffect(()=>{
 dispatch(getLanguage())
   dispatch(getProfile());
+  dispatch(getCurrency())
 },[])
 
 
@@ -91,8 +92,11 @@ dispatch(getLanguage())
                ))
              } */}
              <option>Select</option>
-             <option>EURO</option>
-             <option>USD</option>
+          {
+            currencyData?.res?.map((cur,curIndex)=>(
+             <option key={curIndex} value={cur?.id}>{cur?.currency_symbol} {cur?.currency_name}</option>
+            ))
+          }
             </Select>
           </div>
           <div className='flex justify-end items-center gap-3'>

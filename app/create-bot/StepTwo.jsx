@@ -4,9 +4,10 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { AiFillMinusCircle, AiFillPlusCircle } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
-import { createServiceSteptwo, getExample } from "../reducers/CreateBotSlice";
+import { createServiceSteptwo, getCurrency, getExample } from "../reducers/CreateBotSlice";
+import { toast } from "react-toastify";
 const StepTwo = ({ setShow, industryId, businessId }) => {
-  const { examples } = useSelector((state) => state?.bot);
+  const { examples,currencyData } = useSelector((state) => state?.bot);
   const dispatch = useDispatch();
   const HandleNextPage = () => {
     setShow({
@@ -40,12 +41,18 @@ const StepTwo = ({ setShow, industryId, businessId }) => {
   } = useForm();
 
   const [rows, setRows] = useState([
-    { serviceName: "", duration: "", timeType: "mins" },
+    { serviceName: "",servicePrice:"",currency:"", duration: "", timeType: "mins" },
   ]);
 
   // Add new row
   const handleAddRow = () => {
-    setRows([...rows, { serviceName: "", duration: "", timeType: "mins" }]);
+    setRows([...rows, { 
+      serviceName: "", 
+      servicePrice: "",
+      currency: "",
+      duration: "", 
+      timeType: "mins" 
+    }]);
   };
 
   const handleRemoveRow = (index) => {
@@ -61,15 +68,20 @@ const StepTwo = ({ setShow, industryId, businessId }) => {
 
   const onSubmit = () => {
     const isValid = rows.every(
-      (row) => row.serviceName.trim() !== "" && row.duration.trim() !== ""
+      (row) => row.serviceName.trim() !== "" && 
+               row.duration.trim() !== "" && 
+               row.servicePrice.trim() !== "" && 
+               row.currency.trim() !== ""
     );
     if (!isValid) {
-      alert("Please fill in all service names and durations");
+      toast.error("Please fill in all service names and durations");
       return;
     }
-    const service_arr = rows.map((row) => ({
+   const service_arr = rows.map((row) => ({
       service_name: row.serviceName.trim(),
-      duration: `${row.duration.trim()}${row.timeType}`,
+      service_price: row.servicePrice.trim(),
+      currency_id: parseInt(row.currency), // Convert to number as expected in payload
+      duration: `${row.duration.trim()} ${row.timeType}`, // Added space for better formatting
     }));
     const payload = {
       industry_id: industryId,
@@ -84,6 +96,7 @@ const StepTwo = ({ setShow, industryId, businessId }) => {
   };
   useEffect(() => {
     dispatch(getExample({ id: industryId }));
+    dispatch(getCurrency())
   }, []);
   console.log("examples", examples);
 
@@ -150,31 +163,35 @@ const StepTwo = ({ setShow, industryId, businessId }) => {
                                 id="base"
                                 type="text"
                                 sizing="md"
-                                value={rows.duration}
+                                value={rows.servicePrice}
                                 onChange={(e) =>
                                   handleChange(
                                     index,
-                                    "duration",
+                                    "servicePrice",
                                     e.target.value
                                   )
                                 }
                               />
                             </div>
-                            <div className="w-4/12 lg:w-3/12">
+                            <div className="w-8/12 lg:w-6/12">
                               <Select
-                              // id={`timeType-${index}`}
-                              // value={rows.timeType}
-                              // onChange={(e) =>
-                              //   handleChange(
-                              //     index,
-                              //     "timeType",
-                              //     e.target.value
-                              //   )
-                              // }
-                              // required
+                              id={`currency-${index}`}
+                              value={rows.currency}
+                              onChange={(e) =>
+                                handleChange(
+                                  index,
+                                  "currency",
+                                  e.target.value
+                                )
+                              }
+                              required
                               >
-                                <option>EURO</option>
-                                <option>USD</option>
+                                <option>Select</option>
+                                {
+                                  currencyData?.res?.map((cur,curIndex)=>(
+                                    <option key={curIndex} value={cur?.id}>{cur?.currency_symbol} {cur?.currency_name}</option>
+                                  ))
+                                }
                               </Select>
                             </div>
                           </div>
