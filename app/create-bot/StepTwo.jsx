@@ -103,7 +103,7 @@ const StepTwo = ({ setShow, industryId, businessId }) => {
                   <div className="flex gap-4 mb-0 items-start" key={index}>
                     <div className="w-11/12">
                       <div className="lg:flex gap-4 mb-8">
-                        <div className="lg:w-6/12 step_field mb-2 lg:mb-0">
+                        <div className="lg:w-4/12 step_field mb-2 lg:mb-0">
                           <div className="mb-1 block">
                             <Label htmlFor={`service-${index}`}>
                               Service Name *
@@ -138,19 +138,18 @@ const StepTwo = ({ setShow, industryId, businessId }) => {
                             </div>
                           </div> */}
                         </div>
-                        <div className="lg:w-6/12">
+                        <div className="lg:w-4/12">
                           <div className="mb-1 block">
                             <Label htmlFor={`duration-${index}`}>
-                              Duration *
+                              Service price
                             </Label>
                           </div>
                           <div className="flex gap-1 step_field">
-                            <div className="w-8/12 lg:w-10/12">
+                            <div className="w-8/12 lg:w-9/12">
                               <TextInput
                                 id="base"
                                 type="text"
                                 sizing="md"
-                                
                                 value={rows.duration}
                                 onChange={(e) =>
                                   handleChange(
@@ -161,7 +160,48 @@ const StepTwo = ({ setShow, industryId, businessId }) => {
                                 }
                               />
                             </div>
-                            <div className="w-4/12 lg:w-2/12">
+                            <div className="w-4/12 lg:w-3/12">
+                              <Select
+                              // id={`timeType-${index}`}
+                              // value={rows.timeType}
+                              // onChange={(e) =>
+                              //   handleChange(
+                              //     index,
+                              //     "timeType",
+                              //     e.target.value
+                              //   )
+                              // }
+                              // required
+                              >
+                                <option>EURO</option>
+                                <option>USD</option>
+                              </Select>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="lg:w-4/12">
+                          <div className="mb-1 block">
+                            <Label htmlFor={`duration-${index}`}>
+                              Duration *
+                            </Label>
+                          </div>
+                          <div className="flex gap-1 step_field">
+                            <div className="w-8/12 lg:w-9/12">
+                              <TextInput
+                                id="base"
+                                type="text"
+                                sizing="md"
+                                value={rows.duration}
+                                onChange={(e) =>
+                                  handleChange(
+                                    index,
+                                    "duration",
+                                    e.target.value
+                                  )
+                                }
+                              />
+                            </div>
+                            <div className="w-4/12 lg:w-3/12">
                               <Select
                                 id={`timeType-${index}`}
                                 value={rows.timeType}
@@ -199,7 +239,6 @@ const StepTwo = ({ setShow, industryId, businessId }) => {
                           </div> */}
                         </div>
                       </div>
-                      
                     </div>
                     <div className="w-1/12 flex flex-col items-center justify-center gap-2">
                       <button
@@ -225,9 +264,9 @@ const StepTwo = ({ setShow, industryId, businessId }) => {
             })}
 
             <div className="flex">
-              <div className="lg:flex gap-4 mb-8 w-11/12">
-                <div className="lg:w-6/12 step_field mb-2 lg:mb-0">
-                <div className="mt-4">
+              <div className="lg:flex justify-between gap-4 mb-8 w-11/12">
+                <div className="lg:w-4/12 step_field mb-2 lg:mb-0">
+                  <div className="mt-4">
                     <p className="text-[#7C7C7C] text-[13px] leading-[20px] font-medium pb-1">
                       Service Name Eg.
                     </p>
@@ -246,8 +285,8 @@ const StepTwo = ({ setShow, industryId, businessId }) => {
                     </div>
                   </div>
                 </div>
-                <div className="lg:w-6/12">
-                <div className="mt-4">
+                <div className="lg:w-4/12">
+                  <div className="mt-4">
                     <p className="text-[#7C7C7C] text-[13px] leading-[20px] font-medium pb-1">
                       Duration Eg.
                     </p>
@@ -269,7 +308,6 @@ const StepTwo = ({ setShow, industryId, businessId }) => {
               </div>
               <div className="w-1/12">&nbsp;</div>
             </div>
-            
           </div>
           <div className="step_btn_area border-t border-[#EBEEFA] pt-5">
             <div className="flex justify-end items-center gap-3">
@@ -289,8 +327,6 @@ const StepTwo = ({ setShow, industryId, businessId }) => {
           </div>
         </form>
       </div>
-
-      
     </>
   );
 };
