@@ -115,20 +115,22 @@ const Header = () => {
                     Login
                   </button>
                   <button onClick={() => setOpenRegisterModal(true)} className="text-white bg-[#00806A] flex items-center cursor-pointer font-medium text-xs lg:text-[16px] rounded-[5px] px-2 py-1 lg:px-6 lg:py-2 border-1 border-[#00806A] hover:bg-white hover:text-[#00806A]">
-                    <HiLightningBolt className='text-xl mr-1  ' />
+                    <HiLightningBolt className='text-xl mr-1 hidden lg:block' />
                     Try for Free
                   </button>
-                      <Select id="countries" required className='w-[80px]'>
-                                {/* {
-                                  language?.data?.map((lan)=>(
-                                   <option>
-                                     {lan?.language}
-                                   </option>
-                                  ))
-                                } */}
-                                <option>EURO</option>
-                                <option>USD</option>
-                               </Select>
+                  <div className='currency_wrap'>
+                    <Select id="countries" required>
+                        {/* {
+                          language?.data?.map((lan)=>(
+                            <option>
+                              {lan?.language}
+                            </option>
+                          ))
+                        } */}
+                        <option>EURO</option>
+                        <option>USD</option>
+                    </Select>
+                  </div>
                 </div>
               </div>
               {/* Login section ends here */}

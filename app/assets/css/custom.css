@@ -1188,6 +1188,16 @@ body {
   padding: 40px 50px;
 }
 
+.currency_wrap select {
+  background-color: #ffffff;
+  border: #666666 1px solid;
+  color: #666666;
+  font-size: 14px;
+  font-weight: 600;
+  width: 80px;
+  border-radius: 5px;
+}
+
 @media only screen and (max-width: 767px) {
   .step_wraper ul li .number_box.active_step_two.active_step:before {
     display: none;
@@ -1206,6 +1216,13 @@ body {
   }
   .step_wraper ul:before {
     width: 94%;
+  }
+  .currency_wrap select {
+    font-size: 12px;
+    font-weight: 600;
+    width: 70px;
+    padding: 7px 10px;
+    border-radius: 5px;
   }
 
   .menu_btn {
