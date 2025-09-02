@@ -111,7 +111,7 @@ export default function Home() {
                      <p className="text-[#686666] text-sm lg:text-[18px] lg:leading-[28px] mb-5 lg:mb-6">
                         Empower your business with smart, responsive AI agents that elevate every customer conversation.
                      </p>
-                     <button onClick={() => setOpenRegisterModal(true)} className="text-white bg-[#00806A] flex items-center cursor-pointer font-medium text-xs lg:text-[16px] rounded-[5px] px-2 py-1 lg:px-6 lg:py-3 border-1 border-[#00806A] hover:bg-white hover:text-[#00806A]">
+                     <button onClick={() => hanleloginModal()} className="text-white bg-[#00806A] flex items-center cursor-pointer font-medium text-xs lg:text-[16px] rounded-[5px] px-2 py-1 lg:px-6 lg:py-3 border-1 border-[#00806A] hover:bg-white hover:text-[#00806A]">
                         <HiLightningBolt className='text-xl mr-1  ' />
                         Build Your Agent Free
                      </button>
