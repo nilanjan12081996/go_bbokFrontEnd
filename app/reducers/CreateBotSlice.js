@@ -242,6 +242,27 @@ export const getCurrencyOut = createAsyncThunk(
     }
 );
 
+export const getPlans = createAsyncThunk(
+    'getPlans',
+    async (user_input, { rejectWithValue }) => {
+        try {
+            const response = await api.post(`/api/plans/get-plans`,user_input);
+            if (response?.data?.status_code === 200) {
+                return response.data;
+            } else {
+                if (response?.data?.errors) {
+                    return rejectWithValue(response.data.errors);
+                } else {
+                    return rejectWithValue('Something went wrong.');
+                }
+            }
+        } catch (err) {
+            return rejectWithValue(err);
+        }
+    }
+);
+
+
 
 const initialState={
     loading:false,
@@ -257,12 +278,18 @@ const initialState={
     threeData:"",
     botList:[],
     currencyData:[],
-    currencyOut:[]
+    currencyOut:[],
+    selectedCurrency: null,
+    planList:[]
 }
 const CreateBotSlice=createSlice({
     name:'bot',
     initialState,
-    reducers:{},
+    reducers:{
+        setSelectedCurrency: (state, action) => {
+      state.selectedCurrency = action.payload;
+    },
+    },
     extraReducers:(builder)=>{
         builder.addCase(
             getIndustry.pending,(state)=>{
@@ -412,6 +439,19 @@ const CreateBotSlice=createSlice({
             state.loading=false
             state.error=payload
         })
+        .addCase(getPlans.pending,(state)=>{
+            state.loading=true
+        })
+        .addCase(getPlans.fulfilled,(state,{payload})=>{
+            state.loading=false
+            state.planList=payload
+            state.error=false
+        })
+        .addCase(getPlans.rejected,(state,{payload})=>{
+            state.loading=false
+            state.error=payload
+        })
     }
 })
+export const { setSelectedCurrency } = CreateBotSlice.actions;
 export default CreateBotSlice.reducer

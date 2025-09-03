@@ -16,7 +16,7 @@ import PriceListModal from '../modal/PriceListModal';
 
 import { FaArrowRight } from "react-icons/fa6";
 import { HiLightningBolt } from "react-icons/hi";
-import { getCurrency, getCurrencyOut } from '../reducers/CreateBotSlice';
+import { getCurrency, getCurrencyOut, setSelectedCurrency } from '../reducers/CreateBotSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
 
@@ -44,6 +44,27 @@ const Header = () => {
 useEffect(()=>{
   dispatch(getCurrencyOut())
 },[])
+
+useEffect(() => {
+  dispatch(getCurrencyOut()).then((res) => {
+    if (res?.payload?.res?.length > 0) {
+      // find Euro in the response
+      const euroCurrency = res.payload.res.find(
+        (cur) => cur.currency_name.toLowerCase() === "euro"
+      );
+
+      if (euroCurrency) {
+        dispatch(setSelectedCurrency(euroCurrency.id)); // set Euro by default
+      
+      } else {
+        // fallback → if euro not found, set first currency
+        dispatch(setSelectedCurrency(res.payload.res[0].id));
+      }
+    }
+  });
+}, [dispatch]);
+
+
 
 
   return (
@@ -124,7 +145,9 @@ useEffect(()=>{
                     Try for Free
                   </button>
                   <div className='currency_wrap'>
-                    <Select id="countries" required>
+                    <Select id="countries" onChange={(e) => {
+                        dispatch(setSelectedCurrency(e.target.value)); // store currency_id in redux
+                        }} required>
                         {/* {
                           language?.data?.map((lan)=>(
                             <option>
@@ -135,7 +158,7 @@ useEffect(()=>{
                         
                         {
                           currencyOut?.res?.map((cur,curIndex)=>(
-                             <option key={curIndex} value={cur?.id}>{cur?.currency_symbol} {cur?.currency_name}</option>
+                             <option key={curIndex} value={cur?.id}>{cur?.currency_symbol} {cur?.currency_short_name}</option>
                           ))
                         }
                        
