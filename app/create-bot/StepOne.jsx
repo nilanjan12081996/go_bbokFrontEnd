@@ -92,6 +92,18 @@ const StepOne = ({ setShow, industryId, setIndustryId, setBusinessId }) => {
                   placeholder="Enter Business Name"
                 />
               </div>
+                   <div className="lg:w-6/12 step_field">
+                <div className="mb-1 block">
+                  <Label htmlFor="countries">Business Whatsapp Number *</Label>
+                </div>
+                <TextInput
+                  {...register("whatsapp")}
+                  id="base"
+                  type="text"
+                  sizing="md"
+                  placeholder="Enter Business Whatsapp Number"
+                />
+              </div>
             </div>
           </div>
           <div className="step_btn_area border-t border-[#EBEEFA] pt-5">
