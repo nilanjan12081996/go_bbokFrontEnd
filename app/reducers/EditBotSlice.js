@@ -2,11 +2,13 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import api from './api';
 
-export const getIndustry = createAsyncThunk(
-    'getIndustry',
-    async (_, { rejectWithValue }) => {
+
+
+export const updateService = createAsyncThunk(
+    'updateService',
+    async (user_input, { rejectWithValue }) => {
         try {
-            const response = await api.get('/api/industry/list');
+            const response = await api.post('/api/business/update-business-details',user_input);
             if (response?.data?.status_code === 200) {
                 return response.data;
             } else {
@@ -22,12 +24,12 @@ export const getIndustry = createAsyncThunk(
     }
 );
 
-export const createService = createAsyncThunk(
-    'createService',
+export const editService = createAsyncThunk(
+    'editService',
     async (user_input, { rejectWithValue }) => {
         try {
-            const response = await api.post('/api/business/create',user_input);
-            if (response?.data?.status_code === 201) {
+            const response = await api.post('/api/business/get-business-details',user_input);
+            if (response?.data?.status_code === 200) {
                 return response.data;
             } else {
                 if (response?.data?.errors) {
@@ -41,6 +43,7 @@ export const createService = createAsyncThunk(
         }
     }
 );
+
 
 export const createServiceSteptwo = createAsyncThunk(
     'createServiceSteptwo',
@@ -287,7 +290,8 @@ const initialState={
     loading:false,
     error:false,
     industryData:[],
-    createServiceData:"",
+    updateServiceData:"",
+    editSerViceData:{},
     stepTwoData:"",
     examples:[],
     days:[],
@@ -302,8 +306,8 @@ const initialState={
     planList:[],
     countBot:{}
 }
-const CreateBotSlice=createSlice({
-    name:'bot',
+const EditBotSlice=createSlice({
+    name:'botE',
     initialState,
     reducers:{
         setSelectedCurrency: (state, action) => {
@@ -311,29 +315,16 @@ const CreateBotSlice=createSlice({
     },
     },
     extraReducers:(builder)=>{
-        builder.addCase(
-            getIndustry.pending,(state)=>{
-                state.loading=true
-            }
-        )
-        .addCase(getIndustry.fulfilled,(state,{payload})=>{
-            state.loading=false
-            state.industryData=payload
-            state.error=false
-        })
-        .addCase(getIndustry.rejected,(state,{payload})=>{
-            state.loading=false
-            state.error=payload
-        })
-        .addCase(createService.pending,(state)=>{
+        builder
+        .addCase(updateService.pending,(state)=>{
             state.loading=true
         })
-        .addCase(createService.fulfilled,(state,{payload})=>{
+        .addCase(updateService.fulfilled,(state,{payload})=>{
             state.loading=false
-            state.createServiceData=payload
+            state.updateServiceData=payload
             state.error=false
         })
-        .addCase(createService.rejected,(state,{payload})=>{
+        .addCase(updateService.rejected,(state,{payload})=>{
             state.loading=false
             state.error=payload
         })
@@ -483,7 +474,21 @@ const CreateBotSlice=createSlice({
             state.loading=false
             state.error=payload
         })
+        .addCase(editService.pending,(state)=>{
+            state.loading=true
+        })
+        .addCase(editService.fulfilled,(state,{payload})=>{
+            state.loading=false
+            state.editSerViceData=payload
+            console.log("editSerViceDataPayload",payload);
+            
+            state.error=false
+        })
+        .addCase(editService.rejected,(state,{payload})=>{
+            state.loading=false
+            state.error=payload
+        })
     }
 })
-export const { setSelectedCurrency } = CreateBotSlice.actions;
-export default CreateBotSlice.reducer
+export const { setSelectedCurrency } = EditBotSlice.actions;
+export default EditBotSlice.reducer

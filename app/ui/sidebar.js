@@ -32,6 +32,7 @@ import { FaRegCircleUser } from "react-icons/fa6";
 import { LuLayoutDashboard } from "react-icons/lu";
 import { LuCalendar } from "react-icons/lu";
 import { MdOutlineSubscriptions } from "react-icons/md";
+import { getBotCount } from '../reducers/CreateBotSlice';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -43,7 +44,7 @@ const Sidebar = () => {
   const pathname = usePathname();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const dispatch = useDispatch()
-  const { historyData, pagination, loading } = useSelector(state => state.his);
+  const { countBot } = useSelector(state => state.bot);
   const loaderRef = useRef(null);
   const topLoaderRef = useRef(null);
   //console.log(sidebarOpen,"sidebarOpen");
@@ -115,7 +116,9 @@ const Sidebar = () => {
   // }, [handleObserver]);
 
 
-
+useEffect(()=>{
+dispatch(getBotCount())
+},[])
 
 
   return (
@@ -174,6 +177,21 @@ const Sidebar = () => {
                 </Link>
               </li>
 
+         
+              {
+                countBot?.count>=1?(
+                     <li onClick={closeNavbar}>
+                <Link href="/manage-company"
+                  className={`group relative flex items-center gap-2 rounded-sm py-3 px-4 font-normal text-sm lg:text-base text-[#606060] duration-300 ease-in-out hover:bg-graydark ${pathname.includes('subscription-plans') &&
+                    'bg-[#00806a] text-white dark:bg-meta-4'
+                    }`}
+                  passHref>
+                  <LuBot className='text-xl lg:text-2xl' />
+                  Manage Bot
+                </Link>
+              </li>
+
+                ):(
               <li onClick={closeNavbar}>
                 <Link href="/create-bot"
                   className={`group relative flex items-center gap-2 rounded-sm py-3 px-4 font-normal text-sm lg:text-base text-[#606060] duration-300 ease-in-out hover:bg-graydark ${pathname.includes('create-bot') &&
@@ -184,16 +202,9 @@ const Sidebar = () => {
                   Create Bot
                 </Link>
               </li>
-                      <li onClick={closeNavbar}>
-                <Link href="/manage-company"
-                  className={`group relative flex items-center gap-2 rounded-sm py-3 px-4 font-normal text-sm lg:text-base text-[#606060] duration-300 ease-in-out hover:bg-graydark ${pathname.includes('subscription-plans') &&
-                    'bg-[#00806a] text-white dark:bg-meta-4'
-                    }`}
-                  passHref>
-                  <LuBot className='text-xl lg:text-2xl' />
-                  Manage Bot
-                </Link>
-              </li>
+                )
+              }
+                   
 
               <li onClick={closeNavbar}>
                 <Link href="/manage-appointments"

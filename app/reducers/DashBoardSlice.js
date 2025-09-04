@@ -40,11 +40,52 @@ export const calenderData=createAsyncThunk(
         }
     }
 )
+export const bookingData=createAsyncThunk(
+    'bookingData',
+     async (_, { rejectWithValue }) => {
+        try {
+            const response = await api.get(`/api/count/booking`);
+            if (response?.data?.status_code === 200) {
+                return response.data;
+            } else {
+                if (response?.data?.errors) {
+                    return rejectWithValue(response.data.errors);
+                } else {
+                    return rejectWithValue('Something went wrong.');
+                }
+            }
+        } catch (err) {
+            return rejectWithValue(err);
+        }
+    }
+)
+export const userData=createAsyncThunk(
+    'userData',
+     async (_, { rejectWithValue }) => {
+        try {
+            const response = await api.get(`/api/count/coustomer`);
+            if (response?.data?.status_code === 200) {
+                return response.data;
+            } else {
+                if (response?.data?.errors) {
+                    return rejectWithValue(response.data.errors);
+                } else {
+                    return rejectWithValue('Something went wrong.');
+                }
+            }
+        } catch (err) {
+            return rejectWithValue(err);
+        }
+    }
+)
+
 const initialState={
     loading:false,
     error:false,
     dashBoards:[],
-    mockApiData:{}
+    mockApiData:{},
+    bookingCount:{},
+    userCount:{}
 }
 const DashBoardSlice=createSlice(
     {
@@ -73,6 +114,30 @@ const DashBoardSlice=createSlice(
                 state.error=false
             })
             .addCase(calenderData.rejected,(state,{payload})=>{
+                state.loading=false
+                state.error=payload
+            })
+            .addCase(bookingData.pending,(state)=>{
+                state.loading=true
+            })
+            .addCase(bookingData.fulfilled,(state,{payload})=>{
+                state.loading=false
+                state.bookingCount=payload
+                state.error=false
+            })
+            .addCase(bookingData.rejected,(state,{payload})=>{
+                state.loading=false
+                state.error=payload
+            })
+             .addCase(userData.pending,(state)=>{
+                state.loading=true
+            })
+            .addCase(userData.fulfilled,(state,{payload})=>{
+                state.loading=false
+                state.userCount=payload
+                state.error=false
+            })
+            .addCase(userData.rejected,(state,{payload})=>{
                 state.loading=false
                 state.error=payload
             })

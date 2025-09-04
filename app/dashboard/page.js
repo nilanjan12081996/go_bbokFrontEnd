@@ -28,7 +28,7 @@ import { CgFileDocument } from "react-icons/cg";
 import { MdMiscellaneousServices } from "react-icons/md";
 import { BiSolidCalendar } from "react-icons/bi";
 import { FaUsers } from "react-icons/fa";
-import { dashBoardData } from '../reducers/DashBoardSlice';
+import { bookingData, dashBoardData, userData } from '../reducers/DashBoardSlice';
 import CalendarComponent from './CalenderComponent';
 
 
@@ -58,10 +58,12 @@ const nunitoSans = Nunito_Sans({
 });
 
 const Page = () => {
-  const {dashBoards}=useSelector((state)=>state?.dash)
+  const {dashBoards,bookingCount,userCount}=useSelector((state)=>state?.dash)
   const dispatch=useDispatch()
   useEffect(()=>{
 dispatch(dashBoardData())
+dispatch(bookingData())
+dispatch(userData())
 console.log("dashBoards",dashBoards);
 
   },[])
@@ -88,7 +90,7 @@ console.log("dashBoards",dashBoards);
                     <BiSolidCalendar className='text-[#DAA644] text-3xl lg:text-5xl' />
                   </div>
                 </div>
-                <h3 className='text-[32px] leading-[40px] lg:text-[48px] lg:leading-[48px] text-[#202224] font-bold'>0</h3>
+                <h3 className='text-[32px] leading-[40px] lg:text-[48px] lg:leading-[48px] text-[#202224] font-bold'>{bookingCount?.count}</h3>
               </div>
               <div className='bg-white rounded-[10px] px-5 py-5 lg:py-7'>
                 <div className='flex justify-between items-center mb-4'>
@@ -97,7 +99,7 @@ console.log("dashBoards",dashBoards);
                     <FaUsers className='text-[#108F98] text-3xl lg:text-5xl' />
                   </div>
                 </div>
-                <h3 className='text-[32px] leading-[40px] lg:text-[48px] lg:leading-[48px] text-[#202224] font-bold'>0</h3>
+                <h3 className='text-[32px] leading-[40px] lg:text-[48px] lg:leading-[48px] text-[#202224] font-bold'>{userCount?.count}</h3>
               </div>
             </div>
           </div>

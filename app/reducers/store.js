@@ -10,6 +10,7 @@ import ProfileSlice from '../reducers/ProfileSlice'
 import SearchHistroySlice from '../reducers/SearchHistroySlice'
 import CreateBotSlice from '../reducers/CreateBotSlice'
 import DashBoardSlice from '../reducers/DashBoardSlice'
+import EditBotSlice from '../reducers/EditBotSlice'
 
 const store = configureStore({
     reducer: {
@@ -21,7 +22,8 @@ const store = configureStore({
         profile: ProfileSlice,
         his: SearchHistroySlice,
         bot:CreateBotSlice,
-        dash:DashBoardSlice
+        dash:DashBoardSlice,
+        botE:EditBotSlice
     },
     devTools: process.env.NODE_ENV,
 });

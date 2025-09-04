@@ -119,7 +119,7 @@
 import React, { useEffect, useState } from 'react';
 import { Poppins } from 'next/font/google';
 import { Button } from 'flowbite-react';
-
+import { useRouter } from 'next/navigation';
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
 import { AgGridReact } from 'ag-grid-react';
@@ -129,6 +129,7 @@ import { ModuleRegistry } from 'ag-grid-community';
 import { AllCommunityModule } from 'ag-grid-community';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllBots } from '../reducers/CreateBotSlice';
+import Link from 'next/link';
 ModuleRegistry.registerModules([AllCommunityModule]);
 
 const poppins = Poppins({
@@ -141,6 +142,7 @@ const Page = () => {
   const { botList } = useSelector((state) => state?.bot);
   const dispatch = useDispatch();
   const [rowData, setRowData] = useState([]);
+  const router=useRouter()
 
   useEffect(() => {
     dispatch(getAllBots({
@@ -161,6 +163,9 @@ const Page = () => {
         serviceNames: company.service?.length > 0 
           ? company.service.map(service => service.service_name).join(', ') 
           : 'NA',
+          serviceIds: company.service?.length > 0 
+        ? company.service.map(service => service.id) 
+        : [],   // <-- service ids array
         status: company.status === 1 ? 'Active' : 'Inactive',
         createdAt: company.created_at 
           ? new Date(company.created_at).toLocaleDateString('en-US', {
@@ -262,21 +267,24 @@ const Page = () => {
       pinned: 'right',
       cellRenderer: (params) => (
         <div className="flex gap-2 justify-center items-center h-full">
-          <Button 
+          <Link 
             className="!border !text-[#00806A] !border-[#00806A] !bg-[#E8FFFB] hover:!bg-[#00806A] font-medium hover:!text-white text-xs px-3 py-1 rounded-md"
-            onClick={() => handleEdit(params.data)}
+          //  onClick={() => handleEdit(params.data.companyId)}
+          href={{pathname:"/edit-bot",query:{id:btoa(params.data.companyId),service_ids:btoa(JSON.stringify(params.data.serviceIds))}}}
           >
             Edit
-          </Button>
+          </Link>
         </div>
       ),
     },
   ]);
 
   // Action handlers
-  const handleEdit = (rowData) => {
-    console.log('Edit company:', rowData);
-    // Implement edit functionality
+  const handleEdit = (id) => {
+  const encodedId = btoa(id.toString()); // encode in base64
+  router.push(`/edit-bot?id=${encodedId}`);
+
+ //router.push("/edit-bot")
   };
 
   const handleView = (rowData) => {
