@@ -57,6 +57,10 @@ const StepOne = ({ setShow, industryId, setIndustryId, setBusinessId }) => {
           toast.error(res?.payload?.response?.data?.message);
           console.log("Hi");
         }
+      else if(res?.payload?.response?.data?.status_code === 422){
+toast.error(res?.payload?.response?.data?.message);
+      }
+        
       }
     );
   };
@@ -85,24 +89,34 @@ const StepOne = ({ setShow, industryId, setIndustryId, setBusinessId }) => {
                   <Label htmlFor="countries">Business Name *</Label>
                 </div>
                 <TextInput
-                  {...register("company_name")}
+                  {...register("company_name",{required:"Business Name Required"})}
                   id="base"
                   type="text"
                   sizing="md"
                   placeholder="Enter Business Name"
                 />
+                   {errors?.company_name && (
+                    <span className="text-red-500">
+                    {errors?.company_name?.message}
+                    </span>
+                  )}
               </div>
                    <div className="lg:w-6/12 step_field">
                 <div className="mb-1 block">
                   <Label htmlFor="countries">Business Whatsapp Number *</Label>
                 </div>
                 <TextInput
-                  {...register("whatsapp")}
+                  {...register("whatsapp",{required:"Business Whatsapp Number is required"})}
                   id="base"
                   type="text"
                   sizing="md"
                   placeholder="Enter Business Whatsapp Number"
                 />
+                {errors?.whatsapp && (
+                    <span className="text-red-500">
+                    {errors?.whatsapp?.message}
+                    </span>
+                  )}
               </div>
             </div>
           </div>

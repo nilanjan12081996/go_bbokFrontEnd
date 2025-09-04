@@ -24,7 +24,7 @@ import { BiSolidDashboard } from 'react-icons/bi';
 import { Select } from 'flowbite-react';
 
 import { IoIosArrowDown } from "react-icons/io";
-import { getCurrency, getLanguage } from '../reducers/CreateBotSlice';
+import { getCurrency, getLanguage, setSelectedCurrency } from '../reducers/CreateBotSlice';
 
 
 const poppins = Poppins({
@@ -68,6 +68,26 @@ dispatch(getLanguage())
 },[])
 
 
+useEffect(() => {
+  dispatch(getCurrency()).then((res) => {
+    if (res?.payload?.res?.length > 0) {
+      // find Euro in the response
+      const euroCurrency = res.payload.res.find(
+        (cur) => cur.currency_name.toLowerCase() === "euro"
+      );
+
+      if (euroCurrency) {
+        dispatch(setSelectedCurrency(euroCurrency.id)); // set Euro by default
+      
+      } else {
+        // fallback → if euro not found, set first currency
+        dispatch(setSelectedCurrency(res.payload.res[0].id));
+      }
+    }
+  });
+}, [dispatch]);
+
+
   return (
     <div className='bg-[#ffffff] rounded-[0px] py-4 px-6 mb-5 border-l border-[#f3f4f6]'>
       <div className='flex lg:justify-end justify-between items-center'>
@@ -83,7 +103,9 @@ dispatch(getLanguage())
           </div> */}
           <div className='flex items-center gap-0 lang_box'>
             Currency
-            <Select id="countries" required>
+            <Select id="countries" onChange={(e) => {
+            dispatch(setSelectedCurrency(e.target.value)); // store currency_id in redux
+            }} required>
              {/* {
                language?.data?.map((lan)=>(
                 <option>
@@ -91,10 +113,10 @@ dispatch(getLanguage())
                 </option>
                ))
              } */}
-             <option>Select</option>
+             
           {
             currencyData?.res?.map((cur,curIndex)=>(
-             <option key={curIndex} value={cur?.id}>{cur?.currency_symbol} {cur?.currency_name}</option>
+             <option key={curIndex} value={cur?.id}>{cur?.currency_symbol} {cur?.currency_short_name}</option>
             ))
           }
             </Select>

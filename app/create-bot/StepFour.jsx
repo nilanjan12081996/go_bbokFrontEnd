@@ -5,13 +5,14 @@ import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { getLanguage } from "../reducers/CreateBotSlice";
+import { toast } from "react-toastify";
 const StepFour = ({ setShow, setLanguageId }) => {
   const { language } = useSelector((state) => state?.bot);
   const dispatch = useDispatch();
   const [selectedLang, setSelectedLang] = useState(null);
   const HandleNextPage = () => {
     if (!selectedLang) {
-      alert("Please select a language first!");
+      toast.error("Please select a language first!");
       return;
     }
     setLanguageId(selectedLang);

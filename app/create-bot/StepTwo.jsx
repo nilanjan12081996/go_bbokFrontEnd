@@ -66,7 +66,7 @@ const StepTwo = ({ setShow, industryId, businessId }) => {
     setRows(updatedRows);
   };
 
-  const onSubmit = () => {
+  const onSubmit = (data) => {
     const isValid = rows.every(
       (row) => row.serviceName.trim() !== "" && 
                row.duration.trim() !== "" && 
@@ -74,7 +74,7 @@ const StepTwo = ({ setShow, industryId, businessId }) => {
                row.currency.trim() !== ""
     );
     if (!isValid) {
-      toast.error("Please fill in all service names and durations");
+      toast.error("Please fill in all service names,durations,price and currency");
       return;
     }
    const service_arr = rows.map((row) => ({
@@ -128,10 +128,16 @@ const StepTwo = ({ setShow, industryId, businessId }) => {
                             sizing="md"
                             value={rows.serviceName}
                             placeholder="Heart checkup"
+                            {...register(`rows.${index}.serviceName`, { required: "Service Name is required" })}
                             onChange={(e) =>
                               handleChange(index, "serviceName", e.target.value)
                             }
                           />
+                          {errors?.rows?.[index]?.serviceName && (
+            <p className="text-red-500 text-xs mt-1">
+              {errors.rows[index].serviceName.message}
+            </p>
+          )}
                           {/* <div className="mt-4">
                             <p className="text-[#7C7C7C] text-[13px] leading-[20px] font-medium pb-1">
                               Service Name Eg.
@@ -150,6 +156,7 @@ const StepTwo = ({ setShow, industryId, businessId }) => {
                               </ul>
                             </div>
                           </div> */}
+                          
                         </div>
                         <div className="lg:w-4/12">
                           <div className="mb-1 block">
@@ -163,6 +170,7 @@ const StepTwo = ({ setShow, industryId, businessId }) => {
                                 id="base"
                                 type="text"
                                 sizing="md"
+                                 {...register(`rows.${index}.servicePrice`, { required: "Service Price is required" })}
                                 value={rows.servicePrice}
                                 onChange={(e) =>
                                   handleChange(
@@ -172,9 +180,16 @@ const StepTwo = ({ setShow, industryId, businessId }) => {
                                   )
                                 }
                               />
+                              {errors?.rows?.[index]?.servicePrice && (
+                <p className="text-red-500 text-xs mt-1">
+                  {errors.rows[index].servicePrice.message}
+                </p>
+              )}
+                              
                             </div>
                             <div className="w-8/12 lg:w-6/12">
                               <Select
+                               {...register(`rows.${index}.currency`, { required: "Currency is required" })}
                               id={`currency-${index}`}
                               value={rows.currency}
                               onChange={(e) =>
@@ -193,6 +208,11 @@ const StepTwo = ({ setShow, industryId, businessId }) => {
                                   ))
                                 }
                               </Select>
+                                {errors?.rows?.[index]?.currency && (
+                <p className="text-red-500 text-xs mt-1">
+                  {errors.rows[index].currency.message}
+                </p>
+              )}
                             </div>
                           </div>
                         </div>
@@ -208,6 +228,7 @@ const StepTwo = ({ setShow, industryId, businessId }) => {
                                 id="base"
                                 type="text"
                                 sizing="md"
+                                {...register(`rows.${index}.duration`, { required: "Duration is required" })}
                                 value={rows.duration}
                                 onChange={(e) =>
                                   handleChange(
@@ -217,9 +238,15 @@ const StepTwo = ({ setShow, industryId, businessId }) => {
                                   )
                                 }
                               />
+                              {errors?.rows?.[index]?.duration && (
+                <p className="text-red-500 text-xs mt-1">
+                  {errors.rows[index].duration.message}
+                </p>
+              )}
                             </div>
                             <div className="w-4/12 lg:w-3/12">
                               <Select
+                              {...register(`rows.${index}.timeType`, { required: "Time type is required" })}
                                 id={`timeType-${index}`}
                                 value={rows.timeType}
                                 onChange={(e) =>
@@ -234,6 +261,11 @@ const StepTwo = ({ setShow, industryId, businessId }) => {
                                 <option>mins</option>
                                 <option>hrs</option>
                               </Select>
+                                 {errors?.rows?.[index]?.timeType && (
+                <p className="text-red-500 text-xs mt-1">
+                  {errors.rows[index].timeType.message}
+                </p>
+              )}
                             </div>
                           </div>
                           {/* <div className="mt-4">
@@ -283,7 +315,9 @@ const StepTwo = ({ setShow, industryId, businessId }) => {
             <div className="flex">
               <div className="lg:flex justify-between gap-4 mb-8 w-11/12">
                 <div className="lg:w-4/12 step_field mb-2 lg:mb-0">
-                  <div className="mt-4">
+                {
+                  examples?.data?.length>0&&(
+                       <div className="mt-4">
                     <p className="text-[#7C7C7C] text-[13px] leading-[20px] font-medium pb-1">
                       Service Name Eg.
                     </p>
@@ -301,6 +335,9 @@ const StepTwo = ({ setShow, industryId, businessId }) => {
                       </ul>
                     </div>
                   </div>
+                  )
+                }
+                 
                 </div>
                 <div className="lg:w-4/12">
                   <div className="mt-4">

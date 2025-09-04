@@ -184,6 +184,16 @@ const Sidebar = () => {
                   Create Bot
                 </Link>
               </li>
+                      <li onClick={closeNavbar}>
+                <Link href="/manage-company"
+                  className={`group relative flex items-center gap-2 rounded-sm py-3 px-4 font-normal text-sm lg:text-base text-[#606060] duration-300 ease-in-out hover:bg-graydark ${pathname.includes('subscription-plans') &&
+                    'bg-[#00806a] text-white dark:bg-meta-4'
+                    }`}
+                  passHref>
+                  <LuBot className='text-xl lg:text-2xl' />
+                  Manage Bot
+                </Link>
+              </li>
 
               <li onClick={closeNavbar}>
                 <Link href="/manage-appointments"
@@ -206,16 +216,7 @@ const Sidebar = () => {
                   Subscription plans
                 </Link>
               </li>
-                     {/* <li onClick={closeNavbar}>
-                <Link href="/manage-company"
-                  className={`group relative flex items-center gap-2 rounded-sm py-3 px-4 font-normal text-sm lg:text-base text-[#606060] duration-300 ease-in-out hover:bg-graydark ${pathname.includes('subscription-plans') &&
-                    'bg-[#00806a] text-white dark:bg-meta-4'
-                    }`}
-                  passHref>
-                  <MdOutlineSubscriptions className='text-xl lg:text-2xl' />
-                  Manage Company
-                </Link>
-              </li> */}
+             
 
               <li onClick={closeNavbar}>
                 <Link href="/my-account"

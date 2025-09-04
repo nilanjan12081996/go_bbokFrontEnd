@@ -255,34 +255,22 @@ const Page = () => {
       filter: true,
       width: 130
     },
-    // {
-    //   headerName: "Actions",
-    //   field: "actions",
-    //   width: 300,
-    //   pinned: 'right',
-    //   cellRenderer: (params) => (
-    //     <div className="flex gap-2 justify-center items-center h-full">
-    //       <Button 
-    //         className="!border !text-[#00806A] !border-[#00806A] !bg-[#E8FFFB] hover:!bg-[#00806A] font-medium hover:!text-white text-xs px-3 py-1 rounded-md"
-    //         onClick={() => handleEdit(params.data)}
-    //       >
-    //         Edit
-    //       </Button>
-    //       <Button 
-    //         className="!border !text-[#1E40AF] !border-[#1E40AF] !bg-[#EFF6FF] hover:!bg-[#1E40AF] font-medium hover:!text-white text-xs px-3 py-1 rounded-md"
-    //         onClick={() => handleView(params.data)}
-    //       >
-    //         View
-    //       </Button>
-    //       <Button 
-    //         className="!border !text-[#D92D20] !border-[#D92D20] !bg-[#FFF1F1] hover:!bg-[#D92D20] font-medium hover:!text-white text-xs px-3 py-1 rounded-md"
-    //         onClick={() => handleDelete(params.data)}
-    //       >
-    //         Delete
-    //       </Button>
-    //     </div>
-    //   ),
-    // },
+    {
+      headerName: "Actions",
+      field: "actions",
+      width: 130,
+      pinned: 'right',
+      cellRenderer: (params) => (
+        <div className="flex gap-2 justify-center items-center h-full">
+          <Button 
+            className="!border !text-[#00806A] !border-[#00806A] !bg-[#E8FFFB] hover:!bg-[#00806A] font-medium hover:!text-white text-xs px-3 py-1 rounded-md"
+            onClick={() => handleEdit(params.data)}
+          >
+            Edit
+          </Button>
+        </div>
+      ),
+    },
   ]);
 
   // Action handlers
@@ -304,7 +292,7 @@ const Page = () => {
   return (
     <div className={`${poppins.className} antialiased`}>
       <div className="pt-6 lg:pt-0 mb-6">
-        <h3 className="text-[22px] text-black font-medium pb-1">Manage Company</h3>
+        <h3 className="text-[22px] text-black font-medium pb-1">Manage Bot</h3>
         <p className="text-[13px] text-[#747577]">
           Easily manage and track all your companies in one place.
         </p>

@@ -65,24 +65,34 @@ const StepFive = ({ setShow, languageId, industryId,setCode }) => {
                   <Label htmlFor="countries">Enter Bot Name</Label>
                 </div>
                 <TextInput
-                  {...register("bot_name")}
+                  {...register("bot_name",{required:"Bot Name is required"})}
                   id="base"
                   type="text"
                   sizing="md"
                   placeholder="Enter Bot Name"
                 />
+                 {errors?.bot_name && (
+                    <span className="text-red-500">
+                    {errors?.bot_name?.message}
+                    </span>
+                  )}
               </div>
               <div className="lg:w-6/12 step_field">
                 <div className="mb-1 block">
                   <Label htmlFor="countries">Bot Welcome Message</Label>
                 </div>
                 <TextInput
-                  {...register("bot_message")}
+                  {...register("bot_message",{required:"Welcome message is required"})}
                   id="base"
                   type="text"
                   sizing="md"
                   placeholder='"Hi [Name], thanks for contacting [BusinessName]."'
                 />
+                {errors?.bot_message && (
+                    <span className="text-red-500">
+                    {errors?.bot_message?.message}
+                    </span>
+                  )}
               </div>
             </div>
             <div className="mb-2 block">
@@ -95,7 +105,7 @@ const StepFive = ({ setShow, languageId, industryId,setCode }) => {
                     type="radio"
                     name="radio-control"
                     value={b.id} // send bot id here
-                    {...register("bot_id")}
+                    {...register("bot_id",{required:"Select a bot "})}
                   />
                   <Image
                     src={b?.avatar}
@@ -106,6 +116,11 @@ const StepFive = ({ setShow, languageId, industryId,setCode }) => {
                   />
                 </label>
               ))}
+               {errors?.bot_id && (
+                    <span className="text-red-500">
+                    {errors?.bot_id?.message}
+                    </span>
+                  )}
             </div>
           </div>
           <div className="step_btn_area border-t border-[#EBEEFA] pt-5">

@@ -510,6 +510,7 @@ import { useEffect, useState } from "react";
 import { BiCopy } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
 import { getDays, stepThree } from "../reducers/CreateBotSlice"; // Import stepThree
+import { toast } from "react-toastify";
 
 const StepThree = ({ setShow, industryId }) => {
   const { days } = useSelector((state) => state?.bot);
@@ -550,7 +551,7 @@ const StepThree = ({ setShow, industryId }) => {
       );
 
       if (validAvailabilitySchedules.length === 0) {
-        alert("Please add at least one availability schedule");
+        toast.error("Please add at least one availability schedule");
         return;
       }
 
@@ -617,6 +618,9 @@ const StepThree = ({ setShow, industryId }) => {
             StepSeven: false,
           });
         }
+        else if(res?.payload?.response?.data?.status_code===422){
+          toast.error(res?.payload?.response?.data?.errors?.[0]?.msg)
+        }
       });
 
       // if (stepThree.fulfilled.match(result)) {
@@ -633,7 +637,7 @@ const StepThree = ({ setShow, industryId }) => {
       // }
     } catch (error) {
       console.error("Error in HandleNextPage:", error);
-      alert("An error occurred. Please try again.");
+      toast.error("An error occurred. Please try again.");
     }
   };
 
@@ -654,7 +658,7 @@ const StepThree = ({ setShow, industryId }) => {
     const currentSchedule = availabilitySchedules[0];
 
     if (!currentSchedule.startTime || !currentSchedule.endTime) {
-      alert("Please fill in start and end times before copying to all week");
+      toast.error("Please fill in start and end times before copying to all week");
       return;
     }
 
@@ -675,7 +679,7 @@ const StepThree = ({ setShow, industryId }) => {
     const currentSchedule = breakSchedules[0];
 
     if (!currentSchedule.startTime || !currentSchedule.endTime) {
-      alert("Please fill in start and end times before copying to all week");
+      toast.error("Please fill in start and end times before copying to all week");
       return;
     }
 
@@ -805,7 +809,7 @@ const StepThree = ({ setShow, industryId }) => {
                       <div className="w-10/12">
                         <TextInput
                           id={`availability-start-${index}`}
-                          type="text"
+                          type="time"
                           sizing="md"
                           placeholder="Enter Start Time"
                           value={schedule.startTime}
@@ -846,7 +850,7 @@ const StepThree = ({ setShow, industryId }) => {
                       <div className="w-10/12">
                         <TextInput
                           id={`availability-end-${index}`}
-                          type="text"
+                          type="time"
                           sizing="md"
                           placeholder="Enter End Time"
                           value={schedule.endTime}
@@ -964,7 +968,7 @@ const StepThree = ({ setShow, industryId }) => {
                       <div className="w-10/12">
                         <TextInput
                           id={`break-start-${index}`}
-                          type="text"
+                          type="time"
                           sizing="md"
                           placeholder="Enter Start Time"
                           value={schedule.startTime}
@@ -1003,7 +1007,7 @@ const StepThree = ({ setShow, industryId }) => {
                       <div className="w-10/12">
                         <TextInput
                           id={`break-end-${index}`}
-                          type="text"
+                          type="time"
                           sizing="md"
                           placeholder="Enter End Time"
                           value={schedule.endTime}

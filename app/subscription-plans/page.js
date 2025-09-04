@@ -37,6 +37,7 @@ import bot03 from "../assets/imagesource/bot03.png";
 import code_img from "../assets/imagesource/code_img.png";
 
 import { IoCheckmark } from "react-icons/io5";
+import { getPlans } from '../reducers/CreateBotSlice';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -51,6 +52,13 @@ const nunitoSans = Nunito_Sans({
 });
 
 const page = () => {
+      const { selectedCurrency, planList } = useSelector((state) => state.bot);
+        const dispatch=useDispatch()
+          useEffect(() => {
+          if (selectedCurrency) {
+            dispatch(getPlans({currency_id:selectedCurrency}));
+          }
+        }, [selectedCurrency]);
   return (
     <div className={`${poppins.className} antialiased`}>
         <div className='pt-6 lg:pt-0 mb-6'>
@@ -58,29 +66,33 @@ const page = () => {
             <p className='text-[13px] leading-[22px] text-[#747577] font-normal pb-0'>Easily manage, upgrade, and control all your subscription plans in one place.</p>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:w-7/12 pb-10 lg:pb-0">
-            <div className="rounded-[12px] px-6 py-10 border border-[#C9C9C9] bg-white">
+        {
+            planList?.res?.map((plans,index)=>(
+                 index%2==0?(
+                <div className="rounded-[12px] px-6 py-10 border border-[#C9C9C9] bg-white">
                 <div className='mb-4 border border-[#00806A] bg-[#E8FFFB] text-[#00806A] inline-block rounded-[5px]'>
                     <p className='text-[12px] leading-[26px] px-2 font-medium'>Current Plan</p>
                 </div>
-                <h3 className="text-[#191d23] text-[22px] leading-[22px] font-bold pb-4">Free</h3>
-                <p className="text-[16px] leading-[22px] text-[#95a0af] pb-3 font-normal">Perfect for individuals and small businesses to start using a WhatsApp chatbot at no cost.</p>
-                <h4 className="text-[56px] text-[#191d23] pb-3 font-medium">€0<span className="text-[#4b5768] text-base font-light">/ Month</span></h4>
+                <h3 className="text-[#191d23] text-[22px] leading-[22px] font-bold pb-4">{plans?.plan_name}</h3>
+                <p className="text-[16px] leading-[22px] text-[#95a0af] pb-3 font-normal">{plans?.PlanAccess?.[0]?.plan_access_description}</p>
+                <h4 className="text-[50px] text-[#191d23] pb-3 font-medium">{plans?.Price?.[0]?.Currency?.currency_symbol}{plans?.Price?.[0]?.price}<span className="text-[#4b5768] text-base font-light">{plans?.plan_frequency ===1?"/ Month":`/ ${plans?.plan_frequency} Months`}</span></h4>
                 <div className="mt-8">
                 <ul>
                     <li className="flex items-center gap-3 mb-3">
                         <div className="w-[32px] h-[32px] rounded-[100px] bg-[#e8edfb] flex items-center justify-center">
                         <IoCheckmark className="text-[#024e41]" />
                         </div>
-                        <p className="text-[16px] text-[#191d23]">3 WhatsApp Chatbot</p>
+                        <p className="text-[16px] text-[#191d23]">{plans?.PlanAccess?.[0]?.total_count} {plans?.PlanAccess?.[0]?.plan_access_name}</p>
                     </li>
                     
                 </ul>
                 </div>
             </div>
-            <div className="rounded-[12px] px-6 py-10 border border-[#024E41] bg-[#024E41]">
-                <h3 className="text-[#ffffff] text-[22px] leading-[22px] font-bold pb-4">Pro</h3>
-                <p className="text-[16px] leading-[22px] text-[#ffffff] pb-3 font-normal">Ideal for growing businesses that need advanced WhatsApp chatbot features to scale and engage more customers.</p>
-                <h4 className="text-[56px] text-[#ffffff] pb-3 font-medium">€20.99<span className="text-[#ffffff] text-base font-light">/ Month</span></h4>
+                 ):(
+                <div className="rounded-[12px] px-6 py-10 border border-[#024E41] bg-[#024E41]">
+                <h3 className="text-[#ffffff] text-[22px] leading-[22px] font-bold pb-4">{plans?.plan_name}</h3>
+                <p className="text-[16px] leading-[22px] text-[#ffffff] pb-3 font-normal">{plans?.PlanAccess?.[0]?.plan_access_description}.</p>
+                <h4 className="text-[50px] text-[#ffffff] pb-3 font-medium">{plans?.Price?.[0]?.Currency?.currency_symbol}{plans?.Price?.[0]?.price}<span className="text-[#ffffff] text-base font-light">{plans?.plan_frequency ===1?"/ Month":`/ ${plans?.plan_frequency} Months`}</span></h4>
                 <button className="bg-white hover:bg-[#000000] text-[#024E41] hover:text-white text-base leading-[44px] font-semibold border-2 w-full cursor-pointer border-[#024E41] rounded-[4px]">Upgrade</button>
                 <div className="mt-8">
                 <ul>
@@ -88,11 +100,16 @@ const page = () => {
                         <div className="w-[32px] h-[32px] rounded-[100px] bg-[#e8edfb] flex items-center justify-center">
                         <IoCheckmark className="text-[#024e41]" />
                         </div>
-                        <p className="text-[16px] text-[#ffffff]">Unlimited WhatsApp Chatbot</p>
+                        <p className="text-[16px] text-[#ffffff]">{plans?.PlanAccess?.[0]?.total_count===0?"Unlimited": plans?.PlanAccess?.[0]?.total_count} {plans?.PlanAccess?.[0]?.plan_access_name}</p>
                     </li>
                 </ul>
                 </div>
             </div>
+                 )
+            ))
+        }
+          
+            
         </div>
         </div>
   )

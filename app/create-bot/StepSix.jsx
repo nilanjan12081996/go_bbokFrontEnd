@@ -1,7 +1,10 @@
 import Image from "next/image";
 import code_img from "../../app/assets/imagesource/code_img.png";
 import { Button, Tooltip } from "flowbite-react";
+import { useState } from "react";
 const StepSix = ({ setShow ,code}) => {
+
+  const [copied, setCopied] = useState(false);
   const handleBack = () => {
     setShow({
       StepOne: false, // AddProduct is the first step
@@ -11,6 +14,20 @@ const StepSix = ({ setShow ,code}) => {
       StepFive: true,
       StepSix: false,
     });
+  };
+
+   const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(code); // copy code
+      setCopied(true);
+
+      // Hide message after 2 seconds
+      setTimeout(() => {
+        setCopied(false);
+      }, 2000);
+    } catch (err) {
+      console.error("Failed to copy: ", err);
+    }
   };
   return (
     <>
@@ -43,12 +60,37 @@ const StepSix = ({ setShow ,code}) => {
               </button>
             </Tooltip> */}
 
-            <button className="bg-[#00806A] rounded-[6px] text-white hover:text-[#464f60] text-[13px] leading-[36px] lg:text-[14px] lg:leading-[43px] font-medium px-5 lg:px-8 cursor-pointer hover:bg-white border border-[#00806A] hover:border-[#dddfe2]">
+            <button onClick={handleCopy} className="bg-[#00806A] rounded-[6px] text-white hover:text-[#464f60] text-[13px] leading-[36px] lg:text-[14px] lg:leading-[43px] font-medium px-5 lg:px-8 cursor-pointer hover:bg-white border border-[#00806A] hover:border-[#dddfe2]">
                 Copy Code
               </button>
+              {copied && (
+            <span className="text-green-600 text-sm transition-opacity duration-500 ease-in-out animate-fadeIn">
+              ✅ Code copied!
+            </span>
+          )}
             
           </div>
         </div>
+        <style jsx>{`
+        .animate-fadeIn {
+          opacity: 1;
+          animation: fadeInOut 2s forwards;
+        }
+        @keyframes fadeInOut {
+          0% {
+            opacity: 0;
+          }
+          20% {
+            opacity: 1;
+          }
+          80% {
+            opacity: 1;
+          }
+          100% {
+            opacity: 0;
+          }
+        }
+      `}</style>
       </div>
     </>
   );
