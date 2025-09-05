@@ -241,6 +241,19 @@ dispatch(getBotCount())
               </li>
 
 
+              <li onClick={closeNavbar}>
+                <Link href="/checkout"
+                  className={`group relative flex items-center gap-2 rounded-sm py-3 px-4 font-normal text-base text-[#606060] duration-300 ease-in-out hover:bg-graydark ${pathname.includes('checkout') &&
+                    'bg-[#00806a] text-white dark:bg-meta-4'
+                    }`}
+                  passHref>
+                  <FaRegCircleUser className='text-xl lg:text-2xl' />
+                  Checkout
+                </Link>
+              </li>
+              
+
+
             </ul>
 
           </div>
