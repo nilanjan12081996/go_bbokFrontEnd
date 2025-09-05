@@ -247,7 +247,6 @@ dispatch(getBotCount())
                     'bg-[#00806a] text-white dark:bg-meta-4'
                     }`}
                   passHref>
-                  <FaRegCircleUser className='text-xl lg:text-2xl' />
                   Checkout
                 </Link>
               </li>
