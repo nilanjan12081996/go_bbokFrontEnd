@@ -118,7 +118,7 @@ const page = () => {
             {/* step three start here */}
           
               {show.StepThree && (
-            <StepThree setShow={setShow} industryId={industryId}/>
+            <StepThree setShow={setShow} industryId={industryId} businessId={businessId}/>
                 )}
             {/* step three ends here */}
             {/* step four start here */}
@@ -136,6 +136,7 @@ const page = () => {
             setShow={setShow}
             languageId={languageId}
             industryId={industryId}
+            businessId={businessId}
             setCode={setCode}
             
           />

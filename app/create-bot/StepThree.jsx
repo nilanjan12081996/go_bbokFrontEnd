@@ -512,7 +512,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getDays, stepThree } from "../reducers/CreateBotSlice"; // Import stepThree
 import { toast } from "react-toastify";
 
-const StepThree = ({ setShow, industryId }) => {
+const StepThree = ({ setShow, industryId ,businessId}) => {
   const { days } = useSelector((state) => state?.bot);
   const dispatch = useDispatch();
 
@@ -598,7 +598,7 @@ const StepThree = ({ setShow, industryId }) => {
 
       // Prepare the payload
       const payload = {
-        company_id: industryId, // You might want to get this from your state or props
+        company_id: businessId, // You might want to get this from your state or props
         availability_arr: availability_arr,
       };
 

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getBots, stepFourAndFive } from "../reducers/CreateBotSlice";
 import { useForm } from "react-hook-form";
-const StepFive = ({ setShow, languageId, industryId,setCode }) => {
+const StepFive = ({ setShow, languageId, industryId,setCode,businessId }) => {
   const { bots } = useSelector((state) => state?.bot);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -43,7 +43,7 @@ const StepFive = ({ setShow, languageId, industryId,setCode }) => {
     const payload = {
       language_id: languageId,
       bot_id: data?.bot_id,
-      company_id: industryId,
+      company_id: businessId,
       bot_name: data?.bot_name,
       bot_message: data?.bot_message,
     };
