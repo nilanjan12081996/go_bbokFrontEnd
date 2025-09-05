@@ -45,6 +45,47 @@ export const editService = createAsyncThunk(
 );
 
 
+export const editStepTwo = createAsyncThunk(
+    'editStepTwo',
+    async (user_input, { rejectWithValue }) => {
+        try {
+            const response = await api.post('/api/service/get-services',user_input);
+            if (response?.data?.status_code === 200) {
+                return response.data;
+            } else {
+                if (response?.data?.errors) {
+                    return rejectWithValue(response.data.errors);
+                } else {
+                    return rejectWithValue('Something went wrong.');
+                }
+            }
+        } catch (err) {
+            return rejectWithValue(err);
+        }
+    }
+);
+
+
+export const updateStepTwo = createAsyncThunk(
+    'updateStepTwo',
+    async (user_input, { rejectWithValue }) => {
+        try {
+            const response = await api.post('/api/service/update-service',user_input);
+            if (response?.data?.status_code === 200) {
+                return response.data;
+            } else {
+                if (response?.data?.errors) {
+                    return rejectWithValue(response.data.errors);
+                } else {
+                    return rejectWithValue('Something went wrong.');
+                }
+            }
+        } catch (err) {
+            return rejectWithValue(err);
+        }
+    }
+);
+
 export const createServiceSteptwo = createAsyncThunk(
     'createServiceSteptwo',
     async (user_input, { rejectWithValue }) => {
@@ -292,6 +333,8 @@ const initialState={
     industryData:[],
     updateServiceData:"",
     editSerViceData:{},
+    editStepTwoData:{},
+    updateStepTwoData:{},
     stepTwoData:"",
     examples:[],
     days:[],
@@ -485,6 +528,32 @@ const EditBotSlice=createSlice({
             state.error=false
         })
         .addCase(editService.rejected,(state,{payload})=>{
+            state.loading=false
+            state.error=payload
+        })
+         .addCase(editStepTwo.pending,(state)=>{
+            state.loading=true
+        })
+        .addCase(editStepTwo.fulfilled,(state,{payload})=>{
+            state.loading=false
+            state.editStepTwoData=payload
+            console.log("editSerViceDataPayload",payload);
+            
+            state.error=false
+        })
+        .addCase(editStepTwo.rejected,(state,{payload})=>{
+            state.loading=false
+            state.error=payload
+        })
+            .addCase(updateStepTwo.pending,(state)=>{
+            state.loading=true
+        })
+        .addCase(updateStepTwo.fulfilled,(state,{payload})=>{
+            state.loading=false
+            state.updateStepTwoData=payload
+            state.error=false
+        })
+        .addCase(updateStepTwo.rejected,(state,{payload})=>{
             state.loading=false
             state.error=payload
         })

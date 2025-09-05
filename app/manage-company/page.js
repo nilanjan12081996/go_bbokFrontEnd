@@ -160,6 +160,7 @@ const Page = () => {
         companyName: company.company_name || 'NA',
         industryName: company.industry?.industry_name || 'NA',
         servicesCount: company.service?.length || 0,
+        industry_id:company.industry_id,
         serviceNames: company.service?.length > 0 
           ? company.service.map(service => service.service_name).join(', ') 
           : 'NA',
@@ -270,7 +271,7 @@ const Page = () => {
           <Link 
             className="!border !text-[#00806A] !border-[#00806A] !bg-[#E8FFFB] hover:!bg-[#00806A] font-medium hover:!text-white text-xs px-3 py-1 rounded-md"
           //  onClick={() => handleEdit(params.data.companyId)}
-          href={{pathname:"/edit-bot",query:{id:btoa(params.data.companyId),service_ids:btoa(JSON.stringify(params.data.serviceIds))}}}
+          href={{pathname:"/edit-bot",query:{id:btoa(params.data.companyId),service_ids:btoa(JSON.stringify(params.data.serviceIds)),industry_id:btoa(JSON.stringify(params.data.industry_id)),industryName:btoa(JSON.stringify(params.data.industryName))}}}
           >
             Edit
           </Link>

@@ -44,6 +44,10 @@ console.log("searchParams",searchParams.get("id"));
 const id=atob(searchParams.get("id"))
 const encoded=searchParams.get("service_ids")
 const serviceIds=encoded ? JSON.parse(atob(encoded)) : [];
+const encodedIn=searchParams.get("industry_id")
+const industry_id=encodedIn ? JSON.parse(atob(encodedIn)):""
+const encodedinName=searchParams.get("industryName")
+const industryName=encodedinName ? JSON.parse(atob(encodedinName)):""
 console.log("searchParamsId",serviceIds);
 
 
@@ -118,12 +122,12 @@ console.log("searchParamsId",serviceIds);
             </div>
             {/* step one start here */}
           
-            {show.StepOne && <StepOne id={id} setShow={setShow} industryId={industryId} setIndustryId={setIndustryId} setBusinessId={setBusinessId}/>}
+            {show.StepOne && <StepOne industryName={industryName} id={id} industry_id={industry_id} setShow={setShow} industryId={industryId} setIndustryId={setIndustryId} setBusinessId={setBusinessId}/>}
             {/* step one ends here */}
 
             {/* step two start here */}
          
-            {show.StepTwo && <StepTwo serviceIds={serviceIds} setShow={setShow} industryId={industryId} businessId={businessId}/>}
+            {show.StepTwo && <StepTwo id={id} industry_id={industry_id} serviceIds={serviceIds} setShow={setShow} industryId={industryId} businessId={businessId}/>}
             {/* step two ends here */}
 
             {/* step three start here */}

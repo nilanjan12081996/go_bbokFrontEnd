@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 import { toast, ToastContainer } from "react-toastify";
 import { editService, updateService } from "../reducers/EditBotSlice";
 
-const StepOne = ({id, setShow, industryId, setIndustryId, setBusinessId }) => {
+const StepOne = ({industryName,id, setShow, industry_id, setIndustryId, setBusinessId, }) => {
   const { editSerViceData } = useSelector((state) => state?.botE);
     const { industryData } = useSelector((state) => state?.bot);
   const dispatch = useDispatch();
@@ -29,8 +29,8 @@ business_id:id
   },[id])
   useEffect(()=>{
 setValue("company_name",editSerViceData?.res?.[0]?.company_name)
-setValue("industry_id", editSerViceData?.res?.[0]?.industry_id);
-  },[editSerViceData,setValue])
+setValue("industry_id", industry_id);
+  },[editSerViceData,setValue,industry_id])
   console.log("editSerViceData",editSerViceData);
   
   const HandleNextPage = () => {
@@ -92,7 +92,7 @@ setValue("industry_id", editSerViceData?.res?.[0]?.industry_id);
                     <Select
                     id="countries"
                     
-                    {...register("company_id")}
+                    {...register("industry_id")}
 >
                           <option value="">Select</option>
                       {industryData?.res?.map((indus) => (
