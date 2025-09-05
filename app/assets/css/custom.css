@@ -1198,6 +1198,32 @@ body {
   border-radius: 5px;
 }
 
+.form_area label {
+  color: #222222;
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 500;
+}
+.form_area button {
+  color: #ffffff;
+  border-radius: 35px !important;
+  font-size: 18px;
+  line-height: 25px;
+  padding: 14px 0;
+}
+.form_area input[type="checkbox"] {
+  border: #a7a7a7 1px solid;
+  background-color: #ffffff;
+}
+.form_area input[type="checkbox"]:focus {
+  box-shadow: none;
+}
+
+.form_area input[type="checkbox"]:checked {
+  background-color: #00806a; /* Box background */
+  border-color: #00806a;
+}
+
 @media only screen and (max-width: 767px) {
   .step_wraper ul li .number_box.active_step_two.active_step:before {
     display: none;
