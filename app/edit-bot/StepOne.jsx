@@ -72,7 +72,7 @@ setValue("industry_id", editSerViceData?.res?.[0]?.industry_id);
           console.log("Hi");
         }
       else if(res?.payload?.response?.data?.status_code === 422){
-toast.error(res?.payload?.response?.data?.message);
+        toast.error(res?.payload?.response?.data?.message);
       }
         
       }
