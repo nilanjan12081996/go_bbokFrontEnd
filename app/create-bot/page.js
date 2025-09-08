@@ -54,7 +54,7 @@ const page = () => {
     StepFour: false,
     StepFive: false,
     StepSix:false,
-    StepSeven:true,
+    StepSeven:false,
     StepEight: false,
   });
   const[industryId,setIndustryId]=useState()

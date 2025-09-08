@@ -63,6 +63,23 @@ dispatch(createImage(formData)).then((res)=>{
                             </span>
                           )}
                       </div>
+                            <div className="lg:w-6/12 step_field">
+                        <div className="mb-1 block">
+                          <Label htmlFor="countries">Company Name</Label>
+                        </div>
+                        <TextInput
+                          {...register("company_name",{required:"Company Name is required"})}
+                          id="base"
+                          type="text"
+                          sizing="md"
+                          placeholder="Company Name"
+                        />
+                        {errors?.company_name && (
+                            <span className="text-red-500">
+                            {errors?.company_name?.message}
+                            </span>
+                          )}
+                      </div>
                       <div className="lg:w-6/12 step_field">
                         <div className="mb-1 block">
                           <Label htmlFor="countries">Description</Label>
