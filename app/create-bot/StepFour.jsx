@@ -23,6 +23,8 @@ const StepFour = ({ setShow, setLanguageId }) => {
       StepFour: false,
       StepFive: true,
       StepSix: false,
+       StepSeven: false,
+      StepEight:false
     });
   };
 

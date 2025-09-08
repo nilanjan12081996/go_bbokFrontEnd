@@ -1,9 +1,10 @@
-import { Label, TextInput } from "flowbite-react";
+import { FileInput, Label, TextInput } from "flowbite-react";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getBots, stepFourAndFive } from "../reducers/CreateBotSlice";
 import { useForm } from "react-hook-form";
+import StepSeven from "./StepSeven";
 const StepFive = ({ setShow, languageId, industryId,setCode,businessId }) => {
   const { bots } = useSelector((state) => state?.bot);
   const dispatch = useDispatch();
@@ -18,6 +19,8 @@ const StepFive = ({ setShow, languageId, industryId,setCode,businessId }) => {
       StepFour: false,
       StepFive: false,
       StepSix: true,
+      StepSeven:false,
+      StepEight:false
     });
   };
   const handleBack = () => {
@@ -28,6 +31,8 @@ const StepFive = ({ setShow, languageId, industryId,setCode,businessId }) => {
       StepFour: true,
       StepFive: false,
       StepSix: false,
+      StepSeven: false,
+      StepEight:false
     });
   };
 
@@ -94,6 +99,7 @@ const StepFive = ({ setShow, languageId, industryId,setCode,businessId }) => {
                     </span>
                   )}
               </div>
+       
             </div>
             <div className="mb-2 block">
               <Label htmlFor="countries">Bot Icons</Label>

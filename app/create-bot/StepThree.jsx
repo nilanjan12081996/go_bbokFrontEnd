@@ -616,6 +616,7 @@ const StepThree = ({ setShow, industryId ,businessId}) => {
             StepFive: false,
             StepSix: false,
             StepSeven: false,
+            StepEight:false
           });
         }
         else if(res?.payload?.response?.data?.status_code===422){

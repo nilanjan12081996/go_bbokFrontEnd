@@ -1,10 +1,10 @@
-import { FileInput, Label, TextInput } from "flowbite-react";
+import { Label, TextInput } from "flowbite-react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { createImage } from "../reducers/CreateBotSlice";
+import { createStripe } from "../reducers/CreateBotSlice";
 
-const StepSix=( {setShow,businessId})=>{
-      const HandleNextPage = () => {
+const StepSeven=({setShow,businessId})=>{
+          const HandleNextPage = () => {
     setShow({
       StepOne: false, // AddProduct is the first step
       StepTwo: false,
@@ -12,11 +12,11 @@ const StepSix=( {setShow,businessId})=>{
       StepFour: false,
       StepFive: false,
       StepSix: false,
-      StepSeven:true,
-      StepEight:false
+      StepSeven:false,
+      StepEight:true
     });
   };
-    const {
+   const {
       register,
       handleSubmit,
       setValue,
@@ -24,20 +24,13 @@ const StepSix=( {setShow,businessId})=>{
       formState: { errors },
     } = useForm();
     const dispatch=useDispatch()
-  const  onSubmit=(data)=>{
-    const formData=new FormData()
-    formData.append("company_id",businessId)
-    formData.append("image",data?.image?.[0])
-    formData.append("description",data?.description)
-   
-    
-dispatch(createImage(formData)).then((res)=>{
-  if(res?.payload?.status_code===201)
-  {
-    HandleNextPage()
-  }
-})
-  }
+    const onSubmit=(data)=>{
+        dispatch(createStripe({...data,company_id:businessId})).then((res)=>{
+            if(res?.payload?.status_code===201){
+                HandleNextPage()
+            }
+        })
+    }
     return(
         <>
         <div className="step_box_one">
@@ -48,41 +41,41 @@ dispatch(createImage(formData)).then((res)=>{
                     <div className="lg:flex gap-4 mb-8">
                       <div className="lg:w-6/12 step_field mb-2 lg:mb-0">
                         <div className="mb-1 block">
-                          <Label htmlFor="countries">Upload Logo</Label>
+                          <Label htmlFor="countries">Enter Stripe key</Label>
                         </div>
-                        <FileInput
-                          {...register("image",{required:"Logo Required"})}
+                        <TextInput
+                          {...register("stripe_key",{required:"Stripe Key is required"})}
                           id="base"
-                          
+                          type="text"
                           sizing="md"
-
+                          placeholder="Enter Your Stripe Key"
                         />
-                         {errors?.image && (
+                         {errors?.stripe_key && (
                             <span className="text-red-500">
-                            {errors?.image?.message}
+                            {errors?.stripe_key?.message}
                             </span>
                           )}
                       </div>
                       <div className="lg:w-6/12 step_field">
                         <div className="mb-1 block">
-                          <Label htmlFor="countries">Description</Label>
+                          <Label htmlFor="countries">Stripe Secret</Label>
                         </div>
                         <TextInput
-                          {...register("description",{required:"Description is required"})}
+                          {...register("stripe_secret",{required:"Stripe Secret is required"})}
                           id="base"
                           type="text"
                           sizing="md"
-                          placeholder="Description"
+                          placeholder="Stripe Secret"
                         />
-                        {errors?.description && (
+                        {errors?.stripe_secret && (
                             <span className="text-red-500">
-                            {errors?.description?.message}
+                            {errors?.stripe_secret?.message}
                             </span>
                           )}
                       </div>
                
                     </div>
-                    
+                   
                   </div>
                   <div className="step_btn_area border-t border-[#EBEEFA] pt-5">
                     <div className="flex justify-end items-center gap-3">
@@ -102,4 +95,4 @@ dispatch(createImage(formData)).then((res)=>{
         </>
     )
 }
-export default StepSix;
+export default StepSeven;

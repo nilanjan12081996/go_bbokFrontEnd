@@ -282,6 +282,65 @@ export const getBotCount = createAsyncThunk(
     }
 );
 
+export const createSubscription=createAsyncThunk(
+    'createSubscription',
+      async (user_input, { rejectWithValue }) => {
+        try {
+            const response = await api.post(`/api/subscription/create-subscription`,user_input);
+            if (response?.data?.status_code === 200) {
+                return response.data;
+            } else {
+                if (response?.data?.errors) {
+                    return rejectWithValue(response.data.errors);
+                } else {
+                    return rejectWithValue('Something went wrong.');
+                }
+            }
+        } catch (err) {
+            return rejectWithValue(err);
+        }
+    }
+)
+
+export const createImage=createAsyncThunk(
+    'createImage',
+      async (user_input, { rejectWithValue }) => {
+        try {
+            const response = await api.post(`/api/image/create`,user_input);
+            if (response?.data?.status_code === 201) {
+                return response.data;
+            } else {
+                if (response?.data?.errors) {
+                    return rejectWithValue(response.data.errors);
+                } else {
+                    return rejectWithValue('Something went wrong.');
+                }
+            }
+        } catch (err) {
+            return rejectWithValue(err);
+        }
+    }
+)
+
+export const createStripe=createAsyncThunk(
+    'createStripe',
+      async (user_input, { rejectWithValue }) => {
+        try {
+            const response = await api.post(`/api/plans/create-user-stripe`,user_input);
+            if (response?.data?.status_code === 201) {
+                return response.data;
+            } else {
+                if (response?.data?.errors) {
+                    return rejectWithValue(response.data.errors);
+                } else {
+                    return rejectWithValue('Something went wrong.');
+                }
+            }
+        } catch (err) {
+            return rejectWithValue(err);
+        }
+    }
+)
 
 const initialState={
     loading:false,
@@ -300,7 +359,10 @@ const initialState={
     currencyOut:[],
     selectedCurrency: null,
     planList:[],
-    countBot:{}
+    countBot:{},
+    createSubsData:{},
+    createImageData:{},
+    createStripeData:{}
 }
 const CreateBotSlice=createSlice({
     name:'bot',
@@ -480,6 +542,42 @@ const CreateBotSlice=createSlice({
             state.error=false
         })
         .addCase(getBotCount.rejected,(state,{payload})=>{
+            state.loading=false
+            state.error=payload
+        })
+        .addCase(createSubscription.pending,(state)=>{
+            state.loading=true
+        })
+        .addCase(createSubscription.fulfilled,(state,{payload})=>{
+            state.loading=false
+            state.createSubsData=payload
+            state.error=false
+        })
+        .addCase(createSubscription.rejected,(state,{payload})=>{
+            state.loading=false
+            state.error=payload
+        })
+         .addCase(createImage.pending,(state)=>{
+            state.loading=true
+        })
+        .addCase(createImage.fulfilled,(state,{payload})=>{
+            state.loading=false
+            state.createImageData=payload
+            state.error=false
+        })
+        .addCase(createImage.rejected,(state,{payload})=>{
+            state.loading=false
+            state.error=payload
+        })
+             .addCase(createStripe.pending,(state)=>{
+            state.loading=true
+        })
+        .addCase(createStripe.fulfilled,(state,{payload})=>{
+            state.loading=false
+            state.createStripeData=payload
+            state.error=false
+        })
+        .addCase(createStripe.rejected,(state,{payload})=>{
             state.loading=false
             state.error=payload
         })

@@ -52,6 +52,7 @@ const StepOne = ({ setShow, industryId, setIndustryId, setBusinessId }) => {
             StepFive: false,
             StepSix: false,
             StepSeven: false,
+            StepEight:false
           });
         } else if (res?.payload?.response?.data?.status_code === 400) {
           toast.error(res?.payload?.response?.data?.message);

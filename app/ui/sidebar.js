@@ -179,7 +179,7 @@ dispatch(getBotCount())
 
          
               {
-                countBot?.count>=1?(
+                countBot?.count<=1?(
                      <li onClick={closeNavbar}>
                 <Link href="/manage-company"
                   className={`group relative flex items-center gap-2 rounded-sm py-3 px-4 font-normal text-sm lg:text-base text-[#606060] duration-300 ease-in-out hover:bg-graydark ${pathname.includes('subscription-plans') &&

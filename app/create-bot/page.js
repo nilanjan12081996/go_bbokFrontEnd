@@ -22,6 +22,8 @@ import StepThree from './StepThree';
 import StepFour from './StepFour';
 import StepFive from './StepFive';
 import StepSix from './StepSix';
+import StepSeven from './StepSeven';
+import StepEight from './StepEight';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -51,7 +53,9 @@ const page = () => {
     StepThree: false,
     StepFour: false,
     StepFive: false,
-    StepSix: false,
+    StepSix:false,
+    StepSeven:true,
+    StepEight: false,
   });
   const[industryId,setIndustryId]=useState()
   const[businessId,setBusinessId]=useState()
@@ -64,6 +68,8 @@ const page = () => {
     if (show.StepFour && stepNumber <= 4) return true;
     if (show.StepFive && stepNumber <= 5) return true;
     if (show.StepSix && stepNumber <= 6) return true;
+    if (show.StepSeven && stepNumber <= 7) return true;
+    if (show.StepEight && stepNumber <= 8) return true;
     return false;
   };
  
@@ -102,6 +108,14 @@ const page = () => {
                     <li className='text-center relative z-20'>
                         <div className={`number_box active_step_six ${isStepActive(6)?"active_step":""} inline-flex bg-[#EBEBEB] w-[40px] h-[40px] rounded-[50px] text-[#585858] text-[16px] leading-[40px] font-medium items-center justify-center mb-2`}>6</div>
                         <p className='step_laber_box text-[#8F8F8F] text-xs lg:text-base font-medium'>Step 6</p>
+                    </li>
+                      <li className='text-center relative z-20'>
+                        <div className={`number_box active_step_six ${isStepActive(7)?"active_step":""} inline-flex bg-[#EBEBEB] w-[40px] h-[40px] rounded-[50px] text-[#585858] text-[16px] leading-[40px] font-medium items-center justify-center mb-2`}>7</div>
+                        <p className='step_laber_box text-[#8F8F8F] text-xs lg:text-base font-medium'>Step 7</p>
+                    </li>
+                      <li className='text-center relative z-20'>
+                        <div className={`number_box active_step_six ${isStepActive(8)?"active_step":""} inline-flex bg-[#EBEBEB] w-[40px] h-[40px] rounded-[50px] text-[#585858] text-[16px] leading-[40px] font-medium items-center justify-center mb-2`}>8</div>
+                        <p className='step_laber_box text-[#8F8F8F] text-xs lg:text-base font-medium'>Step 8</p>
                     </li>
                 </ul>
             </div>
@@ -144,8 +158,18 @@ const page = () => {
             {/* step five ends here */}
 
             {/* step six start here */}
+            {
+              show.StepSix&&(
+                <StepSix  setShow={setShow} businessId={businessId}/>
+              )
+            }
+            {
+              show.StepSeven&&(
+                <StepSeven setShow={setShow}  businessId={businessId} />
+              )
+            }
         
-            {show.StepSix && <StepSix setShow={setShow} code={code}/>}
+            {show.StepEight && <StepEight setShow={setShow} code={code}/>}
             {/* step six ends here */}
         </div>
     </div>

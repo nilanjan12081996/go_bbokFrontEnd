@@ -37,7 +37,7 @@ import bot03 from "../assets/imagesource/bot03.png";
 import code_img from "../assets/imagesource/code_img.png";
 
 import { IoCheckmark } from "react-icons/io5";
-import { getPlans } from '../reducers/CreateBotSlice';
+import { createSubscription, getPlans } from '../reducers/CreateBotSlice';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -53,12 +53,24 @@ const nunitoSans = Nunito_Sans({
 
 const page = () => {
       const { selectedCurrency, planList } = useSelector((state) => state.bot);
+      const[planId,setPlanId]=useState()
         const dispatch=useDispatch()
           useEffect(() => {
           if (selectedCurrency) {
             dispatch(getPlans({currency_id:selectedCurrency}));
           }
         }, [selectedCurrency]);
+
+const handleCreateSubs=(id,countryId)=>{
+setPlanId(id)
+dispatch(createSubscription({
+  plan_id:id,
+  currency_id:selectedCurrency,
+  country_id:countryId
+
+}))
+}
+
   return (
     <div className={`${poppins.className} antialiased`}>
         <div className='pt-6 lg:pt-0 mb-6'>
@@ -93,7 +105,7 @@ const page = () => {
                 <h3 className="text-[#ffffff] text-[22px] leading-[22px] font-bold pb-4">{plans?.plan_name}</h3>
                 <p className="text-[16px] leading-[22px] text-[#ffffff] pb-3 font-normal">{plans?.PlanAccess?.[0]?.plan_access_description}.</p>
                 <h4 className="text-[50px] text-[#ffffff] pb-3 font-medium">{plans?.Price?.[0]?.Currency?.currency_symbol}{plans?.Price?.[0]?.price}<span className="text-[#ffffff] text-base font-light">{plans?.plan_frequency ===1?"/ Month":`/ ${plans?.plan_frequency} Months`}</span></h4>
-                <button className="bg-white hover:bg-[#000000] text-[#024E41] hover:text-white text-base leading-[44px] font-semibold border-2 w-full cursor-pointer border-[#024E41] rounded-[4px]">Upgrade</button>
+                <button onClick={()=>{handleCreateSubs(plans?.id,plans?.Price?.[0]?.currency_id)}} className="bg-white hover:bg-[#000000] text-[#024E41] hover:text-white text-base leading-[44px] font-semibold border-2 w-full cursor-pointer border-[#024E41] rounded-[4px]">Upgrade</button>
                 <div className="mt-8">
                 <ul>
                     <li className="flex items-center gap-3 mb-3">

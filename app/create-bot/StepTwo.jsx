@@ -17,7 +17,8 @@ const StepTwo = ({ setShow, industryId, businessId }) => {
       StepFour: false,
       StepFive: false,
       StepSix: false,
-      StepSeven: false,
+       StepSeven: false,
+      StepEight:false
     });
   };
   const handleBack = () => {
