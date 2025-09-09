@@ -52,7 +52,13 @@ useEffect(()=>{
 },[mockApiData])
 
   const [columnDefs] = useState([
-  
+    { 
+      field: "date", 
+      headerName: "Date", 
+      sortable: true, 
+      filter: true,
+      width: 150,
+    },
     { 
       field: "service_name", 
       headerName: "Service Name", 
@@ -88,13 +94,7 @@ useEffect(()=>{
       filter: true,
       width: 150
     },
-    { 
-      field: "date", 
-      headerName: "Date", 
-      sortable: true, 
-      filter: true,
-      width: 150,
-    },
+  
     { 
       field: "mobile", 
       headerName: "Mobile", 
