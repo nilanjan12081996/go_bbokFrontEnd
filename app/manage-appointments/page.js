@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Poppins } from 'next/font/google';
 import { Button } from 'flowbite-react';
 
@@ -11,6 +11,8 @@ import { AgGridReact } from 'ag-grid-react';
 // ✅ AG Grid v34+ requires module registration
 import { ModuleRegistry } from 'ag-grid-community';
 import { AllCommunityModule } from 'ag-grid-community';
+import { useDispatch, useSelector } from 'react-redux';
+import { calenderData } from '../reducers/DashBoardSlice';
 ModuleRegistry.registerModules([AllCommunityModule]);
 
 const poppins = Poppins({
@@ -20,59 +22,90 @@ const poppins = Poppins({
 });
 
 const Page = () => {
-  const [rowData] = useState([
-    {
-      id: "#001",
-      customername: "Jammie Oliver",
-      mobilenumber: "+1 (202) 555-0147",
-      servicename: "Dentist Appointment",
-      bookingdate: "25 Jun,2025",
-      bookingtime: "10:00 AM - 10:30 AM",
-    },
-    {
-      id: "#002",
-      customername: "Oliver Quinn",
-      mobilenumber: "+1 (202) 555-0147",
-      servicename: "Haircut Appointment",
-      bookingdate: "25 Jun,2025",
-      bookingtime: "10:00 AM - 10:30 AM",
-    },
-    {
-      id: "#003",
-      customername: "Harley Hawk",
-      mobilenumber: "+1 (202) 555-0147",
-      servicename: "Hair Coloring",
-      bookingdate: "25 Jun,2025",
-      bookingtime: "10:00 AM - 10:30 AM",
-    },
-  ]);
+const { mockApiData } = useSelector((state) => state?.dash);
+const dispatch=useDispatch()
+ const [rowData, setRowData] = useState([]);
+useEffect(()=>{
+dispatch(calenderData())
+},[])
+console.log("mockApiData",mockApiData);
+
+useEffect(()=>{
+  if(mockApiData && mockApiData.data && Array.isArray(mockApiData.data))
+  {
+    const transformedData=mockApiData?.data?.map((appointment)=>(
+      {
+        id:appointment?.id,
+      slot_start:appointment?.slot_start,
+      slot_end:appointment?.slot_end,
+      date:appointment?.date,
+      mobile:appointment?.customer?.mobile,
+      service_name:appointment?.service?.service_name,
+      service_price:appointment?.service?.service_price,
+      duration:appointment?.service?.duration + appointment?.service?.duration_string
+      }
+      
+    ))
+     setRowData(transformedData);
+  }
+
+},[mockApiData])
 
   const [columnDefs] = useState([
-    { field: "id", headerName: "Serial No.", sortable: false, filter: false },
-    { field: "customername", headerName: "Customer Name", sortable: true, filter: true },
-    { field: "mobilenumber", headerName: "Mobile Number", sortable: true, filter: true },
-    { field: "servicename", headerName: "Service Name", sortable: true, filter: true },
-    { field: "bookingdate", headerName: "Booking Date", sortable: true, filter: true },
-    { field: "bookingtime", headerName: "Booking Time", sortable: true, filter: true },
-    {
-      headerName: "Actions",
-      field: "actions",
-      width: 300,
-      cellRenderer: () => (
-        <div className="flex gap-2 justify-center items-center">
-          <Button className="!border !text-[#00806A] !border-[#00806A] !bg-[#E8FFFB] hover:!bg-[#00806A] font-medium hover:!text-white text-xs px-4 py-0 rounded-md mt-1.5">
-            Accept
-          </Button>
-          <Button className="!border !text-[#D92D20] !border-[#D92D20] !bg-[#FFF1F1] hover:!bg-[#D92D20] font-medium hover:!text-white text-xs px-4 py-0 rounded-md mt-1.5">
-            Cancel
-          </Button>
-          <Button className="!border !text-[#4B4B4B] !border-[#4B4B4B] !bg-[#F0F7FF] hover:!bg-[#4B4B4B] font-medium hover:!text-white text-xs px-4 py-0 rounded-md mt-1.5">
-            Reschedule
-          </Button>
-        </div>
-      ),
+  
+    { 
+      field: "service_name", 
+      headerName: "Service Name", 
+      sortable: true, 
+      filter: true,
+      width: 150
     },
+       { 
+      field: "service_price", 
+      headerName: "Price", 
+      sortable: true, 
+      filter: true,
+      width: 150
+    },
+      { 
+      field: "duration", 
+      headerName: "Duration", 
+      sortable: true, 
+      filter: true,
+      width: 150
+    },
+    { 
+      field: "slot_start", 
+      headerName: "Start Slot", 
+      sortable: true, 
+      filter: true,
+      width: 150
+    },
+    { 
+      field: "slot_end", 
+      headerName: "End Slot", 
+      sortable: true, 
+      filter: true,
+      width: 150
+    },
+    { 
+      field: "date", 
+      headerName: "Date", 
+      sortable: true, 
+      filter: true,
+      width: 150,
+    },
+    { 
+      field: "mobile", 
+      headerName: "Mobile", 
+      sortable: true, 
+      filter: true,
+      width: 150,
+      
+    },
+ 
   ]);
+
 
   return (
     <div className={`${poppins.className} antialiased`}>
