@@ -10,10 +10,12 @@ import profileUser from "../assets/imagesource/profile_user.png";
 import Image from "next/image";
 import { MdEdit } from "react-icons/md";
 import { toast, ToastContainer } from "react-toastify";
+import { currentSubcription } from "../reducers/CreateBotSlice";
 
 const page = () => {
   const dispatch = useDispatch()
   const { profileData } = useSelector((state) => state?.profile)
+    const { currentSubcriptionData } = useSelector((state) => state?.bot)
   const [subsId, setSubsId] = useState()
   const [openCancelModal, setOpenCandelModal] = useState(false)
   const [selectedFile, setSelectedFile] = useState(null);
@@ -28,8 +30,9 @@ const page = () => {
   const password = watch("newPassword");
   useEffect(() => {
     dispatch(getProfile())
+    dispatch(currentSubcription())
   }, [])
-  console.log("profileData", profileData)
+  console.log("currentSubcriptionData", currentSubcriptionData)
 
   useEffect(() => {
     setValue("first_name", profileData?.res?.fname)
@@ -306,7 +309,21 @@ const page = () => {
                           </div>
 
                         </div>
+                        <div className="lg:flex gap-6 mb-3">
+                              {
+                                currentSubcriptionData?.data?(
+                                    <div className="mt-6 p-5 bg-gray-50 shadow-lg rounded-2xl">
+                                      <h2 className="text-lg font-semibold mb-2 text-black">Plan Details</h2>
+                                      <p><strong className="text-black">Plan Name:</strong> {currentSubcriptionData?.data?.Plan?.plan_name}</p>
+                                <p><strong className="text-black">Price:</strong> {currentSubcriptionData?.data?.Plan?.Price?.[currentSubcriptionData?.data?.Plan?.Price?.length-1]?.price} {currentSubcriptionData?.data?.Plan?.plan_frequency===1?"/ Month":`/ ${currentSubcriptionData?.data?.Plan?.plan_frequency} Months` } </p>
+                                <p><strong className="text-black">Description:</strong>{currentSubcriptionData?.data?.Plan?.PlanAccess?.[0]?.plan_access_description}</p>
 
+                                      </div>
+                                ):(
+                                   <p className="text-red-600 mt-3">*No Active Plan</p>
+                                )
+                              }
+                              </div>
                       </div>
                     </div>
                   </form>

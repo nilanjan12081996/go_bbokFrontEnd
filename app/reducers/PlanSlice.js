@@ -26,7 +26,7 @@ export const createSubscriptions = createAsyncThunk(
     'createSubscriptions',
     async (user_input, { rejectWithValue }) => {
         try {
-            const response = await api.post('/user/payment/create-subscription', user_input);
+            const response = await api.post('/api/subscription/create-subscription', user_input);
             if (response?.data?.status_code === 201) {
                 return response.data;
             } else {
@@ -47,8 +47,8 @@ export const completeSubscriptions = createAsyncThunk(
     'completeSubscriptions',
     async (user_input, { rejectWithValue }) => {
         try {
-            const response = await api.post('/user/payment/complete-payment', user_input);
-            if (response?.data?.status_code === 201) {
+            const response = await api.post('/api/subscription/complete-payment', user_input);
+            if (response?.data?.status_code === 200) {
                 return response.data;
             } else {
                 if (response?.data?.errors) {

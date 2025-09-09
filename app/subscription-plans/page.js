@@ -38,6 +38,7 @@ import code_img from "../assets/imagesource/code_img.png";
 
 import { IoCheckmark } from "react-icons/io5";
 import { createSubscription, getPlans } from '../reducers/CreateBotSlice';
+import PaymentModal from './PaymentModal';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -54,6 +55,11 @@ const nunitoSans = Nunito_Sans({
 const page = () => {
       const { selectedCurrency, planList } = useSelector((state) => state.bot);
       const[planId,setPlanId]=useState()
+       const [cSecrateKey, setCsecrateKey] = useState()
+    const [sPublishKey, setSPublishKey] = useState()
+    const [openPaymentModal, setOpenPaymentModal] = useState()
+    const [subsId, setSubsId] = useState()
+    const [customerId, setCustomerid] = useState()
         const dispatch=useDispatch()
           useEffect(() => {
           if (selectedCurrency) {
@@ -68,7 +74,17 @@ dispatch(createSubscription({
   currency_id:selectedCurrency,
   country_id:countryId
 
-}))
+})).then((res)=>{
+  console.log("res",res);
+  
+  if (res?.payload?.status_code === 201) {
+                setCsecrateKey(res?.payload?.clientSecret)
+                setSPublishKey(res?.payload?.stripe_publish)
+                setSubsId(res?.payload?.subscriptionId)
+                setCustomerid(res?.payload?.customer_id)
+                setOpenPaymentModal(true)
+            }
+})
 }
 
   return (
@@ -123,6 +139,19 @@ dispatch(createSubscription({
           
             
         </div>
+            {
+                    openPaymentModal && (
+                        <PaymentModal
+                            openPaymentModal={openPaymentModal}
+                            setOpenPaymentModal={setOpenPaymentModal}
+                            cSecrateKey={cSecrateKey}
+                            sPublishKey={sPublishKey}
+                            subsId={subsId}
+                            customerId={customerId}
+                            planId={planId}
+                        />
+                    )
+                }
         </div>
   )
 }

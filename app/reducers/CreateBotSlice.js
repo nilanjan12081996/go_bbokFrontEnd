@@ -287,7 +287,7 @@ export const createSubscription=createAsyncThunk(
       async (user_input, { rejectWithValue }) => {
         try {
             const response = await api.post(`/api/subscription/create-subscription`,user_input);
-            if (response?.data?.status_code === 200) {
+            if (response?.data?.status_code === 201) {
                 return response.data;
             } else {
                 if (response?.data?.errors) {
@@ -342,6 +342,26 @@ export const createStripe=createAsyncThunk(
     }
 )
 
+export const currentSubcription=createAsyncThunk(
+    'currentSubcription',
+      async (user_input, { rejectWithValue }) => {
+        try {
+            const response = await api.get(`/api/subscription/current-subscription`,user_input);
+            if (response?.data?.status_code === 200) {
+                return response.data;
+            } else {
+                if (response?.data?.errors) {
+                    return rejectWithValue(response.data.errors);
+                } else {
+                    return rejectWithValue('Something went wrong.');
+                }
+            }
+        } catch (err) {
+            return rejectWithValue(err);
+        }
+    }
+)
+
 const initialState={
     loading:false,
     error:false,
@@ -362,7 +382,8 @@ const initialState={
     countBot:{},
     createSubsData:{},
     createImageData:{},
-    createStripeData:{}
+    createStripeData:{},
+    currentSubcriptionData:{}
 }
 const CreateBotSlice=createSlice({
     name:'bot',
@@ -578,6 +599,19 @@ const CreateBotSlice=createSlice({
             state.error=false
         })
         .addCase(createStripe.rejected,(state,{payload})=>{
+            state.loading=false
+            state.error=payload
+        })
+
+           .addCase(currentSubcription.pending,(state)=>{
+            state.loading=true
+        })
+        .addCase(currentSubcription.fulfilled,(state,{payload})=>{
+            state.loading=false
+            state.currentSubcriptionData=payload
+            state.error=false
+        })
+        .addCase(currentSubcription.rejected,(state,{payload})=>{
             state.loading=false
             state.error=payload
         })

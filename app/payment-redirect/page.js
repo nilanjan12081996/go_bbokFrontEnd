@@ -1,6 +1,6 @@
 'use client';
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { completeSubscriptions } from '../reducers/PlanSlice';
 import Link from 'next/link';
@@ -13,19 +13,45 @@ const page = () => {
     const planId = searchParams.get('planId')
     const dispatch = useDispatch()
     const [status, setStatus] = useState(false)
-    useEffect(() => {
-        dispatch(completeSubscriptions({ subscription_id: subsId, secret_key: secrateKey, plan_id: planId, customer_id: customerId })).then((res) => {
-            console.log("paymentres", res);
-            if (res?.payload?.status_code === 201) {
-                setStatus('success')
-            }
-            else {
-                setStatus('fail')
+     const hasCalled = useRef(false);
+    // useEffect(() => {
+    //     dispatch(completeSubscriptions({ subscription_id: subsId, secret_key: secrateKey, plan_id: planId, customer_id: customerId })).then((res) => {
+    //         console.log("paymentres", res);
+    //         if (res?.payload?.status_code === 200) {
+    //             setStatus('success')
+    //         }
+    //         else {
+    //             setStatus('fail')
 
-            }
+    //         }
 
+    //     })
+    // }, [subsId, customerId, secrateKey, planId])
+
+
+
+     useEffect(() => {
+    if (hasCalled.current) return; // prevent duplicate in StrictMode
+    hasCalled.current = true;
+
+    if (subsId && customerId && secrateKey && planId) {
+      dispatch(
+        completeSubscriptions({
+          subscription_id: subsId,
+          secret_key: secrateKey,
+          plan_id: planId,
+          customer_id: customerId,
         })
-    }, [subsId, customerId, secrateKey, planId])
+      ).then((res) => {
+        console.log("paymentres", res);
+        if (res?.payload?.status_code === 200) {
+          setStatus("success");
+        } else {
+          setStatus("fail");
+        }
+      });
+    }
+  }, [subsId, customerId, secrateKey, planId, dispatch]);
 
     return (
         <>
@@ -92,7 +118,7 @@ const page = () => {
                                                 <p> Have a great day! </p>
                                                 <div className="py-10 text-center">
                                                     <Link
-                                                        href="/plans"
+                                                        href="/subscription-plans"
                                                         className="px-12 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-3"
                                                     >
                                                         GO BACK
