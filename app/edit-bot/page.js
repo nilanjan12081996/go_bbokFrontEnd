@@ -176,12 +176,12 @@ console.log("searchParamsId",serviceIds);
         )}
         {
           show.StepSix&&(
-            <StepSix id={id}/>
+            <StepSix id={id} setShow={setShow} businessId={businessId}/>
           )
         }
         {
           show.StepSeven&&(
-            <StepSeven id={id}/>
+            <StepSeven id={id} setShow={setShow} businessId={businessId}/>
           )
         }
             {/* step five ends here */}

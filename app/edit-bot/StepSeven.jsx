@@ -1,9 +1,12 @@
 import { Label, TextInput } from "flowbite-react";
 import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { createStripe } from "../reducers/CreateBotSlice";
+import { useEffect } from "react";
+import { editStepSeven, updateStepSeven } from "../reducers/EditBotSlice";
 
-const StepSix=({setShow,businessId})=>{
+const StepSeven=({id,setShow,businessId})=>{
+ const { editStepSevenData } = useSelector((state) => state?.botE);
           const HandleNextPage = () => {
     setShow({
       StepOne: false, // AddProduct is the first step
@@ -24,9 +27,16 @@ const StepSix=({setShow,businessId})=>{
       formState: { errors },
     } = useForm();
     const dispatch=useDispatch()
+    useEffect(()=>{
+dispatch(editStepSeven({company_id:id}))
+    },[])
+    useEffect(()=>{
+      setValue("stripe_key",editStepSevenData?.res?.[0]?.stripe_key)
+      setValue("stripe_secret",editStepSevenData?.res?.[0]?.stripe_secret)
+    },[editStepSevenData])
     const onSubmit=(data)=>{
-        dispatch(createStripe({...data,company_id:businessId})).then((res)=>{
-            if(res?.payload?.status_code===201){
+        dispatch(updateStepSeven({...data,company_id:id})).then((res)=>{
+            if(res?.payload?.status_code===200){
                 HandleNextPage()
             }
         })
@@ -95,4 +105,4 @@ const StepSix=({setShow,businessId})=>{
         </>
     )
 }
-export default StepSix;
+export default StepSeven;

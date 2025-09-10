@@ -385,6 +385,66 @@ export const editStepSix = createAsyncThunk(
     }
 );
 
+export const updateStepSix = createAsyncThunk(
+    'updateStepSix',
+    async (user_input, { rejectWithValue }) => {
+        try {
+            const response = await api.post(`/api/bot-data/checkout-update`,user_input);
+            if (response?.data?.status_code === 200) {
+                return response.data;
+            } else {
+                if (response?.data?.errors) {
+                    return rejectWithValue(response.data.errors);
+                } else {
+                    return rejectWithValue('Something went wrong.');
+                }
+            }
+        } catch (err) {
+            return rejectWithValue(err);
+        }
+    }
+);
+
+export const editStepSeven = createAsyncThunk(
+    'editStepSeven',
+    async (user_input, { rejectWithValue }) => {
+        try {
+            const response = await api.post(`/api/plans/list`,user_input);
+            if (response?.data?.status_code === 200) {
+                return response.data;
+            } else {
+                if (response?.data?.errors) {
+                    return rejectWithValue(response.data.errors);
+                } else {
+                    return rejectWithValue('Something went wrong.');
+                }
+            }
+        } catch (err) {
+            return rejectWithValue(err);
+        }
+    }
+);
+
+export const updateStepSeven = createAsyncThunk(
+    'updateStepSeven',
+    async (user_input, { rejectWithValue }) => {
+        try {
+            const response = await api.post(`/api/plans/update`,user_input);
+            if (response?.data?.status_code === 200) {
+                return response.data;
+            } else {
+                if (response?.data?.errors) {
+                    return rejectWithValue(response.data.errors);
+                } else {
+                    return rejectWithValue('Something went wrong.');
+                }
+            }
+        } catch (err) {
+            return rejectWithValue(err);
+        }
+    }
+);
+
 
 const initialState={
     loading:false,
@@ -409,7 +469,10 @@ const initialState={
     selectedCurrency: null,
     planList:[],
     countBot:{},
-    editstepSixData:{}
+    editstepSixData:{},
+    updateSixStep:{},
+    editStepSevenData:{},
+    updateStepSevenData:{}
 }
 const EditBotSlice=createSlice({
     name:'botE',
@@ -652,6 +715,43 @@ const EditBotSlice=createSlice({
             state.error=false
         })
         .addCase(editStepSix.rejected,(state,{payload})=>{
+            state.loading=false
+            state.error=payload
+        })
+          .addCase(updateStepSix.pending,(state)=>{
+            state.loading=true
+        })
+        .addCase(updateStepSix.fulfilled,(state,{payload})=>{
+            state.loading=false
+            state.updateSixStep=payload
+            state.error=false
+        })
+        .addCase(updateStepSix.rejected,(state,{payload})=>{
+            state.loading=false
+            state.error=payload
+        })
+            .addCase(editStepSeven.pending,(state)=>{
+            state.loading=true
+        })
+        .addCase(editStepSeven.fulfilled,(state,{payload})=>{
+            state.loading=false
+            state.editStepSevenData=payload
+            state.error=false
+        })
+        .addCase(editStepSeven.rejected,(state,{payload})=>{
+            state.loading=false
+            state.error=payload
+        })
+
+              .addCase(updateStepSeven.pending,(state)=>{
+            state.loading=true
+        })
+        .addCase(updateStepSeven.fulfilled,(state,{payload})=>{
+            state.loading=false
+            state.updateStepSevenData=payload
+            state.error=false
+        })
+        .addCase(updateStepSeven.rejected,(state,{payload})=>{
             state.loading=false
             state.error=payload
         })
