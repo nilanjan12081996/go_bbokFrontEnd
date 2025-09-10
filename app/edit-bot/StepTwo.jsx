@@ -422,6 +422,7 @@ const StepTwo = ({id, industry_id, setShow, industryId, businessId, serviceIds }
       StepFive: false,
       StepSix: false,
       StepSeven: false,
+      StepEight: false,
     });
   };
   
@@ -454,6 +455,7 @@ const StepTwo = ({id, industry_id, setShow, industryId, businessId, serviceIds }
   useEffect(() => {
     if (editStepTwoData && editStepTwoData.res && editStepTwoData.res.length > 0) {
       const mappedRows = editStepTwoData.res.map((service) => ({
+        id:service.id,
         serviceName: service.service_name || "",
         servicePrice: service.service_price?.toString() || "",
         currency: service.currency_id?.toString() || "",
@@ -465,6 +467,7 @@ const StepTwo = ({id, industry_id, setShow, industryId, businessId, serviceIds }
       
       // Also set form values for react-hook-form
       mappedRows.forEach((row, index) => {
+        setValue(`rows.${index}.id`,row.id);
         setValue(`rows.${index}.serviceName`, row.serviceName);
         setValue(`rows.${index}.servicePrice`, row.servicePrice);
         setValue(`rows.${index}.currency`, row.currency);
@@ -517,15 +520,19 @@ const StepTwo = ({id, industry_id, setShow, industryId, businessId, serviceIds }
     }
     
     const service_arr = rows.map((row) => ({
+      service_id:row.id,
       service_name: row.serviceName.trim(),
       service_price: row.servicePrice.trim(),
       currency_id: parseInt(row.currency),
       duration: `${row.duration.trim()} ${row.timeType}`,
     }));
+    // console.log("industryId",industry_id);
+    // console.log("businessId",businessId);
+    
     
     const payload = {
-      industry_id: industryId,
-      company_id: businessId,
+      industry_id: industry_id,
+      company_id: Number(id),
       service_arr: service_arr,
     };
     

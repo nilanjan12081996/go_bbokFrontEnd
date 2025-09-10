@@ -4,13 +4,13 @@ import { useDispatch, useSelector } from "react-redux"
 import { cancelSubscription, changePassword, getProfile, uploadPhoto } from "../reducers/ProfileSlice";
 import { useForm } from "react-hook-form";
 import { Button, FileInput, Label, TextInput } from "flowbite-react";
-import SubsCancelModal from "../modal/SubsCancelModal";
 import { SlEnvolope } from "react-icons/sl";
 import profileUser from "../assets/imagesource/profile_user.png";
 import Image from "next/image";
 import { MdEdit } from "react-icons/md";
 import { toast, ToastContainer } from "react-toastify";
 import { currentSubcription } from "../reducers/CreateBotSlice";
+import SubsCancelModal from "./SubsCancelModal";
 
 const page = () => {
   const dispatch = useDispatch()
@@ -32,7 +32,7 @@ const page = () => {
     dispatch(getProfile())
     dispatch(currentSubcription())
   }, [])
-  console.log("currentSubcriptionData", currentSubcriptionData)
+  console.log("currentSubcriptionData", currentSubcriptionData?.data)
 
   useEffect(() => {
     setValue("first_name", profileData?.res?.fname)
@@ -41,13 +41,7 @@ const page = () => {
   
   }, [profileData?.res])
   const handleCancelSubs = (id) => {
-    // dispatch(cancelSubscription({ subscription_id: id })).then((res) => {
-    //   console.log("res", res);
-    //   if (res?.paylaod?.status_code === 200) {
-    //     dispatch(getProfile())
-    //   }
-
-    // })
+   
     setOpenCandelModal(true)
     setSubsId(id)
   }
@@ -315,9 +309,30 @@ const page = () => {
                                     <div className="mt-6 p-5 bg-gray-50 shadow-lg rounded-2xl">
                                       <h2 className="text-lg font-semibold mb-2 text-black">Plan Details</h2>
                                       <p><strong className="text-black">Plan Name:</strong> {currentSubcriptionData?.data?.Plan?.plan_name}</p>
-                                <p><strong className="text-black">Price:</strong> {currentSubcriptionData?.data?.Plan?.Price?.[currentSubcriptionData?.data?.Plan?.Price?.length-1]?.price} {currentSubcriptionData?.data?.Plan?.plan_frequency===1?"/ Month":`/ ${currentSubcriptionData?.data?.Plan?.plan_frequency} Months` } </p>
+                                <p><strong className="text-black">Price:</strong> {currentSubcriptionData?.data?.Plan?.Price?.[currentSubcriptionData?.data?.Plan?.Price?.length - 1]?.Currency?.currency_symbol} {currentSubcriptionData?.data?.Plan?.Price?.[currentSubcriptionData?.data?.Plan?.Price?.length-1]?.price} {currentSubcriptionData?.data?.Plan?.plan_frequency===1?"/ Month":`/ ${currentSubcriptionData?.data?.Plan?.plan_frequency} Months` } </p>
                                 <p><strong className="text-black">Description:</strong>{currentSubcriptionData?.data?.Plan?.PlanAccess?.[0]?.plan_access_description}</p>
-
+                                       <p className="text-red-400">
+                                  <strong>
+                                    * Your Subscription will be valid till{" "}
+                                     {
+                                      new Date(currentSubcriptionData?.data?.stripe_subscription_end_date)
+                                        .toISOString()
+                                        .split('T')[0]
+                                    }
+                                  </strong>
+                                </p>
+                                {
+                                  currentSubcriptionData?.data?.subscription_status==="active"?(
+                                     <>
+                                      <Button onClick={() => { handleCancelSubs(currentSubcriptionData?.data?.stripe_subscription_type) }} className="!bg-red-600 mt-2 cursor-pointer">
+                                        Cancel Plan
+                                      </Button>
+                                    </>
+                                  ):(
+                                    <>
+                                    </>
+                                  )
+                                }
                                       </div>
                                 ):(
                                    <p className="text-red-600 mt-3">*No Active Plan</p>

@@ -21,8 +21,10 @@ import StepTwo from './StepTwo';
 import StepThree from './StepThree';
 import StepFour from './StepFour';
 import StepFive from './StepFive';
-import StepSix from './StepSix';
 import { useRouter, useSearchParams } from 'next/navigation';
+import StepEight from './StepEight';
+import StepSix from './StepSix';
+import StepSeven from './StepSeven';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -67,11 +69,14 @@ console.log("searchParamsId",serviceIds);
     StepFour: false,
     StepFive: false,
     StepSix: false,
+    StepSeven: false,
+    StepEight: false,
   });
   const[industryId,setIndustryId]=useState()
   const[businessId,setBusinessId]=useState()
   const[languageId,setLanguageId]=useState()
   const [code,setCode]=useState()
+  const[stepfiveData,setStepFiveData]=useState()
   const isStepActive = (stepNumber) => {
     if (show.StepOne && stepNumber <= 1) return true;
     if (show.StepTwo && stepNumber <= 2) return true;
@@ -79,6 +84,8 @@ console.log("searchParamsId",serviceIds);
     if (show.StepFour && stepNumber <= 4) return true;
     if (show.StepFive && stepNumber <= 5) return true;
     if (show.StepSix && stepNumber <= 6) return true;
+     if (show.StepSeven && stepNumber <= 7) return true;
+      if (show.StepEight && stepNumber <= 8) return true;
     return false;
   };
  
@@ -118,6 +125,14 @@ console.log("searchParamsId",serviceIds);
                         <div className={`number_box active_step_six ${isStepActive(6)?"active_step":""} inline-flex bg-[#EBEBEB] w-[40px] h-[40px] rounded-[50px] text-[#585858] text-[16px] leading-[40px] font-medium items-center justify-center mb-2`}>6</div>
                         <p className='step_laber_box text-[#8F8F8F] text-xs lg:text-base font-medium'>Step 6</p>
                     </li>
+                      <li className='text-center relative z-20'>
+                        <div className={`number_box active_step_six ${isStepActive(7)?"active_step":""} inline-flex bg-[#EBEBEB] w-[40px] h-[40px] rounded-[50px] text-[#585858] text-[16px] leading-[40px] font-medium items-center justify-center mb-2`}>6</div>
+                        <p className='step_laber_box text-[#8F8F8F] text-xs lg:text-base font-medium'>Step 7</p>
+                    </li>
+                      <li className='text-center relative z-20'>
+                        <div className={`number_box active_step_six ${isStepActive(8)?"active_step":""} inline-flex bg-[#EBEBEB] w-[40px] h-[40px] rounded-[50px] text-[#585858] text-[16px] leading-[40px] font-medium items-center justify-center mb-2`}>6</div>
+                        <p className='step_laber_box text-[#8F8F8F] text-xs lg:text-base font-medium'>Step 8</p>
+                    </li>
                 </ul>
             </div>
             {/* step one start here */}
@@ -133,33 +148,47 @@ console.log("searchParamsId",serviceIds);
             {/* step three start here */}
           
               {show.StepThree && (
-            <StepThree setShow={setShow} industryId={industryId}/>
+            <StepThree id={id} setShow={setShow} industryId={industryId}/>
                 )}
             {/* step three ends here */}
             {/* step four start here */}
               {show.StepFour && (
-          <StepFour setShow={setShow}
+          <StepFour id={id} setShow={setShow}
           setLanguageId={setLanguageId}
+          setStepFiveData={setStepFiveData}
+         
           />
         )}
             {/* step four ends here */}
 
             {/* step five start here */}
          
-               {show.StepFive && (
+          {show.StepFive && (
           <StepFive
+          id={id}
             setShow={setShow}
             languageId={languageId}
             industryId={industryId}
             setCode={setCode}
+            stepfiveData={stepfiveData}
             
           />
         )}
+        {
+          show.StepSix&&(
+            <StepSix id={id}/>
+          )
+        }
+        {
+          show.StepSeven&&(
+            <StepSeven id={id}/>
+          )
+        }
             {/* step five ends here */}
 
             {/* step six start here */}
         
-            {show.StepSix && <StepSix setShow={setShow} code={code}/>}
+            {show.StepEight && <StepEight setShow={setShow} code={code}/>}
             {/* step six ends here */}
         </div>
     </div>

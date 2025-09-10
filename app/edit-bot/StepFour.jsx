@@ -6,10 +6,27 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { getLanguage } from "../reducers/CreateBotSlice";
 import { toast } from "react-toastify";
-const StepFour = ({ setShow, setLanguageId }) => {
+import { EditStepFourAndFive } from "../reducers/EditBotSlice";
+const StepFour = ({ id, setShow, setLanguageId,setStepFiveData }) => {
   const { language } = useSelector((state) => state?.bot);
+  const { editfour_five_data } = useSelector((state) => state?.botE);
   const dispatch = useDispatch();
   const [selectedLang, setSelectedLang] = useState(null);
+  useEffect(()=>{
+dispatch(EditStepFourAndFive({company_id:id})).then((res)=>{
+  console.log("res",res);
+  
+  if(res?.payload?.status_code===200){
+    setStepFiveData(res?.payload?.botData[0])
+  }
+})
+  },[])
+
+   useEffect(() => {
+    if (editfour_five_data?.botData?.length > 0) {
+      setSelectedLang(editfour_five_data.botData[0].language_id);
+    }
+  }, [editfour_five_data]);
   const HandleNextPage = () => {
     if (!selectedLang) {
       toast.error("Please select a language first!");
@@ -23,6 +40,8 @@ const StepFour = ({ setShow, setLanguageId }) => {
       StepFour: false,
       StepFive: true,
       StepSix: false,
+      StepSeven: false,
+      StepEight: false,
     });
   };
 
@@ -39,6 +58,9 @@ const StepFour = ({ setShow, setLanguageId }) => {
   useEffect(() => {
     dispatch(getLanguage());
   }, []);
+
+  console.log("editfour_five_data",editfour_five_data);
+  
   return (
     <>
       <div className="step_box_one">

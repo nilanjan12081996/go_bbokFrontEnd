@@ -46,7 +46,7 @@ export const cancelSubscription = createAsyncThunk(
     'cancelSubscription',
     async (user_input, { rejectWithValue }) => {
         try {
-            const response = await api.post('/user/payment/cancel-subscription', user_input);
+            const response = await api.post('/api/subscription/cancel-subscription', user_input);
             if (response?.data?.status_code === 200) {
                 return response.data;
             } else {

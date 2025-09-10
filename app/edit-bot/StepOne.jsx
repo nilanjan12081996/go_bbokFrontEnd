@@ -29,7 +29,7 @@ business_id:id
   },[id])
   useEffect(()=>{
 setValue("company_name",editSerViceData?.res?.[0]?.company_name)
-setValue("industry_id", industry_id);
+setValue("industry_id", editSerViceData?.res?.[0]?.industry_id);
   },[editSerViceData,setValue,industry_id])
   console.log("editSerViceData",editSerViceData);
   
@@ -66,6 +66,7 @@ setValue("industry_id", industry_id);
             StepFive: false,
             StepSix: false,
             StepSeven: false,
+            StepEight: false,
           });
         } else if (res?.payload?.response?.data?.status_code === 400) {
           toast.error(res?.payload?.response?.data?.message);
@@ -92,7 +93,7 @@ setValue("industry_id", industry_id);
                     <Select
                     id="countries"
                     
-                    {...register("industry_id")}
+                    {...register("industry_id",{required:"Company is Required"})}
 >
                           <option value="">Select</option>
                       {industryData?.res?.map((indus) => (
@@ -101,6 +102,11 @@ setValue("industry_id", industry_id);
                           </option>
                       ))}
                     </Select>
+                     {errors?.industry_id && (
+                    <span className="text-red-500">
+                    {errors?.industry_id?.message}
+                    </span>
+                  )}
               </div>
               <div className="lg:w-6/12 step_field">
                 <div className="mb-1 block">
@@ -119,7 +125,7 @@ setValue("industry_id", industry_id);
                     </span>
                   )}
               </div>
-                   <div className="lg:w-6/12 step_field">
+                   {/* <div className="lg:w-6/12 step_field">
                 <div className="mb-1 block">
                   <Label htmlFor="countries">Business Whatsapp Number *</Label>
                 </div>
@@ -135,7 +141,7 @@ setValue("industry_id", industry_id);
                     {errors?.whatsapp?.message}
                     </span>
                   )}
-              </div>
+              </div> */}
             </div>
           </div>
           <div className="step_btn_area border-t border-[#EBEEFA] pt-5">

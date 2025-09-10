@@ -70,8 +70,8 @@ export const updateStepTwo = createAsyncThunk(
     'updateStepTwo',
     async (user_input, { rejectWithValue }) => {
         try {
-            const response = await api.post('/api/service/update-service',user_input);
-            if (response?.data?.status_code === 200) {
+            const response = await api.post('/api/service/create-update-service',user_input);
+            if (response?.data?.status_code === 201) {
                 return response.data;
             } else {
                 if (response?.data?.errors) {
@@ -185,12 +185,12 @@ export const getBots = createAsyncThunk(
     }
 );
 
-export const stepFourAndFive = createAsyncThunk(
-    'stepFourAndFive',
+export const EditStepFourAndFive = createAsyncThunk(
+    'EditStepFourAndFive',
     async (user_input, { rejectWithValue }) => {
         try {
-            const response = await api.post(`/api/bot/create-bot`,user_input);
-            if (response?.data?.status_code === 201) {
+            const response = await api.post(`/api/bot-data/make-bot-edit`,user_input);
+            if (response?.data?.status_code === 200) {
                 return response.data;
             } else {
                 if (response?.data?.errors) {
@@ -205,12 +205,52 @@ export const stepFourAndFive = createAsyncThunk(
     }
 );
 
-export const stepThree = createAsyncThunk(
-    'stepThree',
+export const updateStepFourAndFive = createAsyncThunk(
+    'updateStepFourAndFive',
+    async (user_input, { rejectWithValue }) => {
+        try {
+            const response = await api.post(`/api/bot-data/update-bot`,user_input);
+            if (response?.data?.status_code === 200) {
+                return response.data;
+            } else {
+                if (response?.data?.errors) {
+                    return rejectWithValue(response.data.errors);
+                } else {
+                    return rejectWithValue('Something went wrong.');
+                }
+            }
+        } catch (err) {
+            return rejectWithValue(err);
+        }
+    }
+);
+
+export const EditStepThree = createAsyncThunk(
+    'EditStepThree',
+    async (user_input, { rejectWithValue }) => {
+        try {
+            const response = await api.post(`/api/availability/get-availability`,user_input);
+            if (response?.data?.status_code === 200) {
+                return response.data;
+            } else {
+                if (response?.data?.errors) {
+                    return rejectWithValue(response.data.errors);
+                } else {
+                    return rejectWithValue('Something went wrong.');
+                }
+            }
+        } catch (err) {
+            return rejectWithValue(err);
+        }
+    }
+);
+
+export const updateStepThree = createAsyncThunk(
+    'updateStepThree',
     async (user_input, { rejectWithValue }) => {
         try {
             const response = await api.post(`/api/availability/create-update`,user_input);
-            if (response?.data?.status_code === 201) {
+            if (response?.data?.status_code === 200) {
                 return response.data;
             } else {
                 if (response?.data?.errors) {
@@ -325,6 +365,25 @@ export const getBotCount = createAsyncThunk(
         }
     }
 );
+export const editStepSix = createAsyncThunk(
+    'editStepSix',
+    async (user_input, { rejectWithValue }) => {
+        try {
+            const response = await api.post(`/api/bot-data/checkout`,user_input);
+            if (response?.data?.status_code === 200) {
+                return response.data;
+            } else {
+                if (response?.data?.errors) {
+                    return rejectWithValue(response.data.errors);
+                } else {
+                    return rejectWithValue('Something went wrong.');
+                }
+            }
+        } catch (err) {
+            return rejectWithValue(err);
+        }
+    }
+);
 
 
 const initialState={
@@ -335,19 +394,22 @@ const initialState={
     editSerViceData:{},
     editStepTwoData:{},
     updateStepTwoData:{},
+    updateStepThreeData:{},
     stepTwoData:"",
     examples:[],
     days:[],
     language:[],
     bots:[],
-    four_five_data:"",
-    threeData:"",
+    editfour_five_data:{},
+    updatefour_five_data:{},
+    updateThreeData:"",
     botList:[],
     currencyData:[],
     currencyOut:[],
     selectedCurrency: null,
     planList:[],
-    countBot:{}
+    countBot:{},
+    editstepSixData:{}
 }
 const EditBotSlice=createSlice({
     name:'botE',
@@ -432,28 +494,28 @@ const EditBotSlice=createSlice({
             state.loading=false
             state.error=payload
         })
-        .addCase(stepFourAndFive.pending,(state)=>{
+        .addCase(EditStepFourAndFive.pending,(state)=>{
             state.loading=true
         })
-        .addCase(stepFourAndFive.fulfilled,(state,{payload})=>{
+        .addCase(EditStepFourAndFive.fulfilled,(state,{payload})=>{
             state.loading=false
-            state.four_five_data=payload
+            state.editfour_five_data=payload
             state.error=false
         })
-        .addCase(stepFourAndFive.rejected,(state,{payload})=>{
+        .addCase(EditStepFourAndFive.rejected,(state,{payload})=>{
             state.loading=false
             state.error=payload
         })
 
-            .addCase(stepThree.pending,(state)=>{
+            .addCase(EditStepThree.pending,(state)=>{
             state.loading=true
         })
-        .addCase(stepThree.fulfilled,(state,{payload})=>{
+        .addCase(EditStepThree.fulfilled,(state,{payload})=>{
             state.loading=false
-            state.threeData=payload
+            state.updateThreeData=payload
             state.error=false
         })
-        .addCase(stepThree.rejected,(state,{payload})=>{
+        .addCase(EditStepThree.rejected,(state,{payload})=>{
             state.loading=false
             state.error=payload
         })
@@ -554,6 +616,42 @@ const EditBotSlice=createSlice({
             state.error=false
         })
         .addCase(updateStepTwo.rejected,(state,{payload})=>{
+            state.loading=false
+            state.error=payload
+        })
+           .addCase(updateStepThree.pending,(state)=>{
+            state.loading=true
+        })
+        .addCase(updateStepThree.fulfilled,(state,{payload})=>{
+            state.loading=false
+            state.updateStepThreeData=payload
+            state.error=false
+        })
+        .addCase(updateStepThree.rejected,(state,{payload})=>{
+            state.loading=false
+            state.error=payload
+        })
+         .addCase(updateStepFourAndFive.pending,(state)=>{
+            state.loading=true
+        })
+        .addCase(updateStepFourAndFive.fulfilled,(state,{payload})=>{
+            state.loading=false
+            state.updatefour_five_data=payload
+            state.error=false
+        })
+        .addCase(updateStepFourAndFive.rejected,(state,{payload})=>{
+            state.loading=false
+            state.error=payload
+        })
+          .addCase(editStepSix.pending,(state)=>{
+            state.loading=true
+        })
+        .addCase(editStepSix.fulfilled,(state,{payload})=>{
+            state.loading=false
+            state.editstepSixData=payload
+            state.error=false
+        })
+        .addCase(editStepSix.rejected,(state,{payload})=>{
             state.loading=false
             state.error=payload
         })

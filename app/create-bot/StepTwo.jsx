@@ -87,6 +87,7 @@ const StepTwo = ({ setShow, industryId, businessId }) => {
     const payload = {
       industry_id: industryId,
       company_id: businessId,
+      
       service_arr: service_arr,
     };
     dispatch(createServiceSteptwo(payload)).then((res) => {

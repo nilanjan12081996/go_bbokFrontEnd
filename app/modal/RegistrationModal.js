@@ -44,7 +44,7 @@ const RegistrationModal = ({ openRegisterModal, setOpenRegisterModal, setOpenVer
                     theme: "light",
                 });
                         setOpenRegisterModal(false);
-                        router.push('/dashboard');
+                        router.push('/subscription-plans');
              
                 
             } else if (res?.payload?.response?.data?.status_code === 422) {

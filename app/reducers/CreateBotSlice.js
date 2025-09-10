@@ -46,7 +46,7 @@ export const createServiceSteptwo = createAsyncThunk(
     'createServiceSteptwo',
     async (user_input, { rejectWithValue }) => {
         try {
-            const response = await api.post('/api/service/create-service',user_input);
+            const response = await api.post('/api/service/create-update-service',user_input);
             if (response?.data?.status_code === 201) {
                 return response.data;
             } else {
