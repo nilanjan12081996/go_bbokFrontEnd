@@ -1,7 +1,7 @@
 import { Label, TextInput } from "flowbite-react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { createStripe } from "../reducers/CreateBotSlice";
+import { createStripe, getBotCount } from "../reducers/CreateBotSlice";
 
 const StepSeven=({setShow,businessId})=>{
           const HandleNextPage = () => {
@@ -27,6 +27,7 @@ const StepSeven=({setShow,businessId})=>{
     const onSubmit=(data)=>{
         dispatch(createStripe({...data,company_id:businessId})).then((res)=>{
             if(res?.payload?.status_code===201){
+              dispatch(getBotCount())
                 HandleNextPage()
             }
         })
