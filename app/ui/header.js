@@ -25,6 +25,7 @@ const Header = () => {
   const [openRegisterModal, setOpenRegisterModal] = useState(false);
   const [openVerifyOtpModal, setOpenVerifyOtpModal] = useState(false);
   const [openPricModal, setOpenPriceModal] = useState(false)
+    const { selectedCurrency, planList } = useSelector((state) => state.bot);
   const dispatch=useDispatch()
   // For mobile menu start here
   // Add state to manage navbar collapse
@@ -57,10 +58,12 @@ useEffect(() => {
 
       if (euroCurrency) {
         dispatch(setSelectedCurrency(euroCurrency.id)); // set Euro by default
+         dispatch(getPlans({currency_id:selectedCurrency}));
       
       } else {
         // fallback → if euro not found, set first currency
         dispatch(setSelectedCurrency(res.payload.res[0].id));
+        dispatch(getPlans({currency_id:selectedCurrency}));
       }
     }
   });

@@ -920,6 +920,7 @@ const HandleNextPage = async () => {
       StepFive: false,
       StepSix: false,
       StepSeven: false,
+      StepEight:false
     });
   };
 
@@ -1309,6 +1310,12 @@ const HandleNextPage = async () => {
         {/* Navigation Buttons */}
         <div className="step_btn_area border-t border-[#EBEEFA] pt-5">
           <div className="flex justify-end items-center gap-3">
+               <button
+                onClick={() => handleBack()}
+                className="bg-[#ffffff] rounded-[6px] text-[#464f60] hover:text-[#ffffff] text-[13px] leading-[36px] lg:text-[14px] lg:leading-[43px] font-medium px-4 lg:px-6 cursor-pointer hover:bg-[#00806A] border border-[#dddfe2] hover:border-[#00806A]"
+              >
+                Previous Step
+              </button>
             <button
               onClick={() => HandleNextPage()}
               className="bg-[#00806A] rounded-[6px] text-white hover:text-[#464f60] text-[13px] leading-[36px] lg:text-[14px] lg:leading-[43px] font-medium px-5 lg:px-10 cursor-pointer hover:bg-white border border-[#00806A] hover:border-[#dddfe2]"
