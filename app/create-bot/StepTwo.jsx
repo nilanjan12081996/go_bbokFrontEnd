@@ -30,6 +30,7 @@ const StepTwo = ({ setShow, industryId, businessId }) => {
       StepFive: false,
       StepSix: false,
       StepSeven: false,
+      StepEight:false
     });
   };
 
