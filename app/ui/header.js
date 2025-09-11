@@ -50,8 +50,10 @@ useEffect(() => {
     if (res?.payload?.res?.length > 0) {
       // find Euro in the response
       const euroCurrency = res.payload.res.find(
-        (cur) => cur.currency_name.toLowerCase() === "euro"
+        (cur) => cur.currency_short_name.toUpperCase() === "EUR"
       );
+      console.log("euroCurrency",euroCurrency);
+      
 
       if (euroCurrency) {
         dispatch(setSelectedCurrency(euroCurrency.id)); // set Euro by default
@@ -64,7 +66,33 @@ useEffect(() => {
   });
 }, [dispatch]);
 
+ useEffect(() => {
+    // Avoid injecting the script multiple times
+    if (!document.querySelector("#google-translate-script")) {
+      const addScript = document.createElement("script");
+      addScript.id = "google-translate-script";
+      addScript.src =
+        "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+      addScript.async = true;
+      document.body.appendChild(addScript);
+    }
 
+    // Only define init once
+    if (!window.googleTranslateElementInit) {
+      window.googleTranslateElementInit = () => {
+        if (!document.querySelector(".skiptranslate")) {
+          new window.google.translate.TranslateElement(
+            {
+              pageLanguage: "en",
+              includedLanguages: "en,es,fr,de,hi,bn,zh-CN", // choose
+              layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
+            },
+            "google_translate_element"
+          );
+        }
+      };
+    }
+  }, []);
 
 
   return (
@@ -130,6 +158,7 @@ useEffect(() => {
               {/* Login section start here */}
               <div className="mr-10 lg:mr-0 flex items-center mt-0 lg:mt-0">
                 <div className="flex gap-2">
+                  <div id="google_translate_element" className="ml-4"></div>
                   {/* <button onClick={() => setOpenLoginModal(true)} className="text-[#666666] bg-white cursor-pointer font-medium text-xs lg:text-[16px] rounded-[5px] px-2 py-1 lg:px-6 lg:py-2 border-1 border-[#666666] hover:bg-[#666666] hover:text-[#ffffff]">
                     Login
                   </button>
