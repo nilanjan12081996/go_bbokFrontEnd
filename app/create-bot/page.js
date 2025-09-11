@@ -24,6 +24,12 @@ import StepFive from './StepFive';
 import StepSix from './StepSix';
 import StepSeven from './StepSeven';
 import StepEight from './StepEight';
+import StepTwoEdit from './StepTwoEdit';
+import StepThreeEdit from '../edit-bot/stepThreeEdit';
+import StepFourEdit from './stepFourEdit';
+import StepFiveEdit from './stepFiveEdit';
+import StepSixEdit from './StepSixEdit';
+import StepSevenEdit from './StepSevenEdit';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -57,10 +63,37 @@ const page = () => {
     StepSeven:false,
     StepEight: false,
   });
+
+  const [backState, setBackState] = useState({
+    StepOne: false, 
+    StepTwo: false,
+    StepThree: false,
+    StepFour: false,
+    StepFive: false,
+    StepSix:false,
+    StepSeven:false,
+    StepEight: false,
+  });
+  const [stepData, setStepData] = useState({
+    StepOne: {}, 
+    StepTwo: [],
+    StepThree: {},
+    StepFour: {},
+    StepFive: {},
+    StepSix:{},
+    StepSeven:{},
+    StepEight: {},
+  });
+  useEffect(()=>{
+    console.log(languageId,"languageId")
+  },[backState])
   const[industryId,setIndustryId]=useState()
+  const[id,setId]=useState()
+  const[serviceIds,setServiceIds]=useState([])
   const[businessId,setBusinessId]=useState()
   const[languageId,setLanguageId]=useState()
   const [code,setCode]=useState()
+  const [isback,setIsback]=useState(false)
   const isStepActive = (stepNumber) => {
     if (show.StepOne && stepNumber <= 1) return true;
     if (show.StepTwo && stepNumber <= 2) return true;
@@ -121,55 +154,93 @@ const page = () => {
             </div>
             {/* step one start here */}
           
-            {show.StepOne && <StepOne setShow={setShow} industryId={industryId} setIndustryId={setIndustryId} setBusinessId={setBusinessId}/>}
+            {show.StepOne && <StepOne setIsback={setIsback} id={id} setId={setId} isback={isback} setShow={setShow} industryId={industryId} setIndustryId={setIndustryId} setBusinessId={setBusinessId} businessId={businessId} setBackState={setBackState} backState={backState}/>}
+            
             {/* step one ends here */}
 
             {/* step two start here */}
          
-            {show.StepTwo && <StepTwo setShow={setShow} industryId={industryId} businessId={businessId}/>}
+            {show.StepTwo && backState.StepTwo=== false && <StepTwo setIsback={setIsback} isback={isback}setShow={setShow} industryId={industryId} businessId={businessId} setBackState={setBackState} backState={backState} stepData={stepData} setStepData={setStepData} serviceIds={serviceIds} setServiceIds={setServiceIds}/>}
+            {show.StepTwo && backState.StepTwo && <StepTwoEdit id={id} setIsback={setIsback} isback={isback}setShow={setShow} industryId={industryId} businessId={businessId} setBackState={setBackState} backState={backState} stepData={stepData} setStepData={setStepData} serviceIds={serviceIds} setServiceIds={setServiceIds}/>}
             {/* step two ends here */}
 
             {/* step three start here */}
           
-              {show.StepThree && (
-            <StepThree setShow={setShow} industryId={industryId} businessId={businessId}/>
+              {show.StepThree && backState.StepThree=== false &&(
+            <StepThree setIsback={setIsback} isback={isback} setShow={setShow} industryId={industryId} businessId={businessId} setBackState={setBackState} backState={backState}/>
+                )}
+                {show.StepThree && backState.StepThree &&(
+            <StepThreeEdit id={id} setIsback={setIsback} isback={isback} setShow={setShow} industryId={industryId} businessId={businessId} setBackState={setBackState} backState={backState}/>
                 )}
             {/* step three ends here */}
             {/* step four start here */}
-              {show.StepFour && (
-          <StepFour setShow={setShow}
-          setLanguageId={setLanguageId}
+              {show.StepFour && backState.StepFour===false&& (
+          <StepFour setIsback={setIsback} isback={isback} setShow={setShow}
+          setLanguageId={setLanguageId} businessId={businessId} setBackState={setBackState} backState={backState}
           />
+          
+        )}
+         {show.StepFour && backState.StepFour && (
+          <StepFourEdit setIsback={setIsback} isback={isback} setShow={setShow} id={id}
+          setLanguageId={setLanguageId} businessId={businessId} setBackState={setBackState} backState={backState}
+          languageId={languageId}
+          />
+          
         )}
             {/* step four ends here */}
 
             {/* step five start here */}
          
-               {show.StepFive && (
+               {show.StepFive &&  backState.StepFive===false &&(
           <StepFive
+          setIsback={setIsback} isback={isback}
             setShow={setShow}
             languageId={languageId}
             industryId={industryId}
             businessId={businessId}
             setCode={setCode}
+            setBackState={setBackState}
+            backState={backState}
             
           />
         )}
+           {show.StepFive && backState.StepFive&&(
+          <StepFiveEdit
+            id={id}
+            setShow={setShow}
+            languageId={languageId}
+            industryId={industryId}
+            setCode={setCode}
+            setLanguageId={setLanguageId}
+            
+            
+          />
+        )}
+       
             {/* step five ends here */}
 
             {/* step six start here */}
             {
-              show.StepSix&&(
-                <StepSix  setShow={setShow} businessId={businessId}/>
+              show.StepSix&&  backState.StepSix===false &&(
+                <StepSix setIsback={setIsback} isback={isback}  setShow={setShow} businessId={businessId} setBackState={setBackState} backState={backState}/>
               )
             }
             {
-              show.StepSeven&&(
-                <StepSeven setShow={setShow}  businessId={businessId} />
+              show.StepSeven&& backState.StepSeven===false &&(
+                <StepSeven setIsback={setIsback} isback={isback} setShow={setShow}  businessId={businessId}  setBackState={setBackState} backState={backState}/>
               )
             }
-        
-            {show.StepEight && <StepEight setShow={setShow} code={code}/>}
+              {
+          show.StepSix&& backState.StepSix &&(
+            <StepSixEdit id={id} setShow={setShow} businessId={businessId}/>
+          )
+        }
+        {
+          show.StepSeven&&backState.StepSeven &&(
+            <StepSevenEdit id={id} setShow={setShow} businessId={businessId}/>
+          )
+        }
+            {show.StepEight && <StepEight setIsback={setIsback} isback={isback} setShow={setShow} code={code} setBackState={setBackState} backState={backState}/>}
             {/* step six ends here */}
         </div>
     </div>

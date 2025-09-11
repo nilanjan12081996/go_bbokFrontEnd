@@ -1,15 +1,17 @@
-import { FileInput, Label, TextInput } from "flowbite-react";
+import { Label, TextInput } from "flowbite-react";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getBots, stepFourAndFive } from "../reducers/CreateBotSlice";
 import { useForm } from "react-hook-form";
-import StepSeven from "./StepSeven";
-const StepFive = ({ setShow, languageId, industryId,setCode,businessId,setBackState }) => {
+import { EditStepFourAndFive, updateStepFourAndFive } from "../reducers/EditBotSlice";
+const StepFiveEdit = ({id, setShow, languageId, industryId,setCode,stepfiveData,setLanguageId }) => {
   const { bots } = useSelector((state) => state?.bot);
+    const { editfour_five_data } = useSelector((state) => state?.botE);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getBots());
+    dispatch(EditStepFourAndFive({company_id:id}))
   }, []);
   const HandleNextPage = () => {
     setShow({
@@ -19,21 +21,12 @@ const StepFive = ({ setShow, languageId, industryId,setCode,businessId,setBackSt
       StepFour: false,
       StepFive: false,
       StepSix: true,
-      StepSeven:false,
-      StepEight:false
+      StepSeven: false,
+      StepEight: false,
     });
-     setBackState({
-          StepOne: true, 
-          StepTwo: true,
-          StepThree: true,
-          StepFour: true,
-          StepFive: true,
-          StepSix:false,
-          StepSeven:false,
-          StepEight: false,
-    })
   };
   const handleBack = () => {
+    setLanguageId(languageId)
     setShow({
       StepOne: false, // AddProduct is the first step
       StepTwo: false,
@@ -41,8 +34,6 @@ const StepFive = ({ setShow, languageId, industryId,setCode,businessId,setBackSt
       StepFour: true,
       StepFive: false,
       StepSix: false,
-      StepSeven: false,
-      StepEight:false
     });
   };
 
@@ -51,24 +42,38 @@ const StepFive = ({ setShow, languageId, industryId,setCode,businessId,setBackSt
     handleSubmit,
     setValue,
     watch,
+    
     formState: { errors },
   } = useForm();
 
+    useEffect(() => {
+  if (editfour_five_data?.botData?.length > 0) {
+    const bot = editfour_five_data.botData[0];
+    setValue("bot_name", bot.bot_name || "");
+    setValue("bot_message", bot.bot_message || "");
+    setValue("bot_id", bot.bot_id || ""); // this ensures radio is checked
+  }
+}, [editfour_five_data, setValue]);
+
   const onSubmit = (data) => {
     const payload = {
+      id:editfour_five_data.botData[0]?.id,
       language_id: languageId,
       bot_id: data?.bot_id,
-      company_id: businessId,
       bot_name: data?.bot_name,
       bot_message: data?.bot_message,
     };
-    dispatch(stepFourAndFive(payload)).then((res) => {
-      if (res?.payload?.status_code === 201) {
-        setCode(res?.payload?.embedCode)
+    dispatch(updateStepFourAndFive(payload)).then((res) => {
+      if (res?.payload?.status_code === 200) {
+        setCode(editfour_five_data.botData[0]?.bot_code)
         HandleNextPage();
       }
     });
   };
+  console.log("languageId",languageId,stepfiveData);
+
+  
+  
   return (
     <>
       <div className="step_box_one">
@@ -109,7 +114,6 @@ const StepFive = ({ setShow, languageId, industryId,setCode,businessId,setBackSt
                     </span>
                   )}
               </div>
-       
             </div>
             <div className="mb-2 block">
               <Label htmlFor="countries">Bot Icons</Label>
@@ -122,6 +126,8 @@ const StepFive = ({ setShow, languageId, industryId,setCode,businessId,setBackSt
                     name="radio-control"
                     value={b.id} // send bot id here
                     {...register("bot_id",{required:"Select a bot "})}
+                     checked={watch("bot_id")?.toString() === b.id.toString()} // auto select correct radio
+      onChange={() => setValue("bot_id", b.id.toString())}
                   />
                   <Image
                     src={b?.avatar}
@@ -141,9 +147,15 @@ const StepFive = ({ setShow, languageId, industryId,setCode,businessId,setBackSt
           </div>
           <div className="step_btn_area border-t border-[#EBEEFA] pt-5">
             <div className="flex justify-end items-center gap-3">
-              <button
+              {/* <button
                 onClick={() => handleBack()}
                 className="bg-[#ffffff] rounded-[6px] text-[#464f60] hover:text-[#ffffff] text-[13px] leading-[36px] lg:text-[14px] lg:leading-[43px] font-medium  px-4 lg:px-6 cursor-pointer hover:bg-[#00806A] border border-[#dddfe2] hover:border-[#00806A]"
+              >
+                Previous Step
+              </button> */}
+                   <button
+                onClick={() => handleBack()}
+                className="bg-[#ffffff] rounded-[6px] text-[#464f60] hover:text-[#ffffff] text-[13px] leading-[36px] lg:text-[14px] lg:leading-[43px] font-medium px-4 lg:px-6 cursor-pointer hover:bg-[#00806A] border border-[#dddfe2] hover:border-[#00806A]"
               >
                 Previous Step
               </button>
@@ -157,4 +169,4 @@ const StepFive = ({ setShow, languageId, industryId,setCode,businessId,setBackSt
     </>
   );
 };
-export default StepFive;
+export default StepFiveEdit;

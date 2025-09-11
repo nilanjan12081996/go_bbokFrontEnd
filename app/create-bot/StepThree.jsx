@@ -512,7 +512,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getDays, stepThree } from "../reducers/CreateBotSlice"; // Import stepThree
 import { toast } from "react-toastify";
 
-const StepThree = ({ setShow, industryId ,businessId}) => {
+const StepThree = ({ setShow, industryId ,businessId,setBackState}) => {
   const { days } = useSelector((state) => state?.bot);
   const dispatch = useDispatch();
 
@@ -618,6 +618,16 @@ const StepThree = ({ setShow, industryId ,businessId}) => {
             StepSeven: false,
             StepEight:false
           });
+            setBackState({
+          StepOne: true, 
+          StepTwo: true,
+          StepThree: true,
+          StepFour: false,
+          StepFive: false,
+          StepSix:false,
+          StepSeven:false,
+          StepEight: false,
+    })
         }
         else if(res?.payload?.response?.data?.status_code===422){
           toast.error(res?.payload?.response?.data?.errors?.[0]?.msg)

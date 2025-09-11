@@ -6,10 +6,27 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { getLanguage } from "../reducers/CreateBotSlice";
 import { toast } from "react-toastify";
-const StepFour = ({ setShow, setLanguageId ,setBackState}) => {
+import { EditStepFourAndFive } from "../reducers/EditBotSlice";
+const StepFourEdit = ({ id, setShow, setLanguageId,languageId }) => {
   const { language } = useSelector((state) => state?.bot);
+  const { editfour_five_data } = useSelector((state) => state?.botE);
   const dispatch = useDispatch();
   const [selectedLang, setSelectedLang] = useState(null);
+  useEffect(()=>{
+dispatch(EditStepFourAndFive({company_id:id})).then((res)=>{
+  console.log("res",res);
+  
+  if(res?.payload?.status_code===200){
+    setStepFiveData(res?.payload?.botData[0])
+  }
+})
+  },[])
+
+   useEffect(() => {
+    if (editfour_five_data?.botData?.length > 0) {
+      setSelectedLang(editfour_five_data.botData[0].language_id);
+    }
+  }, [editfour_five_data]);
   const HandleNextPage = () => {
     if (!selectedLang) {
       toast.error("Please select a language first!");
@@ -23,20 +40,9 @@ const StepFour = ({ setShow, setLanguageId ,setBackState}) => {
       StepFour: false,
       StepFive: true,
       StepSix: false,
-       StepSeven: false,
-      StepEight:false
+      StepSeven: false,
+      StepEight: false,
     });
-
-     setBackState({
-          StepOne: true, 
-          StepTwo: true,
-          StepThree: true,
-          StepFour: false,
-          StepFive: false,
-          StepSix:false,
-          StepSeven:false,
-          StepEight: false,
-    })
   };
 
   const handleBack = () => {
@@ -47,13 +53,16 @@ const StepFour = ({ setShow, setLanguageId ,setBackState}) => {
       StepFour: false,
       StepFive: false,
       StepSix: false,
-      StepSeven:false,
-      StepEight:false
+      StepSeven: false,
+       StepEight: false,
     });
   };
   useEffect(() => {
     dispatch(getLanguage());
   }, []);
+
+  console.log("editfour_five_data",editfour_five_data);
+  
   return (
     <>
       <div className="step_box_one">
@@ -86,7 +95,7 @@ const StepFour = ({ setShow, setLanguageId ,setBackState}) => {
                   id={`lang-${lan.id}`}
                   name="language"
                   value={lan.id}
-                  checked={selectedLang === lan.id}
+                  checked={languageId === lan.id}
                   onChange={() => setSelectedLang(lan.id)}
                   className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500"
                 />
@@ -96,12 +105,18 @@ const StepFour = ({ setShow, setLanguageId ,setBackState}) => {
         </div>
         <div className="step_btn_area border-t border-[#EBEEFA] pt-5">
           <div className="flex justify-end items-center gap-3">
-            <button
+            {/* <button
               onClick={() => handleBack()}
               className="bg-[#ffffff] rounded-[6px] text-[#464f60] hover:text-[#ffffff] text-[13px] leading-[36px] lg:text-[14px] lg:leading-[43px] font-medium  px-4 lg:px-6 cursor-pointer hover:bg-[#00806A] border border-[#dddfe2] hover:border-[#00806A]"
             >
               Previous Step
-            </button>
+            </button> */}
+                 <button
+                onClick={() => handleBack()}
+                className="bg-[#ffffff] rounded-[6px] text-[#464f60] hover:text-[#ffffff] text-[13px] leading-[36px] lg:text-[14px] lg:leading-[43px] font-medium px-4 lg:px-6 cursor-pointer hover:bg-[#00806A] border border-[#dddfe2] hover:border-[#00806A]"
+              >
+                Previous Step
+              </button>
             <button
               onClick={() => HandleNextPage()}
               className="bg-[#00806A] rounded-[6px] text-white hover:text-[#464f60] text-[13px] leading-[36px] lg:text-[14px] lg:leading-[43px] font-medium px-5 lg:px-10 cursor-pointer hover:bg-white border border-[#00806A] hover:border-[#dddfe2]"
@@ -114,4 +129,4 @@ const StepFour = ({ setShow, setLanguageId ,setBackState}) => {
     </>
   );
 };
-export default StepFour;
+export default StepFourEdit;

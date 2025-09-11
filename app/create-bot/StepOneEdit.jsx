@@ -7,9 +7,9 @@ import { useForm } from "react-hook-form";
 import { toast, ToastContainer } from "react-toastify";
 import { editService, updateService } from "../reducers/EditBotSlice";
 
-const StepOne = ({setIsback,isback, setShow, industryId, setIndustryId, setBusinessId ,businessId,setBackState,backState,id,setId}) => {
-  const { industryData } = useSelector((state) => state?.bot);
-   const { editSerViceData } = useSelector((state) => state?.botE);
+const StepOneEdit = ({industryName,id, setShow, industry_id, setIndustryId, setBusinessId, }) => {
+  const { editSerViceData } = useSelector((state) => state?.botE);
+    const { industryData } = useSelector((state) => state?.bot);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getIndustry());
@@ -21,28 +21,28 @@ const StepOne = ({setIsback,isback, setShow, industryId, setIndustryId, setBusin
     watch,
     formState: { errors },
   } = useForm();
+
+  useEffect(()=>{
+dispatch(editService({
+business_id:id
+}))
+  },[id])
+  useEffect(()=>{
+setValue("company_name",editSerViceData?.res?.[0]?.company_name)
+setValue("industry_id", editSerViceData?.res?.[0]?.industry_id);
+  },[editSerViceData,setValue,industry_id])
+  console.log("editSerViceData",editSerViceData);
+  
   const HandleNextPage = () => {
     setShow({
-            StepOne: false, // AddProduct is the first step
-            StepTwo: true,
-            StepThree: false,
-            StepFour: false,
-            StepFive: false,
-            StepSix: false,
-            StepSeven: false,
-            StepEight:false
+      StepOne: false, // AddProduct is the first step
+      StepTwo: true,
+      StepThree: false,
+      StepFour: false,
+      StepFive: false,
+      StepSix: false,
+      StepSeven: false,
     });
-    setBackState({
-          StepOne: true, 
-          StepTwo: false,
-          StepThree: false,
-          StepFour: false,
-          StepFive: false,
-          StepSix:false,
-          StepSeven:false,
-          StepEight: false,
-    })
-
   };
   console.log("industryData", industryData);
 
@@ -53,8 +53,7 @@ const StepOne = ({setIsback,isback, setShow, industryId, setIndustryId, setBusin
     setIndustryId(selectedIndustry);
   };
   const onSubmit = (data) => {
-if(backState.StepOne){
-   dispatch(updateService({ ...data,company_id:businessId,industry_id: industryId})).then(
+    dispatch(updateService({ ...data,company_id:id})).then(
       (res) => {
         console.log("res", res);
         if (res?.payload?.status_code === 200) {
@@ -79,45 +78,8 @@ if(backState.StepOne){
         
       }
     );
-}
-else{
-dispatch(createService({ ...data, industry_id: industryId })).then(
-      (res) => {
-        console.log("res", res);
-        if (res?.payload?.status_code === 201) {
-          setBusinessId(res?.payload?.business_id);
-          setId(res?.payload?.business_id)
-          HandleNextPage()
-        } else if (res?.payload?.response?.data?.status_code === 400) {
-          toast.error(res?.payload?.response?.data?.message);
-          console.log("Hi");
-        }
-      else if(res?.payload?.response?.data?.status_code === 422){
-toast.error(res?.payload?.response?.data?.message);
-      }
-        
-      }
-    );
-}
-
-      
-    
-    
   };
-    useEffect(()=>{
-      if(backState.StepOne && businessId){
-  dispatch(editService({
-  business_id:businessId
-  }))
-      }
 
-    },[businessId,backState])
-    useEffect(()=>{
-      if(backState.StepOne){
-setValue("company_name",editSerViceData?.res?.[0]?.company_name)
-setIndustryId(editSerViceData?.res?.[0]?.industry_id)
-      }
-    },[editSerViceData,backState,setIndustryId])
   return (
     <>
       <div className="step_box_one">
@@ -128,14 +90,23 @@ setIndustryId(editSerViceData?.res?.[0]?.industry_id)
                 <div className="mb-1 block">
                   <Label htmlFor="countries">Industry *</Label>
                 </div>
-                <Select id="countries" required onChange={handleSelect} value={industryId || ""}>
-                  <option>Select</option>
-                  {industryData?.res?.map((indus) => (
-                    <option key={indus?.id} value={indus?.id}>
-                      {indus?.industry_name}
-                    </option>
-                  ))}
-                </Select>
+                    <Select
+                    id="countries"
+                    
+                    {...register("industry_id",{required:"Company is Required"})}
+>
+                          <option value="">Select</option>
+                      {industryData?.res?.map((indus) => (
+                          <option key={indus?.id} value={indus?.id}>
+                              {indus?.industry_name}
+                          </option>
+                      ))}
+                    </Select>
+                     {errors?.industry_id && (
+                    <span className="text-red-500">
+                    {errors?.industry_id?.message}
+                    </span>
+                  )}
               </div>
               <div className="lg:w-6/12 step_field">
                 <div className="mb-1 block">
@@ -154,7 +125,23 @@ setIndustryId(editSerViceData?.res?.[0]?.industry_id)
                     </span>
                   )}
               </div>
-               
+                   {/* <div className="lg:w-6/12 step_field">
+                <div className="mb-1 block">
+                  <Label htmlFor="countries">Business Whatsapp Number *</Label>
+                </div>
+                <TextInput
+                  {...register("whatsapp")}
+                  id="base"
+                  type="text"
+                  sizing="md"
+                  placeholder="Enter Business Whatsapp Number"
+                />
+                {errors?.whatsapp && (
+                    <span className="text-red-500">
+                    {errors?.whatsapp?.message}
+                    </span>
+                  )}
+              </div> */}
             </div>
           </div>
           <div className="step_btn_area border-t border-[#EBEEFA] pt-5">
@@ -172,4 +159,4 @@ setIndustryId(editSerViceData?.res?.[0]?.industry_id)
     </>
   );
 };
-export default StepOne;
+export default StepOneEdit;

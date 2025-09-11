@@ -97,9 +97,9 @@ const RegistrationModal = ({ openRegisterModal, setOpenRegisterModal, setOpenVer
                                                         required: "First name is required",
                                                     })}
                                                 />
-                                                {errors?.first_name && (
+                                                {errors?.f_name && (
                                                     <span className="text-red-500">
-                                                        {errors?.first_name?.message}
+                                                        {errors?.f_name?.message}
                                                     </span>
                                                 )}
                                             </div>
@@ -112,9 +112,9 @@ const RegistrationModal = ({ openRegisterModal, setOpenRegisterModal, setOpenVer
                                                         required: "Last name is required",
                                                     })}
                                                 />
-                                                {errors?.last_name && (
+                                                {errors?.l_name && (
                                                     <span className="text-red-500">
-                                                        {errors?.last_name?.message}
+                                                        {errors?.l_name?.message}
                                                     </span>
                                                 )}
                                             </div>

@@ -6,7 +6,7 @@ import { AiFillMinusCircle, AiFillPlusCircle } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { createServiceSteptwo, getCurrency, getExample } from "../reducers/CreateBotSlice";
 import { toast } from "react-toastify";
-const StepTwo = ({ setShow, industryId, businessId }) => {
+const StepTwo = ({setIsback,isback, setShow, industryId, businessId,setBackState, stepData, setStepData,serviceIds,setServiceIds }) => {
   const { examples,currencyData } = useSelector((state) => state?.bot);
   const dispatch = useDispatch();
   const HandleNextPage = () => {
@@ -20,10 +20,20 @@ const StepTwo = ({ setShow, industryId, businessId }) => {
        StepSeven: false,
       StepEight:false
     });
+     setBackState({
+          StepOne: true, 
+          StepTwo: true,
+          StepThree: false,
+          StepFour: false,
+          StepFive: false,
+          StepSix:false,
+          StepSeven:false,
+          StepEight: false,
+    })
   };
   const handleBack = () => {
     setShow({
-      StepOne: true, // AddProduct is the first step
+      StepOne: true, 
       StepTwo: false,
       StepThree: false,
       StepFour: false,
@@ -93,10 +103,19 @@ const StepTwo = ({ setShow, industryId, businessId }) => {
     };
     dispatch(createServiceSteptwo(payload)).then((res) => {
       if (res?.payload?.status_code === 201) {
+        console.log(payload?.service_ids,"payload")
+       setStepData((prevState) => ({
+          ...prevState,
+          StepTwo: res?.payload?.service_ids
+       }));
+        setServiceIds(res?.payload?.service_ids)
         HandleNextPage();
       }
     });
   };
+  useEffect(() => {
+    console.log(stepData,"stepData")
+  }, [stepData]);
   useEffect(() => {
     dispatch(getExample({ id: industryId }));
     dispatch(getCurrency())
@@ -368,12 +387,12 @@ const StepTwo = ({ setShow, industryId, businessId }) => {
           </div>
           <div className="step_btn_area border-t border-[#EBEEFA] pt-5">
             <div className="flex justify-end items-center gap-3">
-              {/* <button
+              <button
                 onClick={() => handleBack()}
                 className="bg-[#ffffff] rounded-[6px] text-[#464f60] hover:text-[#ffffff] text-[13px] leading-[36px] lg:text-[14px] lg:leading-[43px] font-medium px-4 lg:px-6 cursor-pointer hover:bg-[#00806A] border border-[#dddfe2] hover:border-[#00806A]"
               >
                 Previous Step
-              </button> */}
+              </button>
               <button
                 type="submit"
                 className="bg-[#00806A] rounded-[6px] text-white hover:text-[#464f60] text-[13px] leading-[36px] lg:text-[14px] lg:leading-[43px] font-medium px-5 lg:px-10 cursor-pointer hover:bg-white border border-[#00806A] hover:border-[#dddfe2]"

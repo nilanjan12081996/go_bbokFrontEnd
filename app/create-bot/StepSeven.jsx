@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { createStripe, getBotCount } from "../reducers/CreateBotSlice";
 
-const StepSeven=({setShow,businessId})=>{
+const StepSeven=({setShow,businessId,setBackState})=>{
           const HandleNextPage = () => {
     setShow({
       StepOne: false, // AddProduct is the first step
@@ -15,6 +15,16 @@ const StepSeven=({setShow,businessId})=>{
       StepSeven:false,
       StepEight:true
     });
+        setBackState({
+          StepOne: true, 
+          StepTwo: true,
+          StepThree: true,
+          StepFour: true,
+          StepFive: true,
+          StepSix:true,
+          StepSeven:true,
+          StepEight: false,
+    })
   };
    const {
       register,
