@@ -84,7 +84,7 @@ useEffect(() => {
           new window.google.translate.TranslateElement(
             {
               pageLanguage: "en",
-              includedLanguages: "en,es,fr,de,hi,bn,zh-CN", // choose
+              includedLanguages: "en,de,fr,es", // choose
               layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
             },
             "google_translate_element"
