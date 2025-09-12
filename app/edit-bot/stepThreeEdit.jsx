@@ -889,7 +889,7 @@ const HandleNextPage = async () => {
     // Dispatch the API call
     const result = dispatch(updateStepThree(payload)).then((res) => {
       console.log("res", res);
-      if (res?.payload?.status_code === 200) {
+      if (res?.payload?.status_code === 201) {
         setShow({
           StepOne: false,
           StepTwo: false,
@@ -1031,7 +1031,7 @@ const HandleNextPage = async () => {
         <div className="step_content_wraper mb-6">
           <div className="flex justify-between items-center mb-3">
             <h3 className="text-[#435971] text-[18px] lg:text-[20px] lg:leading-[30px] font-medium">
-              Availability 
+              Availability
             </h3>
           </div>
 

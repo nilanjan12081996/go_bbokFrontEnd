@@ -889,7 +889,7 @@ const HandleNextPage = async () => {
     // Dispatch the API call
     const result = dispatch(updateStepThree(payload)).then((res) => {
       console.log("res", res);
-      if (res?.payload?.status_code === 200) {
+      if (res?.payload?.status_code === 201) {
         setShow({
           StepOne: false,
           StepTwo: false,

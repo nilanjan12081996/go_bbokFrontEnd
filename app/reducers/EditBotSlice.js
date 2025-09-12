@@ -250,7 +250,7 @@ export const updateStepThree = createAsyncThunk(
     async (user_input, { rejectWithValue }) => {
         try {
             const response = await api.post(`/api/availability/create-update`,user_input);
-            if (response?.data?.status_code === 200) {
+            if (response?.data?.status_code === 201) {
                 return response.data;
             } else {
                 if (response?.data?.errors) {

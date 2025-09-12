@@ -17,16 +17,16 @@ const StepEight = ({ setShow ,code}) => {
       StepEight:false
     });
 
-          setBackState({
-          StepOne: true, 
-          StepTwo: true,
-          StepThree: true,
-          StepFour: true,
-          StepFive: true,
-          StepSix:true,
-          StepSeven:true,
-          StepEight: false,
-    })
+    //       setBackState({
+    //       StepOne: true, 
+    //       StepTwo: true,
+    //       StepThree: true,
+    //       StepFour: true,
+    //       StepFive: true,
+    //       StepSix:true,
+    //       StepSeven:true,
+    //       StepEight: false,
+    // })
   };
 
    const handleCopy = async () => {

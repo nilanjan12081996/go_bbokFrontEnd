@@ -16,9 +16,9 @@ const StepFourEdit = ({ id, setShow, setLanguageId,languageId }) => {
 dispatch(EditStepFourAndFive({company_id:id})).then((res)=>{
   console.log("res",res);
   
-  if(res?.payload?.status_code===200){
-    setStepFiveData(res?.payload?.botData[0])
-  }
+  // if(res?.payload?.status_code===200){
+  //   setStepFiveData(res?.payload?.botData[0])
+  // }
 })
   },[])
 
