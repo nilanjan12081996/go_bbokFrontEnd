@@ -16,7 +16,7 @@ import PriceListModal from '../modal/PriceListModal';
 
 import { FaArrowRight } from "react-icons/fa6";
 import { HiLightningBolt } from "react-icons/hi";
-import { getCurrency, getCurrencyOut, setSelectedCurrency } from '../reducers/CreateBotSlice';
+import { getCurrency, getCurrencyOut, getPlans, setSelectedCurrency } from '../reducers/CreateBotSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
 
@@ -58,12 +58,12 @@ useEffect(() => {
 
       if (euroCurrency) {
         dispatch(setSelectedCurrency(euroCurrency.id)); // set Euro by default
-         dispatch(getPlans({currency_id:selectedCurrency}));
+      
       
       } else {
         // fallback → if euro not found, set first currency
         dispatch(setSelectedCurrency(res.payload.res[0].id));
-        dispatch(getPlans({currency_id:selectedCurrency}));
+        
       }
     }
   });

@@ -48,9 +48,9 @@ const RegistrationModal = ({ openRegisterModal, setOpenRegisterModal, setOpenVer
              
                 
             } else if (res?.payload?.response?.data?.status_code === 422) {
-                const validationErrors = res?.payload?.response?.data?.data || []
+                const validationErrors = res?.payload?.response?.data?.errors || []
                 console.log("validationErrors", validationErrors);
-                const combinedMessages = validationErrors.map((e) => e.message).join(' | ');
+                const combinedMessages = validationErrors.map((e) => e.msg).join(' | ');
                 setError(combinedMessages);
             }
         })

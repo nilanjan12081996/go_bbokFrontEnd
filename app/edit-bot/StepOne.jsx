@@ -30,7 +30,7 @@ business_id:id
   useEffect(()=>{
 setValue("company_name",editSerViceData?.res?.[0]?.company_name)
 setValue("industry_id", editSerViceData?.res?.[0]?.industry_id);
-  },[editSerViceData,setValue,industry_id])
+  },[editSerViceData])
   console.log("editSerViceData",editSerViceData);
   
   const HandleNextPage = () => {
