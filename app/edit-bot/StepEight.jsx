@@ -12,8 +12,8 @@ const StepEight = ({ setShow ,code}) => {
       StepThree: false,
       StepFour: false,
       StepFive: false,
-      StepSix: false,
-      StepSeven:true,
+      StepSix: true,
+      StepSeven:false,
       StepEight:false
     });
   };

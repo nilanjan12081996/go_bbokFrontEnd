@@ -25,8 +25,8 @@ const StepSix=( {setShow,businessId,setBackState})=>{
       StepFour: false,
       StepFive: false,
       StepSix: false,
-      StepSeven:true,
-      StepEight:false
+      StepSeven:false,
+      StepEight:true
     });
     setBackState({
           StepOne: true, 
