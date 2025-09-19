@@ -579,7 +579,14 @@ const StepTwo = ({id, industry_id, setShow, industryId, businessId, serviceIds }
                           sizing="md"
                           value={row.serviceName}
                           placeholder="Heart checkup"
-                          {...register(`rows.${index}.serviceName`, { required: "Service Name is required" })}
+                          maxLength={24}
+                          {...register(`rows.${index}.serviceName`, { required: "Service Name is required",
+                             maxLength: {
+                                value: 24,
+                                message: "Service Name cannot exceed 24 characters"
+                              }
+
+                           })}
                           onChange={(e) =>
                             handleChange(index, "serviceName", e.target.value)
                           }
@@ -589,6 +596,9 @@ const StepTwo = ({id, industry_id, setShow, industryId, businessId, serviceIds }
                             {errors.rows[index].serviceName.message}
                           </p>
                         )}
+                        <p className="text-gray-500 text-xs mt-1">
+                              {row.serviceName?.length || 0}/24
+                            </p>
                       </div>
                       
                       <div className="lg:w-4/12">

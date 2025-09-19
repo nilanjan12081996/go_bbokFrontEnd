@@ -173,7 +173,7 @@ const StepTwoEdit = ({id, setShow, industryId, businessId, serviceIds ,setServic
                       <div className="lg:w-4/12 step_field mb-2 lg:mb-0">
                         <div className="mb-1 block">
                           <Label htmlFor={`service-${index}`}>
-                            Service Name * edit
+                            Service Name
                           </Label>
                         </div>
                         <TextInput
@@ -181,8 +181,14 @@ const StepTwoEdit = ({id, setShow, industryId, businessId, serviceIds ,setServic
                           type="text"
                           sizing="md"
                           value={row.serviceName}
+                           maxLength={24}
                           placeholder="Heart checkup"
-                          {...register(`rows.${index}.serviceName`, { required: "Service Name is required" })}
+                          {...register(`rows.${index}.serviceName`, { required: "Service Name is required",
+                              maxLength: {
+                                value: 24,
+                                message: "Service Name cannot exceed 24 characters"
+                              }
+                           })}
                           onChange={(e) =>
                             handleChange(index, "serviceName", e.target.value)
                           }
@@ -192,6 +198,9 @@ const StepTwoEdit = ({id, setShow, industryId, businessId, serviceIds ,setServic
                             {errors.rows[index].serviceName.message}
                           </p>
                         )}
+                         <p className="text-gray-500 text-xs mt-1">
+                              {row.serviceName?.length || 0}/24
+                            </p>
                       </div>
                       
                       <div className="lg:w-4/12">

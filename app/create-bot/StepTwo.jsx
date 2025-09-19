@@ -150,16 +150,29 @@ const StepTwo = ({setIsback,isback, setShow, industryId, businessId,setBackState
                             sizing="md"
                             value={rows.serviceName}
                             placeholder="Heart checkup"
-                            {...register(`rows.${index}.serviceName`, { required: "Service Name is required" })}
+                            maxLength={24}
+                            {...register(`rows.${index}.serviceName`, { required: "Service Name is required",
+
+                              maxLength: {
+                                value: 24,
+                                message: "Service Name cannot exceed 24 characters"
+                              }
+                             }
+
+                              
+                            )}
                             onChange={(e) =>
                               handleChange(index, "serviceName", e.target.value)
                             }
                           />
                           {errors?.rows?.[index]?.serviceName && (
-            <p className="text-red-500 text-xs mt-1">
-              {errors.rows[index].serviceName.message}
-            </p>
-          )}
+                              <p className="text-red-500 text-xs mt-1">
+                                {errors.rows[index].serviceName.message}
+                              </p>
+                            )}
+                            <p className="text-gray-500 text-xs mt-1">
+                              {rows.serviceName?.length || 0}/24
+                            </p>
                           {/* <div className="mt-4">
                             <p className="text-[#7C7C7C] text-[13px] leading-[20px] font-medium pb-1">
                               Service Name Eg.
@@ -231,10 +244,10 @@ const StepTwo = ({setIsback,isback, setShow, industryId, businessId,setBackState
                                 }
                               </Select>
                                 {errors?.rows?.[index]?.currency && (
-                <p className="text-red-500 text-xs mt-1">
-                  {errors.rows[index].currency.message}
-                </p>
-              )}
+                                  <p className="text-red-500 text-xs mt-1">
+                                    {errors.rows[index].currency.message}
+                                  </p>
+                                )}
                             </div>
                           </div>
                         </div>
@@ -261,10 +274,10 @@ const StepTwo = ({setIsback,isback, setShow, industryId, businessId,setBackState
                                 }
                               />
                               {errors?.rows?.[index]?.duration && (
-                <p className="text-red-500 text-xs mt-1">
-                  {errors.rows[index].duration.message}
-                </p>
-              )}
+                              <p className="text-red-500 text-xs mt-1">
+                                {errors.rows[index].duration.message}
+                              </p>
+                            )}
                             </div>
                             <div className="w-4/12 lg:w-3/12">
                               <Select
