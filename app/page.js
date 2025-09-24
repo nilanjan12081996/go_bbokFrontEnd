@@ -143,18 +143,18 @@ console.log("Selected",selectedCurrency);
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
                    <div className="text-center">
                      <Image src={marketing_img} alt='marketing_img' className='inline-block' />
-                     <h3 className="text-[20px] leading-[40px] lg:text-[24px] lg:leading-[54px] text-black mb-0 font-medium">Generate 3x more leads</h3>
-                     <p className="text-[#686666] text-[14px] leading-[24px]">Make lead generation a two-way street with engaging, human-like conversations.</p>
+                     <h3 className="text-[20px] leading-[40px] lg:text-[24px] lg:leading-[54px] text-black mb-0 font-medium">Book appointments instantly</h3>
+                     <p className="text-[#686666] text-[14px] leading-[24px]">Let your customers book their appointments directly through WhatsApp, in just a few clicks.</p>
                    </div>
                    <div className="text-center">
                      <Image src={sales_img} alt='sales_img' className='inline-block' />
-                     <h3 className="text-[20px] leading-[40px] lg:text-[24px] lg:leading-[54px] text-black mb-0 font-medium">10x Booking appointments</h3>
-                     <p className="text-[#686666] text-[14px] leading-[24px]">Increase meetings and show rates with leads who have high interest and buying intent.</p>
+                     <h3 className="text-[20px] leading-[40px] lg:text-[24px] lg:leading-[54px] text-black mb-0 font-medium">Automatic reminders</h3>
+                     <p className="text-[#686666] text-[14px] leading-[24px]">Reduce missed appointments with WhatsApp reminders sent to your customers before their visit.</p>
                    </div>
                    <div className="text-center">
                      <Image src={customer_support_img} alt='customer_support_img' className='inline-block' />
-                     <h3 className="text-[20px] leading-[40px] lg:text-[24px] lg:leading-[54px] text-black mb-0 font-medium">Provide 24/7 assistance</h3>
-                     <p className="text-[#686666] text-[14px] leading-[24px]">Delight customers, combining bots and human agents for fast, friendly response times.</p>
+                     <h3 className="text-[20px] leading-[40px] lg:text-[24px] lg:leading-[54px] text-black mb-0 font-medium">Easy to use</h3>
+                     <p className="text-[#686666] text-[14px] leading-[24px]">No app to install, no account needed. Everything happens on WhatsApp for maximum simplicity.</p>
                    </div>
                 </div>
             </div>

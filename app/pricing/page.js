@@ -7,21 +7,25 @@ import bannerImg from "../assets/imagesource/banner_img.png";
 import Image from 'next/image';
 import { IoIosCheckmarkCircle } from 'react-icons/io';
 import { useDispatch, useSelector } from 'react-redux';
-import { getPlans } from '../reducers/PlanSlice';
+
 import LoginModal from '../modal/LoginModal';
 import { IoCheckmark } from 'react-icons/io5';
+import { getPlans } from '../reducers/CreateBotSlice';
 
 const page = () => {
-   const { plans } = useSelector((state) => state?.planst)
-   const disptach = useDispatch()
+    const { selectedCurrency, planList } = useSelector((state) => state.bot);
+   
+   const dispatch = useDispatch()
    const [openLoginModal, setOpenLoginModal] = useState(false);
    const hanleloginModal = () => {
       setOpenLoginModal(true)
    }
 
-   useEffect(() => {
-      disptach(getPlans())
-   }, [])
+    useEffect(() => {
+      if (selectedCurrency) {
+        dispatch(getPlans({currency_id:selectedCurrency}));
+      }
+    }, [selectedCurrency]);
    return (
       <div>
          <div className='banner_area p-0 lg:p-0'>
@@ -40,7 +44,7 @@ const page = () => {
          </div>
 
          {/* Plan section ends here */}
-         <div className="plan_sec py-10 px-5 lg:px-0 lg:py-20">
+         {/* <div className="plan_sec py-10 px-5 lg:px-0 lg:py-20">
             <div className='max-w-6xl mx-auto'>
                <div className="relative text-center mb-12">
                   <h2 className="text-[#000000] text-[27px] leading-[37px] lg:text-[50px] lg:leading-[57px] font-medium pb-2 lg:pb-6">Flexible plans for <span>every need</span></h2>
@@ -80,6 +84,59 @@ const page = () => {
                         </ul>
                      </div>
                   </div>
+               </div>
+            </div>
+         </div> */}
+
+          <div className="plan_sec py-10 px-5 lg:px-0 lg:py-20">
+            <div className='max-w-6xl mx-auto'>
+               <div className="relative text-center mb-12">
+                  <h2 className="text-[#000000] text-[27px] leading-[37px] lg:text-[50px] lg:leading-[57px] font-medium pb-2 lg:pb-6">Flexible plans for <span>every need</span></h2>
+                  <p className="text-[#000000] text-base lg:text-[20px] lg:leading-[20px] font-normal">Choose a plan that’s right for you</p>
+               </div>
+               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:w-8/12 mx-auto">
+               {
+                  planList?.res?.map((plans,index)=>(
+                        index%2==0?(
+                           <div className="rounded-[12px] px-6 py-10 border border-[#C9C9C9]">
+                     <h3 className="text-[#191d23] text-[22px] leading-[22px] font-bold pb-4">{plans?.plan_name}</h3>
+                     <p className="text-[16px] leading-[22px] text-[#95a0af] pb-3 font-normal">{plans?.PlanAccess?.[0]?.plan_access_description}</p>
+                     <h4 className="text-[56px] text-[#191d23] pb-3 font-medium">{plans?.Price?.[0]?.Currency?.currency_symbol}{plans?.Price?.[0]?.price}<span className="text-[#4b5768] text-base font-light">{plans?.plan_frequency ===1?"/ Month":`/ ${plans?.plan_frequency} Months`} </span></h4>
+                     <button onClick={() => hanleloginModal()} className="bg-white hover:bg-[#024E41] text-[#024E41] hover:text-white text-base leading-[44px] font-semibold border-2 w-full cursor-pointer border-[#024E41] rounded-[4px]">Get Started Now</button>
+                     <div className="mt-8">
+                        <ul>
+                           <li className="flex items-center gap-3 mb-3">
+                              <div className="w-[32px] h-[32px] rounded-[100px] bg-[#e8edfb] flex items-center justify-center">
+                                <IoCheckmark className="text-[#024e41]" />
+                              </div>
+                              <p className="text-[16px] text-[#191d23]">{plans?.PlanAccess?.[0]?.total_count} {plans?.PlanAccess?.[0]?.plan_access_name}</p>
+                           </li>
+                          
+                        </ul>
+                     </div>
+                  </div>
+                        ):(
+ <div className="rounded-[12px] px-6 py-10 border border-[#024E41] bg-[#024E41]">
+                     <h3 className="text-[#ffffff] text-[22px] leading-[22px] font-bold pb-4">{plans?.plan_name}</h3>
+                     <p className="text-[16px] leading-[22px] text-[#ffffff] pb-3 font-normal">{plans?.PlanAccess?.[0]?.plan_access_description}</p>
+                     <h4 className="text-[56px] text-[#ffffff] pb-3 font-medium">{plans?.Price?.[0]?.Currency?.currency_symbol}{plans?.Price?.[0]?.price}<span className="text-[#ffffff] text-base font-light">{plans?.plan_frequency ===1?"/ Month":`/ ${plans?.plan_frequency} Months`}</span></h4>
+                     <button onClick={() => hanleloginModal()} className="bg-white hover:bg-[#000000] text-[#024E41] hover:text-white text-base leading-[44px] font-semibold border-2 w-full cursor-pointer border-[#024E41] rounded-[4px]">Get Started Now</button>
+                     <div className="mt-8">
+                        <ul>
+                           <li className="flex items-center gap-3 mb-3">
+                              <div className="w-[32px] h-[32px] rounded-[100px] bg-[#e8edfb] flex items-center justify-center">
+                                <IoCheckmark className="text-[#024e41]" />
+                              </div>
+                              <p className="text-[16px] text-[#ffffff]">{plans?.PlanAccess?.[0]?.total_count===0?"Unlimited": plans?.PlanAccess?.[0]?.total_count} {plans?.PlanAccess?.[0]?.plan_access_name}</p>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+                        )
+                  ))
+               }
+                  
+                 
                </div>
             </div>
          </div>

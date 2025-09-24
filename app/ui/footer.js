@@ -110,8 +110,9 @@ const Footer = () => {
                   </div>
                    <div className='lg:w-4/12 text-center lg:text-left'>
                      <h3 className='text-[20px] leading-[24px] text-white font-semibold mb-6'>Contact Us</h3>
-                     <p className='text-sm leading-[24px] text-white font-medium mb-3 inline-block'>+91 6278765634</p>
-                     <p className='text-sm leading-[24px] text-white font-medium mb-3 inline-block'>Loremipsum”gmail.com</p>
+                     <p className='text-sm leading-[24px] text-white font-medium mb-3 inline-block'>WhatsApp: +33 681566495</p>
+                     <p className='text-sm leading-[24px] text-white font-medium mb-3 inline-block'>Email: support@gobook.fr</p>
+                     <p className='text-sm leading-[24px] text-white font-medium mb-3 inline-block'>Address: 60 Rue François 1er, 75008 Paris, France</p>
                   </div>
                 </div>
               </div>
@@ -119,7 +120,7 @@ const Footer = () => {
           </div>
           <div className='footer_bottom_box border-t border-[#FFFFFF] pt-6 lg:flex justify-between items-center'>
             <div className='mb-4 lg:mb-0 text-center lg:text-left'>
-              <p className='text-[12px] leading-[24px] text-white'>Copyright © 2024 SoumalyaFigma. All rights reserved.</p>
+              <p className='text-[12px] leading-[24px] text-white'>Copyright © 2025 GoBook. All rights reserved.</p>
             </div>
             <div>
                <ul className='flex justify-center items-center gap-4'>
