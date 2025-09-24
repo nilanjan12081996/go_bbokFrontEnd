@@ -30,46 +30,88 @@ const page = () => {
         <div className="accordian_section max-w-6xl mx-auto lg:py-4 px-4 lg:px-0">
           <Accordion>
             <AccordionPanel>
-                <AccordionTitle>What is Lorem Ipsum?</AccordionTitle>
+                <AccordionTitle>What is GoBook?</AccordionTitle>
                 <AccordionContent className="accodian_cont">
                     <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&lsquo;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                        GoBook is a SaaS platform that allows businesses to create their own WhatsApp bot. The bot automates appointment bookings, handles customer queries, and helps you stay connected with clients 24/7.
                     </p>
                 </AccordionContent>
             </AccordionPanel>
                         <AccordionPanel>
-                <AccordionTitle>What is Lorem Ipsum?</AccordionTitle>
+                <AccordionTitle>How does the WhatsApp bot work?</AccordionTitle>
                 <AccordionContent className="accodian_cont">
                     <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&lsquo;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                       Once you register on GoBook, you can configure your business details and availability. Customers can then message your WhatsApp number, and the bot will automatically respond, schedule appointments, and confirm bookings.
                     </p>
                 </AccordionContent>
             </AccordionPanel>
                         <AccordionPanel>
-                <AccordionTitle>What is Lorem Ipsum?</AccordionTitle>
+                <AccordionTitle>Do I need any technical knowledge to use GoBook?</AccordionTitle>
                 <AccordionContent className="accodian_cont">
                     <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&lsquo;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                        No. GoBook is designed for everyone — from small business owners to large teams. The setup is simple, and you can get your WhatsApp bot running in minutes without coding.
                     </p>
                 </AccordionContent>
             </AccordionPanel>
                         <AccordionPanel>
-                <AccordionTitle>What is Lorem Ipsum?</AccordionTitle>
+                <AccordionTitle>Can I customize the bot’s replies?</AccordionTitle>
                 <AccordionContent className="accodian_cont">
                     <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&lsquo;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                        Yes. You can personalize your bot’s responses, working hours, and appointment rules to fit your business needs.
                     </p>
                 </AccordionContent>
             </AccordionPanel>
                         <AccordionPanel>
-                <AccordionTitle>What is Lorem Ipsum?</AccordionTitle>
+                <AccordionTitle>What types of businesses can use GoBook?</AccordionTitle>
                 <AccordionContent className="accodian_cont">
                     <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&lsquo;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                        Any business that takes appointments or bookings can benefit from GoBook — salons, clinics, gyms, consultants, freelancers, and more.
+                    </p>
+                </AccordionContent>
+            </AccordionPanel>
+                          <AccordionPanel>
+                <AccordionTitle>How will I receive my appointments?</AccordionTitle>
+                <AccordionContent className="accodian_cont">
+                    <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
+                        All appointments are managed directly through WhatsApp and also stored inside your GoBook dashboard for easy tracking.
                     </p>
                 </AccordionContent>
             </AccordionPanel>
 
+                <AccordionPanel>
+                <AccordionTitle>Is my customer data secure?</AccordionTitle>
+                <AccordionContent className="accodian_cont">
+                    <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
+                        Yes. GoBook uses secure encryption and follows best practices to keep your and your customers’ data safe.
+                    </p>
+                </AccordionContent>
+            </AccordionPanel>
+
+                   <AccordionPanel>
+                <AccordionTitle>Can I try GoBook before subscribing?</AccordionTitle>
+                <AccordionContent className="accodian_cont">
+                    <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
+                        Yes. We offer a free trial so you can test the platform and see how it works for your business before committing.
+                    </p>
+                </AccordionContent>
+            </AccordionPanel>
+                 <AccordionPanel>
+                <AccordionTitle>Do my customers need to install anything?</AccordionTitle>
+                <AccordionContent className="accodian_cont">
+                    <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
+                        No. Customers simply message your WhatsApp number as usual — they don’t need to download any extra app.
+                    </p>
+                </AccordionContent>
+            </AccordionPanel>
+
+                  <AccordionPanel>
+                <AccordionTitle>How do I get started?</AccordionTitle>
+                <AccordionContent className="accodian_cont">
+                    <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
+                        Click the Register button on the homepage, create your account, and follow the step-by-step setup to launch your WhatsApp bot.
+                    </p>
+                </AccordionContent>
+            </AccordionPanel>
 
         </Accordion>
         </div>
