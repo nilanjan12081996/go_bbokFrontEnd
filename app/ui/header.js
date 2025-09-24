@@ -134,8 +134,8 @@ useEffect(() => {
                         </Link>
                       </li>
                       <li onClick={closeNavbar}>
-                        <Link href="/" passHref>
-                          How It Works
+                        <Link href="/about-us" passHref>
+                          About us
                         </Link>
                       </li>
                       <li onClick={closeNavbar}>

@@ -116,7 +116,7 @@ const page = () => {
                      </div>
                   </div>
                         ):(
- <div className="rounded-[12px] px-6 py-10 border border-[#024E41] bg-[#024E41]">
+                     <div className="rounded-[12px] px-6 py-10 border border-[#024E41] bg-[#024E41]">
                      <h3 className="text-[#ffffff] text-[22px] leading-[22px] font-bold pb-4">{plans?.plan_name}</h3>
                      <p className="text-[16px] leading-[22px] text-[#ffffff] pb-3 font-normal">{plans?.PlanAccess?.[0]?.plan_access_description}</p>
                      <h4 className="text-[56px] text-[#ffffff] pb-3 font-medium">{plans?.Price?.[0]?.Currency?.currency_symbol}{plans?.Price?.[0]?.price}<span className="text-[#ffffff] text-base font-light">{plans?.plan_frequency ===1?"/ Month":`/ ${plans?.plan_frequency} Months`}</span></h4>
