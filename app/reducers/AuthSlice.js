@@ -253,10 +253,10 @@ const authSlice = createSlice({
                     JSON.stringify({ user_id: data?.id })
                 );
                 console.log("response?.data",access_token)
-                // sessionStorage.setItem(
-                //     'goBookToken',
-                //     JSON.stringify({ token: access_token })
-                // );
+                sessionStorage.setItem(
+                    'goBookToken',
+                    JSON.stringify({ token: access_token })
+                );
             })
             .addCase(googleSignIn.rejected,(state,{payload})=>{
                 state.loading=false
