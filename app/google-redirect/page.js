@@ -39,10 +39,10 @@ const page = () => {
                         console.log("New videoToken set:", sessionStorage.getItem("goBookToken"));
                         
                         // Wait a bit to ensure token is properly set
-                        setTimeout(() => {
-                            setIsProcessing(false);
-                            router.push("/dashboard");
-                        }, 100);
+                        // setTimeout(() => {
+                        //     setIsProcessing(false);
+                        //     router.push("/dashboard");
+                        // }, 100);
                         
                     } else if (response?.payload) {
                         // Handle success message case
