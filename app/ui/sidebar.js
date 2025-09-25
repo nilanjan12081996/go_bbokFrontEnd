@@ -25,7 +25,7 @@ import { logout } from '../reducers/AuthSlice';
 
 import { HiDocumentText } from "react-icons/hi2";
 import { HiHome } from "react-icons/hi";
-import { CiClock1 } from "react-icons/ci";
+import { CiClock1, CiLogout } from "react-icons/ci";
 
 import { LuBot } from "react-icons/lu";
 import { FaRegCircleUser } from "react-icons/fa6";
@@ -50,29 +50,27 @@ const Sidebar = () => {
   //console.log(sidebarOpen,"sidebarOpen");
   const router = useRouter();
   const handleLogout = () => {
-    // dispatch(logout())
-
-    try {
-
-      // Dispatch logout action
-      dispatch(logout());
-      dispatch(reset());
-
-      // Navigate to home page
-      router.push("/");
-
-      // Force reload to ensure clean state
-      // setTimeout(() => {
-      //   window.location.reload();
-      // }, 100);
-    } catch (error) {
-      console.error("Logout error:", error);
-      // Fallback: still navigate to home
-      router.push("/");
-    }
-
-  };
-
+     // dispatch(logout())
+ 
+     try {
+ 
+       // Dispatch logout action
+       dispatch(logout());
+ 
+       // Navigate to home page
+       router.push("/");
+ 
+       // Force reload to ensure clean state
+       // setTimeout(() => {
+       //   window.location.reload();
+       // }, 100);
+     } catch (error) {
+       console.error("Logout error:", error);
+       // Fallback: still navigate to home
+       router.push("/");
+     }
+ 
+   };
   const openMobileMenu = () => {
     setSidebarOpen(prev => !prev);
   }
@@ -241,15 +239,14 @@ dispatch(getBotCount())
               </li>
 
 
-              {/* <li onClick={closeNavbar}>
-                <Link href="/checkout"
-                  className={`group relative flex items-center gap-2 rounded-sm py-3 px-4 font-normal text-base text-[#606060] duration-300 ease-in-out hover:bg-graydark ${pathname.includes('checkout') &&
-                    'bg-[#00806a] text-white dark:bg-meta-4'
-                    }`}
-                  passHref>
-                  Checkout
-                </Link>
-              </li> */}
+              <li onClick={closeNavbar}>
+                <button
+                onClick={handleLogout}
+                  className= "group relative flex items-center gap-2 rounded-sm py-3 px-4 font-normal text-base text-[#606060] duration-300 ease-in-out  cursor-pointer">
+                     <CiLogout className='text-2xl' />
+                  Logout
+                </button>
+              </li>
               
 
 

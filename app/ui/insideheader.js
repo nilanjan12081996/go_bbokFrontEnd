@@ -142,12 +142,12 @@ useEffect(() => {
                {/* <p className='text-[#565656] text-[12px] font-semibold'>Admin</p> */}
              </div>
           </div>
-          <div className="relative group">
-                {/* Profile Picture */}
+          {/* <div className="relative group">
+               
                 <div className='user_face border border-[#5C5C5C] w-[18px] h-[18px] rounded-full flex items-center justify-center'>
                    <IoIosArrowDown className='text-[#565656] text-sm' />
                 </div>
-                {/* Dropdown */}
+               
                 <div
                     className="absolute right-0 mt-0 w-40 bg-white text-black rounded-lg shadow-lg opacity-0 invisible group-hover:visible group-hover:opacity-100 transition-opacity duration-300">
                     <button
@@ -159,7 +159,7 @@ useEffect(() => {
                         Logout
                     </button>
                 </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
