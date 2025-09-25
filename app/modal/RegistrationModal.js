@@ -16,6 +16,7 @@ import { FcGoogle } from "react-icons/fc";
 
 import { RiGoogleFill } from "react-icons/ri";
 import Link from 'next/link';
+import { useGoogleLogin } from "@react-oauth/google";
 
 const RegistrationModal = ({ openRegisterModal, setOpenRegisterModal, setOpenVerifyOtpModal, setOpenLoginModal, openPricModal, setOpenPriceModal }) => {
     const dispatch = useDispatch();
@@ -65,6 +66,17 @@ const RegistrationModal = ({ openRegisterModal, setOpenRegisterModal, setOpenVer
         setOpenPriceModal(true)
         setOpenRegisterModal(false);
     }
+    const googleLogin = useGoogleLogin({
+    onSuccess: (codeResponse) => {
+      // localStorage.setItem("googleAccessToken", codeResponse.access_token);
+      sessionStorage.setItem(
+        "goBookToken",
+        JSON.stringify({ token: codeResponse.access_token })
+      );
+      router.push("/google-redirect");
+    },
+    onError: (error) => console.log("Login Failed:", error),
+  });
 
     return (
         <>
@@ -81,7 +93,7 @@ const RegistrationModal = ({ openRegisterModal, setOpenRegisterModal, setOpenVer
                                 <div className='form_area'>
                                     
                                     <div className="mb-3 flex justify-center items-center">
-                                        <button className="google_btn"><FcGoogle className="text-[24px] mr-2" /> Continue with Google</button>
+                                        <button onClick={()=>{googleLogin()}} className="google_btn"><FcGoogle className="text-[24px] mr-2" /> Continue with Google</button>
                                     </div>
                                     <div className="mb-1 text-center continue_width">
                                         <p className="text-[#525252] text-[14px] leading-[20px]">Or</p>
