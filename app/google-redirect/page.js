@@ -23,7 +23,7 @@ const page=()=>{
             dispatch(googleSignIn({ token: ggltoken })).then(
                 (response) => {
                     console.log("gglresponse: ", response);
-                    const userToken = response?.payload?.token; //Adjust based on your action response structure
+                    const userToken = response?.payload?.access_token; //Adjust based on your action response structure
                     console.log("userToken ggl", userToken);
 
                     if (userToken) {
@@ -54,7 +54,7 @@ const page=()=>{
             );
         } else {
 
-            navigate("/");
+            router.push("/");
         }
     }, [dispatch]);
 
