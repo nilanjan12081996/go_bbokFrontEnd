@@ -21,8 +21,13 @@ const page = () => {
 
                 if (ggltoken) {
                     // Wait for the Google sign-in to complete
-                    const response = await dispatch(googleSignIn({ token: ggltoken })).then((res)=>{
-                          if (userToken) {
+                    const response = await dispatch(googleSignIn({ token: ggltoken }))
+                    console.log("gglresponse: ", response);
+                    
+                    const userToken = response?.payload?.access_token;
+                    console.log("userToken ggl", userToken);
+
+                    if (userToken) {
                         console.log("Setting new videoToken...");
                         
                         // Update the token in sessionStorage
@@ -34,10 +39,9 @@ const page = () => {
                         console.log("New videoToken set:", sessionStorage.getItem("goBookToken"));
                         
                         // Wait a bit to ensure token is properly set
-                        setTimeout(() => {
-                            setIsProcessing(false);
+                       
                             router.push("/dashboard");
-                        }, 100);
+                     
                         
                     } else if (response?.payload) {
                         // Handle success message case
@@ -50,23 +54,16 @@ const page = () => {
                             theme: "light",
                         });
                         
-                        setTimeout(() => {
-                            setIsProcessing(false);
+                       
+                           
                             router.push("/dashboard");
-                        }, 100);
+                        
                     } else {
                         // Handle error case
                         console.error("No token received from Google sign-in");
                         setIsProcessing(false);
                         router.push("/");
                     }
-                    })
-                    console.log("gglresponse: ", response);
-                    
-                    const userToken = response?.payload?.access_token;
-                    console.log("userToken ggl", userToken);
-
-                  
                 } else {
                     console.log("No Google token found, redirecting to home");
                     setIsProcessing(false);
