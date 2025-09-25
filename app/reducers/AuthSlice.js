@@ -99,6 +99,7 @@ export const googleSignIn = createAsyncThunk(
     try {
       const response = await api.post('api/auth/google-login', token);
       if (response?.data?.status_code === 200) {
+        console.log(response?.data,"response?.data")
         return response.data;
       } else {
         // Handle the case when status code is not 200
@@ -242,6 +243,7 @@ const authSlice = createSlice({
                 
             })
             .addCase(googleSignIn.fulfilled,(state,{payload})=>{
+                console.log("response?.data",payload)
                  const { access_token, data, refresh_token } = payload;
                 state.loading = false;
                 state.isLoggedIn = true;
@@ -250,6 +252,7 @@ const authSlice = createSlice({
                     'user_id',
                     JSON.stringify({ user_id: data?.id })
                 );
+                console.log("response?.data",access_token)
                 sessionStorage.setItem(
                     'goBookToken',
                     JSON.stringify({ token: access_token })
