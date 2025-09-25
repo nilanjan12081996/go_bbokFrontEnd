@@ -15,6 +15,7 @@ import { getSearchHistory } from "../reducers/SearchHistroySlice";
 import { FcGoogle } from "react-icons/fc";
 
 import { RiGoogleFill } from "react-icons/ri";
+import { useGoogleLogin } from "@react-oauth/google";
 
 
 const LoginModal = ({ openLoginModal, setOpenLoginModal, setOpenRegisterModal }) => {
@@ -50,6 +51,19 @@ const LoginModal = ({ openLoginModal, setOpenLoginModal, setOpenRegisterModal })
         setOpenLoginModal(false)
     }
 
+
+      const googleLogin = useGoogleLogin({
+    onSuccess: (codeResponse) => {
+      // localStorage.setItem("googleAccessToken", codeResponse.access_token);
+      sessionStorage.setItem(
+        "goBookToken",
+        JSON.stringify({ token: codeResponse.access_token })
+      );
+      router.push("/google-redirect");
+    },
+    onError: (error) => console.log("Login Failed:", error),
+  });
+
     return (
         <>
             <Modal size="4xl" show={openLoginModal} onClose={() => setOpenLoginModal(false)}>
@@ -65,7 +79,7 @@ const LoginModal = ({ openLoginModal, setOpenLoginModal, setOpenRegisterModal })
                                 <div className='form_area'>
                                     
                                     <div className="mb-8 flex justify-center items-center">
-                                        <button className="google_btn"><FcGoogle className="text-[24px] mr-2" /> Continue with Google</button>
+                                        <button onClick={()=>{googleLogin()}} className="google_btn"><FcGoogle className="text-[24px] mr-2" /> Continue with Google</button>
                                     </div>
 
                                     <div className="mb-4 text-center continue_width">
