@@ -55,10 +55,10 @@ const page = () => {
                             theme: "light",
                         });
                         
-                        setTimeout(() => {
-                            setIsProcessing(false);
-                            router.push("/dashboard");
-                        }, 100);
+                        // setTimeout(() => {
+                        //     setIsProcessing(false);
+                        //     router.push("/dashboard");
+                        // }, 100);
                     } else {
                         // Handle error case
                         console.error("No token received from Google sign-in");
