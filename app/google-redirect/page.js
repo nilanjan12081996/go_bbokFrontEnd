@@ -1,45 +1,51 @@
 'use client';
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { googleSignIn } from "../reducers/AuthSlice";
 import { Spinner } from "flowbite-react";
 
-const page=()=>{
-     const dispatch = useDispatch();
-         const router = useRouter();
+const page = () => {
+    const dispatch = useDispatch();
+    const router = useRouter();
+    const [isProcessing, setIsProcessing] = useState(true);
 
-     useEffect(() => {
-        // const ggltoken = localStorage.getItem("googleAccessToken");
-        const videoToken = sessionStorage.getItem("goBookToken");
+    useEffect(() => {
+        const handleGoogleSignIn = async () => {
+            try {
+                const videoToken = sessionStorage.getItem("goBookToken");
+                console.log("videoToken:", videoToken);
 
-        console.log("videoToken:", videoToken);
+                const ggltoken = videoToken ? JSON.parse(videoToken)?.token : null;
+                console.log("ggltoken:", ggltoken);
 
-        const ggltoken = videoToken ? JSON.parse(videoToken)?.token : null;
-
-        console.log("ggltoken:", ggltoken);
-
-        if (ggltoken) {
-            dispatch(googleSignIn({ token: ggltoken })).then(
-                (response) => {
+                if (ggltoken) {
+                    // Wait for the Google sign-in to complete
+                    const response = await dispatch(googleSignIn({ token: ggltoken }));
                     console.log("gglresponse: ", response);
-                    const userToken = response?.payload?.access_token; //Adjust based on your action response structure
+                    
+                    const userToken = response?.payload?.access_token;
                     console.log("userToken ggl", userToken);
 
                     if (userToken) {
                         console.log("Setting new videoToken...");
+                        
+                        // Update the token in sessionStorage
                         sessionStorage.setItem(
                             "goBookToken",
                             JSON.stringify({ token: userToken })
                         );
-                        // dispatch(editProfile());
-                        console.log("inside side effect");
-                        console.log(
-                            "New videoToken set:",
-                            sessionStorage.getItem("goBookToken")
-                        );
-                    
-                    } else {
+                        
+                        console.log("New videoToken set:", sessionStorage.getItem("goBookToken"));
+                        
+                        // Wait a bit to ensure token is properly set
+                        setTimeout(() => {
+                            setIsProcessing(false);
+                            router.push("/dashboard");
+                        }, 100);
+                        
+                    } else if (response?.payload) {
+                        // Handle success message case
                         toast.success(response?.payload, {
                             position: "top-right",
                             autoClose: 5000,
@@ -48,22 +54,48 @@ const page=()=>{
                             progress: undefined,
                             theme: "light",
                         });
-                        router.push("/dashboard");
+                        
+                        setTimeout(() => {
+                            setIsProcessing(false);
+                            router.push("/dashboard");
+                        }, 100);
+                    } else {
+                        // Handle error case
+                        console.error("No token received from Google sign-in");
+                        setIsProcessing(false);
+                        router.push("/");
                     }
+                } else {
+                    console.log("No Google token found, redirecting to home");
+                    setIsProcessing(false);
+                    router.push("/");
                 }
-            );
-        } else {
+            } catch (error) {
+                console.error("Error during Google sign-in:", error);
+                setIsProcessing(false);
+                router.push("/");
+            }
+        };
 
-            router.push("/");
-        }
-    }, [dispatch]);
+        handleGoogleSignIn();
+    }, [dispatch, router]);
 
-    return(
+    return (
         <>
             <div className="h-96 flex justify-center items-center">
-                <Spinner />
+                {isProcessing ? (
+                    <div className="text-center">
+                        <Spinner />
+                        <p className="mt-4 text-gray-600">Completing sign-in...</p>
+                    </div>
+                ) : (
+                    <div className="text-center">
+                        <p>Redirecting...</p>
+                    </div>
+                )}
             </div>
         </>
-    )
-}
-export default page
+    );
+};
+
+export default page;
