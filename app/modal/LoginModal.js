@@ -54,11 +54,11 @@ const LoginModal = ({ openLoginModal, setOpenLoginModal, setOpenRegisterModal })
 
       const googleLogin = useGoogleLogin({
     onSuccess: (codeResponse) => {
-       sessionStorage.setItem("googleAccessToken", codeResponse.access_token);
-    //   sessionStorage.setItem(
-    //     "goBookToken",
-    //     JSON.stringify({ token: codeResponse.access_token })
-    //   );
+    //    sessionStorage.setItem("googleAccessToken", codeResponse.access_token);
+      sessionStorage.setItem(
+        "googleAccessToken",
+        JSON.stringify({ token: codeResponse.access_token })
+      );
       router.push("/google-redirect");
     },
     onError: (error) => console.log("Login Failed:", error),
