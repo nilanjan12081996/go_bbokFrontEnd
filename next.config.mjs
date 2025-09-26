@@ -10,7 +10,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'gobookapinew.bestworks.cloud',
+        hostname: 'gobook.fr/userapi',
         port: '',
       
       },
