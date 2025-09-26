@@ -14,6 +14,12 @@ const nextConfig = {
         port: '',
         pathname: '/userapi/uploads/**',
       },
+         {
+        protocol: 'https',
+        hostname: 'gobook.fr',
+        port: '',
+        pathname: '/userapi/assets/**', // <-- added this
+      },
       {
         protocol: 'https',
         hostname: 'lh3.googleusercontent.com',
