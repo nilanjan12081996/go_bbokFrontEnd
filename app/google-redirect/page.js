@@ -13,7 +13,7 @@ const page = () => {
     useEffect(() => {
         const handleGoogleSignIn = async () => {
             try {
-                const videoToken = sessionStorage.getItem("goBookToken");
+                const videoToken = sessionStorage.getItem("googleAccessToken");
                 console.log("videoToken:", videoToken);
 
                 const ggltoken = videoToken ? JSON.parse(videoToken)?.token : null;
