@@ -70,7 +70,7 @@ const RegistrationModal = ({ openRegisterModal, setOpenRegisterModal, setOpenVer
     onSuccess: (codeResponse) => {
       // localStorage.setItem("googleAccessToken", codeResponse.access_token);
       sessionStorage.setItem(
-        "goBookToken",
+        "googleAccessToken",
         JSON.stringify({ token: codeResponse.access_token })
       );
       router.push("/google-redirect");
