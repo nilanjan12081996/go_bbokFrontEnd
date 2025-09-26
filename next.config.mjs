@@ -9,10 +9,10 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'gobook.fr/userapi',
+         protocol: 'https',
+        hostname: 'gobook.fr',
         port: '',
-      
+        pathname: '/userapi/uploads/**',
       },
     ],
   },
