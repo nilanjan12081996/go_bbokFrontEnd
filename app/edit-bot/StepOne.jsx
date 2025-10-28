@@ -1,5 +1,5 @@
 "use client";
-import { Label, Select, TextInput } from "flowbite-react";
+import { Label, Select, Textarea, TextInput } from "flowbite-react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createService, getIndustry } from "../reducers/CreateBotSlice";
@@ -30,6 +30,9 @@ business_id:id
   useEffect(()=>{
 setValue("company_name",editSerViceData?.res?.[0]?.company_name)
 setValue("industry_id", editSerViceData?.res?.[0]?.industry_id);
+setValue("whatsapp",editSerViceData?.res?.[0]?.whatsapp)
+setValue("phone_number_id",editSerViceData?.res?.[0]?.phone_number_id)
+setValue("access_token",editSerViceData?.res?.[0]?.access_token)
   },[editSerViceData])
   console.log("editSerViceData",editSerViceData);
   
@@ -125,24 +128,65 @@ setValue("industry_id", editSerViceData?.res?.[0]?.industry_id);
                     </span>
                   )}
               </div>
-                   {/* <div className="lg:w-6/12 step_field">
-                <div className="mb-1 block">
-                  <Label htmlFor="countries">Business Whatsapp Number *</Label>
-                </div>
-                <TextInput
-                  {...register("whatsapp")}
-                  id="base"
-                  type="text"
-                  sizing="md"
-                  placeholder="Enter Business Whatsapp Number"
-                />
-                {errors?.whatsapp && (
-                    <span className="text-red-500">
-                    {errors?.whatsapp?.message}
-                    </span>
-                  )}
-              </div> */}
             </div>
+                 <div className="lg:flex gap-4 mb-4">
+                          <div className="lg:w-full step_field mb-4">
+                            <div className="mb-1 block">
+                              <Label htmlFor="countries">Whatsapp Number *</Label>
+                            </div>
+                            <TextInput
+                              {...register("whatsapp",{required:"Whatsapp Number Required"})}
+                              id="base"
+                              type="text"
+                              sizing="md"
+                              placeholder="Enter Whatsapp Number"
+                            />
+                               {errors?.whatsapp && (
+                                <span className="text-red-500">
+                                {errors?.whatsapp?.message}
+                                </span>
+                              )}
+                          </div>
+            
+                          <div className="lg:w-full step_field mb-4">
+                            <div className="mb-1 block">
+                              <Label htmlFor="countries">Phone Number Id *</Label>
+                            </div>
+                            <TextInput
+                              {...register("phone_number_id",{required:"Phone Number Id Required"})}
+                              id="base"
+                              type="text"
+                              sizing="md"
+                              placeholder="Enter Access Token"
+                            />
+                               {errors?.phone_number_id && (
+                                <span className="text-red-500">
+                                {errors?.phone_number_id?.message}
+                                </span>
+                              )}
+                          </div>
+            
+                        </div>
+            
+                          <div className="lg:w-full step_field mb-4">
+                            <div className="mb-1 block">
+                              <Label htmlFor="countries">Access token *</Label>
+                            </div>
+                            <Textarea
+                              {...register("access_token",{required:"Access Token Required"})}
+                              id="base"
+                              type="text"
+                              sizing="md"
+                              placeholder="Enter Access Token"
+                              rows={5}
+                            >
+                              </Textarea>
+                               {errors?.access_token && (
+                                <span className="text-red-500">
+                                {errors?.access_token?.message}
+                                </span>
+                              )}
+                          </div>
           </div>
           <div className="step_btn_area border-t border-[#EBEEFA] pt-5">
             <div className="flex justify-end items-center">
