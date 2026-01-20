@@ -26,6 +26,11 @@ const nextConfig = {
         port: '',
         pathname: '/**', // allow all Google profile pics
       },
+         {
+        protocol: "https",
+        hostname: "gobookapi.bestworks.cloud",
+        pathname: "/assets/**", // 👈 THIS FIXES YOUR ERROR
+      },
     ],
   },
 };

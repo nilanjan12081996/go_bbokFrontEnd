@@ -23,7 +23,7 @@
     "ag-grid-react": "^34.1.2",
     "axios": "^1.9.0",
     "datejs": "^1.0.0-rc3",
-    "eslint-config-next": "^14.2.5",
+   
     "flowbite-react": "^0.11.7",
     "js-cookie": "^3.0.5",
     "latest": "^0.2.0",
@@ -44,6 +44,7 @@
     "@types/node": "22.15.21",
     "@types/react": "19.1.6",
     "eslint": "8.57.1",
-    "tailwindcss": "^4"
+    "tailwindcss": "^4",
+     "eslint-config-next": "^14.2.5"
   }
 }
