@@ -43,7 +43,7 @@
     "@tailwindcss/postcss": "^4",
     "@types/node": "22.15.21",
     "@types/react": "19.1.6",
-    "eslint": "^9",
+    "eslint": "8.57.1",
     "tailwindcss": "^4"
   }
 }
